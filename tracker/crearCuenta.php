@@ -31,26 +31,7 @@
     $DEBUG_STATUS = $PRINT_LOG;
     require 'controladorDB.php';
     $controladorDB = new controladorDB();*/
-    if(isset($_GET["uid"]))
-    {
-        $data = $controladorDB->listaUsers($databasecon,$_GET["uid"],$DEBUG_STATUS);
-        $userNombre=$data[0][1];
-        $userEmail=$data[0][2];
-        $userPwd=$data[0][10];
-        $userTelefono=$data[0][4];
-        $userCelular=$data[0][5];
-        $userUbicacion=$data[0][6];
-    }
-    else
-    {
-        $data = $controladorDB->listaUsers($databasecon,0,$DEBUG_STATUS);
-        $userNombre='';
-        $userEmail='';
-        $userPwd='';
-        $userTelefono='';
-        $userCelular='';
-        $userUbicacion='';
-    }
+    $data = $controladorDB->listaUsers($databasecon,0,$DEBUG_STATUS);
 ?>
 <style type="text/css">
     body
@@ -101,29 +82,29 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>NOMBRE*</label>
-                        <input type="text" class="form-control navbar-btn" id="nombre" placeholder="Nombre Completo" name="userNombre" value="<?php echo $userNombre;?>" required> 
+                        <input type="text" class="form-control navbar-btn" id="nombre" placeholder="Nombre Completo" name="userNombre" required> 
                     </div>
                     <div class="col-sm-4">
                         <label>EMAIL*</label>
-                        <input type="email" class="form-control navbar-btn" id="email" placeholder="Email" name="userEmail" value="<?php echo $userEmail;?>" required>
+                        <input type="email" class="form-control navbar-btn" id="email" placeholder="Email" name="userEmail" required>
                     </div>
                     <div class="col-sm-4">
                         <label>PASSWORD</label>
-                        <input type="text" class="form-control navbar-btn" id="pwd" placeholder="Clave" name="userPwd" value="<?php echo $userPwd;?>" required readonly="true">
+                        <input type="password" class="form-control navbar-btn" id="pwd" placeholder="Clave" name="userPwd" value="password" required readonly="true">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
                         <label>TELEFONO 1*</label>
-                        <input type="text" class="form-control navbar-btn" id="telefono" placeholder="Telefono" name="userTelefono" value="<?php echo $userTelefono;?>" required>
+                        <input type="text" class="form-control navbar-btn" id="telefono" placeholder="Telefono" name="userTelefono" required>
                     </div>
                     <div class="col-sm-4">
                         <label>TELEFONO 2 (opcional)</label>
-                        <input type="text" class="form-control navbar-btn" id="celular" placeholder="Celular" name="userCelular" value="<?php echo $userCelular;?>">
+                        <input type="text" class="form-control navbar-btn" id="celular" placeholder="Celular" name="userCelular">
                     </div>
                     <div class="col-sm-4">
                         <label>DIRECCION (opcional)</label>
-                        <input type="text" class="form-control navbar-btn" id="ubicacion" placeholder="Ubicacion" name="userUbicacion" value="<?php echo $userUbicacion;?>">
+                        <input type="text" class="form-control navbar-btn" id="ubicacion" placeholder="Ubicacion" name="userUbicacion">
                     </div>
                 </div>
                 <div class="row">
@@ -170,23 +151,25 @@
         <div class="col-sm-1"></div>    
     </div>
     <br>
+    
+    <br>
     <?php
         if(isset($data))
         {
             $dbTable='datos';
             ?>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr class="table-header">
                             <td>#FILA</td>
-                            <td>NOMBRE</td>
-                            <td>EMAIL</td>
-                            <td>PERFIL</td>
+                            <td>NOMBRE <button style="background:maroon;border:none;padding:0px;margin-left:8px;"><span class="glyphicon glyphicon-arrow-down" onclick="sortTableByName()"></span></button></td>
+                            <td>EMAIL <button style="background:maroon;border:none;padding:0px;margin-left:8px;"><span class="glyphicon glyphicon-arrow-down" onclick="sortTableByEmail()"></span></button></td>
+                            <td>PERFIL <button style="background:maroon;border:none;padding:0px;margin-left:8px;"><span class="glyphicon glyphicon-arrow-down" onclick="sortTableByPerfil()"></span></button></td>
                             <td>TELEFONO</td>
                             <td>CELULAR</td>
-                            <td>UBICACION</td>
-                            <td>PARALELO</td>
+                            <td>UBICACION <button style="background:maroon;border:none;padding:0px;margin-left:8px;"><span class="glyphicon glyphicon-arrow-down" onclick="sortTableByUbicacion()"></span></button></td>
+                            <td>PARALELO <button style="background:maroon;border:none;padding:0px;margin-left:8px;"><span class="glyphicon glyphicon-arrow-down" onclick="sortTableByParalelo()"></span></button></td>
                             <td>HABILITADO</td>
                         </tr>
                     </thead>
@@ -207,7 +190,7 @@
                             <td><?php echo $data[$x][9];?></td>
                             <!-- <td><?php echo $data[$x][7];?></td> -->
                             <td>
-                                <a href="crearCuenta.php?uid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a>
+                                <a href="editCuenta.php?uid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a>
                                 <a href="controladorProceso.php?proceso=0&task=4&id=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
                             </td>
                         </tr>

@@ -89,9 +89,9 @@
 		public function listaUsers($dbcon,$id,$DEBUG_STATUS)
 		{
 			if($id!=0)
-				$sql="SELECT l.id,l.nombre,l.email,p.nombre perfil,l.telefono,l.celular,l.ubicacion,l.id_paralelo,l.habilitado,(select nombre from c_paralelo cp where cp.id=l.id_paralelo) nombre_paralelo,l.clave clave FROM c_login l, c_perfil p WHERE l.perfil=p.id AND l.habilitado=1 AND p.habilitado=1 and l.id=".$id;
+				$sql="SELECT l.id,l.nombre,l.email,p.nombre perfil,l.telefono,l.celular,l.ubicacion,l.id_paralelo,l.habilitado,(select nombre from c_paralelo cp where cp.id=l.id_paralelo) nombre_paralelo,l.clave clave,p.id perfil_id FROM c_login l, c_perfil p WHERE l.perfil=p.id AND l.habilitado=1 AND p.habilitado=1 and l.id=".$id;
 			else
-				$sql="SELECT l.id,l.nombre,l.email,p.nombre perfil,l.telefono,l.celular,l.ubicacion,l.id_paralelo,l.habilitado,(select nombre from c_paralelo cp where cp.id=l.id_paralelo) nombre_paralelo,l.clave clave FROM c_login l, c_perfil p WHERE l.perfil=p.id AND l.habilitado=1 AND p.habilitado=1";
+				$sql="SELECT l.id,l.nombre,l.email,p.nombre perfil,l.telefono,l.celular,l.ubicacion,l.id_paralelo,l.habilitado,(select nombre from c_paralelo cp where cp.id=l.id_paralelo) nombre_paralelo,l.clave clave,p.id perfil_id FROM c_login l, c_perfil p WHERE l.perfil=p.id AND l.habilitado=1 AND p.habilitado=1";
 			//echo $sql;
 			$users=array();
 			$count=0;
@@ -100,7 +100,7 @@
             {
 				while($row = mysqli_fetch_assoc($result)) 
 				{
-					$users[$count] = array($row["id"],$row["nombre"],$row["email"],$row["perfil"],$row["telefono"],$row["celular"],$row["ubicacion"],$row["habilitado"],$row["id_paralelo"],$row["nombre_paralelo"],$row["clave"]);
+					$users[$count] = array($row["id"],$row["nombre"],$row["email"],$row["perfil"],$row["telefono"],$row["celular"],$row["ubicacion"],$row["habilitado"],$row["id_paralelo"],$row["nombre_paralelo"],$row["clave"],$row["perfil_id"]);
 					$count++;
 				}
 			}
@@ -340,6 +340,22 @@
             	$updStatus=-1;
             	mysqli_rollback($dbcon);
             }
+            return $updStatus;			
+		}
+		public function modificarCuenta($dbcon,$userNombre,$userEmail,$userTelefono,$userCelular,$userUbicacion,$userId,$DEBUG_STATUS)
+		{
+			$updStatus = 0;
+			$sql = "UPDATE c_login set nombre='".$userNombre."',email='".$userEmail."',telefono='".$userTelefono."', celular='".$userCelular."', ubicacion='".$userUbicacion."' where id=".$userId;
+				//echo $sql.'<br>';
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	mysqli_commit($dbcon);
+	        	$updStatus = 1;
+	        }
+	        else
+	        {
+	        	mysqli_rollback($dbcon);
+	        }
             return $updStatus;			
 		}
 		public function listaCliente($dbcon,$id,$DEBUG_STATUS)

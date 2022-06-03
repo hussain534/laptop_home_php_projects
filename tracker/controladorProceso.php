@@ -78,6 +78,21 @@
         $url='crearCuenta.php';
         header("Location:$url");
     }
+    //MODIFICAR CUENTA
+    else if($_GET["proceso"]==0 && $_GET["task"]==5)
+    {    
+        $err = $controladorDB->modificarCuenta($databasecon,$_POST['userNombre'],$_POST['userEmail'],$_POST['userTelefono'],$_POST['userCelular'],$_POST['userUbicacion'],$_POST['userId'],$DEBUG_STATUS);    
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN MODIFICAR CUENTA. INTENTA MAS TARDE</center>";                
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>CUENTA MODIFICADO</center>";
+        }
+        $url='editCuenta.php?uid='.$_POST['userId'];
+        header("Location:$url");
+    }
     //ACTUALIZAR MENU
     else if($_GET["proceso"]==4 && $_GET["task"]==0)
     {   
