@@ -64,6 +64,7 @@
                 <ul class="dropdown-menu">
                     <li><a href="dashboard.php">DASHBOARD</a></li>                
                     <?php echo get_menu_tree(0);?>
+                    <li><a href="cambiarClave.php">CAMBIAR CLAVE</a></li>
                     <li><a href="logout.php">CERRAR SESION</a></li>
                 </ul>
               </li>        

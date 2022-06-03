@@ -630,14 +630,14 @@ function validateFormCrearCuenta()
         }
         else
         {
-            alert("ALL OK 2");
+            //alert("ALL OK 2");
             document.getElementById("paralelo").value=document.getElementById("idparalelo").value;
             return true;
         }
     }
     else
     {
-        alert("ALL OK 1");
+        //alert("ALL OK 1");
         return true;
     }
 }
@@ -840,4 +840,61 @@ function sortTableByParalelo()
       switching = true;
     }
   }
+}
+
+
+function FindByName() {
+  var input, filter, table, tr, td, i, txtValue;
+  document.getElementById("email").value='';
+  input = document.getElementById("nombre");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function FindByEmail() {
+  var input, filter, table, tr, td, i, txtValue;
+  document.getElementById("nombre").value='';
+  input = document.getElementById("email");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+
+function validateCambiarClave() 
+{
+    //alert("validateFormDatos");
+    if(document.getElementById("clave_nuevo").value!=document.getElementById("confirmar_clave").value)
+    {
+        alert("CLAVE NUEVA y CONFIRMAR CLAVE no son iguales");
+        return false;
+    }
+    else
+    {
+        //alert("ALL OK 1");
+        return true;
+    }
 }

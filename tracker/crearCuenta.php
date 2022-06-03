@@ -82,11 +82,11 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>NOMBRE*</label>
-                        <input type="text" class="form-control navbar-btn" id="nombre" placeholder="Nombre Completo" name="userNombre" required> 
+                        <input type="text" class="form-control navbar-btn" id="nombre" placeholder="Escribe para Buscar" name="userNombre" onkeyup="FindByName()" required> 
                     </div>
                     <div class="col-sm-4">
                         <label>EMAIL*</label>
-                        <input type="email" class="form-control navbar-btn" id="email" placeholder="Email" name="userEmail" required>
+                        <input type="email" class="form-control navbar-btn" id="email" placeholder="Escribe para Buscar" name="userEmail" onkeyup="FindByEmail()" required>
                     </div>
                     <div class="col-sm-4">
                         <label>PASSWORD</label>

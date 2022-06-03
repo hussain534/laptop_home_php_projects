@@ -61,7 +61,19 @@
     else if($_GET["proceso"]==0 && $_GET["task"]==3)
     {    
         $err = $controladorDB->cambiarClave($databasecon,$_POST['clave_anterior'],$_POST['clave_nuevo'],$DEBUG_STATUS);    
-        $url='admin-usuario.php?err='.$err;
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR CLAVE. INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>CLAVE ACTUALIZADO</center>";
+        }        
+        else if($err==3)
+        {
+            $_SESSION["message"]="<center>CLAVE ANTERIOR NO COINCIDE. INTENTA CON DATOS CORRECTOS</center>";
+        }
+        $url='cambiarClave.php';
         header("Location:$url");
     }
     else if($_GET["proceso"]==0 && $_GET["task"]==4)

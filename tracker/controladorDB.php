@@ -229,7 +229,7 @@
             		$id=$row["id"];
             		$nombre=$row["nombre"];
             		$password=$row["password"];
-            		if(password_verify($clave_anterior, $password))
+            		/*if(password_verify($clave_anterior, $password))
             		{
             			$options = [
 					        'cost' => 12,
@@ -255,15 +255,37 @@
 						if($res==true)
 						{
 							$updStatus = 1;
-						}
-						/*else
+						}						
+            		}
+            		else
+		            {
+		            	$updStatus = 3;
+		            } */ 
+
+		            if(strcmp($clave_anterior, $password)==0)
+            		{
+            			
+	            		$sql = "update c_login set clave='".$clave_nuevo."' where email = '".$_SESSION["user_email"]."'";
+						if(mysqli_query($dbcon,$sql))
+				        {
+				        	$updStatus = 1;
+				        }
+						$to = $_SESSION["user_email"];
+						$subject = 'PERFORMANCE TRACKER - CAMBIO DE CLAVE';
+						$txt = '¡HOLA, '.$nombre.'!'."<br><br>";
+						$txt=$txt.'Se ha solicitado cambiar la clave para su cuenta en PERFORMANCE TRACKER'."<br><br>";
+						$txt=$txt.'Usa la dirección de correo electrónico '.$_SESSION["user_email"].' con siguiente clave para iniciar sesión'."<br><br>";
+						$txt=$txt.'CLAVE:'.$clave_nuevo."<br><br>";
+						$txt=$txt.'Si tienes alguna pregunta o necesitas ayuda, puedes ponerte en contacto con nosotros en support@perftracker.merakiminds.com'."<br><br>";
+						$txt=$txt.'MUCHAS GRACIAS'."<br><br>";
+						$headers = 'MIME-Version: 1.0' . "\r\n";
+						$headers .= 'Content-type:text/html;charset=UTF-8' . "\r\n";
+						$headers .= 'From:PERFORMANCE TRACKER <support@perftracker.merakiminds.com>' . "\r\n";
+						$res=mail($to,$subject,$txt,$headers);
+						if($res==true)
 						{
-							$sql = "update c_login set clave='".$password."' where email = '".$_SESSION["user_email"]."'";
-							if(mysqli_query($dbcon,$sql))
-					        {
-					        	$updStatus = 2;
-					        }
-						}*/
+							$updStatus = 1;
+						}
             		}
             		else
 		            {
