@@ -1,0 +1,62 @@
+*
+{
+	#font-family: 'Bree Serif', serif !important;
+	#font-family: 'Pathway Gothic One', sans-serif;
+	#font-family: 'Amita', cursive;
+	
+    #font-family: 'Acme', sans-serif;
+	#font-family: 'Cinzel', serif;
+	#font-family: 'Open Sans', sans-serif;
+	#font-family: 'Taviraj', serif;	
+	font-family: 'Copse', serif;
+
+    #font-family: 'Cuprum', sans-serif;
+    #font-family: 'Courgette', cursive;
+    #font-family: 'Permanent Marker', cursive;
+    #font-family: 'Kalam', cursive;
+    #font-family: 'Bad Script', cursive;
+	
+    font-size: 12px;
+}
+body
+{
+    background-image: url('../images/background.jpg');
+    #background-image: url('../images/background.png');
+    background-size: cover;
+}
+
+.navbar_panel
+{
+    padding-right: 0px !important;
+    padding-left:  0px !important;
+}
+
+.navbar
+{
+    margin-bottom: 0px !important;
+    border-radius: 0px !important;
+}
+
+.close
+{
+    font-size: 14px;
+}
+
+.close>span
+{
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 1024px) {	
+
+}
+
+
+@media only screen and (max-width: 768px) {
+	
+}
+
+
+@media only screen and (max-width: 320px) {	
+
+}

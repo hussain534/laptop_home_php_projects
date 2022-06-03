@@ -1,0 +1,12 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!--
+	If you wish to hide the table view header that contains the column titles,
+	add the following to the impactos_init() hook (in hooks/impactos.php file)
+	  $options->ShowTableHeader = 0;
+-->
+
+		<td id="impactos-puntaje-<%%VALUE(id)%%>" class="impactos-puntaje text-right"><%%SELECT%%><%%VALUE(puntaje)%%><%%ENDSELECT%%></td>
+		<td id="impactos-impactos-<%%VALUE(id)%%>" class="impactos-impactos "><%%SELECT%%><%%VALUE(impactos)%%><%%ENDSELECT%%></td>
+		<td id="impactos-imagen-<%%VALUE(id)%%>" class="impactos-imagen "><%%SELECT%%><img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(imagen)%%>" class="img-responsive img-thumbnail"><%%ENDSELECT%%></td>

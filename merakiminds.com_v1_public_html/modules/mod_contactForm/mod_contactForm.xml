@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<extension type="module" version="3.4" method="upgrade">
+	<name>Contact Form</name>
+	<author>MMHussain</author>
+	<version>1.0.0</version>
+	<description>This is first 3.4 joomla module for contact us form</description>
+	<files>
+		<filename>mod_contactForm.xml</filename>
+		<filename module="mod_contactForm">mod_contactForm.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+		<folder>css</folder>
+	</files>
+	<config>
+	</config>
+</extension>

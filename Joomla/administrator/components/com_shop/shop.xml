@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.2.0" method="upgrade">
+	<name>Shop!</name>
+	<creationDate>Jan 2016</creationDate>
+	<author>Hussain MM</author>
+	<authorEmail>hussain.mm.2006@gmail.com</authorEmail>
+	<copyright>MERAKI MINDS CIA LTDA ©2015. All rights reserved</copyright>
+	<license>MERAKI MINDS CIA LTDA ©2015. All rights reserved</license>
+	<version>0.0.2</version>
+	<description>This component is for project shop534</description>
+	<media destination="com_shop" folder="media">
+		<folder>images</folder>
+		<folder>css</folder>
+		<folder>js</folder>
+		<filename>index.html</filename>
+	</media> 
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>shop.php</filename>
+		<filename>controller.php</filename>
+		<folder>views</folder>
+		<folder>models</folder>
+	</files>
+ 
+	<administration>
+		<menu link='index.php?option=com_shop'>SHOP 534!</menu>
+		<files folder="admin">
+			<filename>index.html</filename>
+			<filename>shop.php</filename>
+			<folder>sql</folder>
+		</files>
+	</administration>
+ 
+</extension>

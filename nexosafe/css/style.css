@@ -1,0 +1,333 @@
+body
+{
+	#background: #66A3D2;
+	#font-family: 'Bree Serif', serif !important;
+	#font-family: 'Pathway Gothic One', sans-serif;
+	#font-family: 'Amita', cursive;
+	#font-family: 'Acme', sans-serif;
+	#font-family: 'Cinzel', serif;
+	#font-family: 'Open Sans', sans-serif;
+	#font-family: 'Taviraj', serif;	
+	font-family: 'Copse', serif;
+	font-weight: lighter;
+	#background: url('../images/background.jpg');
+	#background-attachment: fixed;
+	#background-size: cover;
+}
+
+
+.navbar
+{
+	margin-bottom: 0;
+	padding-top: 5px;
+	border-radius: 0;
+
+	height:60px;
+	z-index: 99;
+	position: fixed;
+	width: 100%;
+	background:#222 !important;
+}
+
+
+.banner_img
+{
+	width:100%;
+	margin:0px;
+	padding:0;
+	height: 670px;
+}
+
+.navbar-inverse {
+	border: none; 
+	background: transparent;
+	border-bottom: 3px solid crimson;
+}
+
+a
+{
+	text-decoration: none !important;
+}
+
+.navbar-nav>li>a.active
+{
+	background: crimson;
+	color:#fff !important;
+}
+
+.active
+{
+	background: crimson;
+	color:#fff !important;
+}
+.navbar-nav>li>a 
+{
+    color: crimson !important;
+    text-shadow:none;
+    font-size: 14px;
+}
+
+.navbar-nav>li>a:hover
+{
+    background: crimson !important;
+    color: #fff !important;
+}
+
+.container
+{
+	#padding: 0;
+	width: 100%;
+}
+.row
+{
+	#margin: 0 !important;	
+}
+
+logo
+{
+	font-size: 36px;
+	color: crimson;
+	margin: 5%;
+}
+
+.pg_block
+{
+	transition: all .2s ease-in-out; 
+	border:5px solid #FFF;
+}
+
+.pg_block:hover
+{
+	background: #99d6f9;
+	transform: scale(1.1); 
+	z-index: 999;
+}
+
+.pg_block2
+{
+	min-height:550px;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 200px;
+	margin-right: 15%;
+	text-align: justify;
+	display: inline-block;
+}
+
+.pg_block2>h1,.pg_block3>h1,.pg_block3>h2
+{
+	background: #222;
+	text-align: center;
+	padding: 15px;
+	opacity: .8;
+}
+
+.pg_block2>p,.pg_block3>ul>li
+{
+	font-size: 14px;
+}
+
+.pg_block3
+{
+	min-height:650px;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 80px;
+	margin-right: 15%;
+	text-align: justify;
+	display: inline-block;
+}
+
+.cont
+{
+	#border:1px solid #222;
+}
+
+#container02,#container04,#container06
+{
+	background: crimson;
+	color: #f5f5f5;
+}
+
+#container01,#container03,#container05
+{
+	color: crimson;
+}
+
+.banner_heading
+{
+	position:relative;
+	top:-250px;
+	width:70%;
+	margin-left:15%;
+	margin-right:15%;
+	text-align: center;
+	display: inline-block;
+	color:cornsilk;
+	background:crimson;
+	#padding:30px 0 100px;
+	font-size:40px;
+	opacity: .9;
+}
+
+.navbar-nav
+{
+	background: #222;
+	border-top:none;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover 
+{
+	background-color: crimson;	
+	border:none;
+}
+
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover 
+{
+	border:none;	
+}
+
+.navbar-inverse .navbar-toggle 
+{
+	border:2px solid crimson;
+}
+
+
+
+.footer_links
+{
+	text-align: center;
+	margin: 5px 0;
+	color:#F5F5F5;
+	padding: 0;
+}
+.footer_links>li
+{
+	display: inline-block;
+	padding: 10px 30px;
+	font-size: 12px;
+}
+
+.footer_links>li>a
+{	
+	color: crimson;
+}
+
+.footer_links>li>a:hover
+{	
+	color: #fff !important;
+}
+
+label
+{
+	margin:5px 0 0;
+}
+
+.btn-default
+{
+	margin: 10px 0 !important;
+	padding: 10px 25px;
+	width:200px;
+}
+
+.btn-default:hover
+{
+	background: #00b0f0;
+	border: 1px solid #00b0f0;
+	color: #f0f0f0;
+}
+
+
+
+.option1
+{
+    -webkit-animation-duration: 10s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-iteration-count: 1;
+}
+
+.partners
+{
+	border:3px double crimson;
+	padding:50px 125px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1024px) {
+
+	
+}
+
+
+
+@media only screen and (max-width: 768px) {
+	.banner_img
+	{
+		width:100%;
+		margin:0px;
+		padding:0;
+		height: 300px !important;
+	}
+
+	.pg_block2
+	{
+		min-height:250px;
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 20px;
+		margin-right: 5%;
+		text-align: justify;
+		display: inline-block;
+	}
+
+	.pg_block3
+	{
+		min-height:250px;
+		width: 90%;
+		margin-left: 5%;
+		margin-top: 20px;
+		margin-right: 5%;
+		text-align: justify;
+		display: inline-block;
+	}
+
+	.partners
+	{
+		border:3px double crimson;
+		padding:50px 75px;
+	}
+}
+
+
+@media only screen and (max-width: 320px) {
+	
+}

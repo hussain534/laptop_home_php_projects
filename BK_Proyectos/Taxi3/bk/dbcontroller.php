@@ -1,0 +1,1574 @@
+<?php
+	//session_start();
+	class controller
+	{
+		public function doRegisterAndLogin($dbcon,$userEmail,$userPwd,$userRole,$DEBUG_STATUS)
+		{
+			session_start();
+			mysqli_autocommit($dbcon,FALSE);
+			$err_code=1;
+			$sql = "INSERT INTO z_users(u_emailid,u_role,u_created_on,u_created_by) VALUES('$userEmail',3,now(),1)";
+			if($DEBUG_STATUS)
+				echo '$sql-1::'.$sql.'<br>';
+				//echo 'dbcon::'.$dbcon.'<br>';
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	//echo 'INSERTED INTO Z_USERS<br>';
+	        	$last_id = mysqli_insert_id($dbcon);
+	        	if($DEBUG_STATUS)
+					echo 'LAST ID::'.$last_id.'<br>';
+	        	$sessionId = time().'_'.mt_rand();
+	        	if($DEBUG_STATUS)
+					echo 'sessionId::'.$sessionId.'<br>';
+	            $sql = "INSERT INTO z_login(L_ID,L_EMAIL,L_PWD, L_LAST_LOGIN_DT, L_FAILED_ATTEMPTS, L_IS_FIRST_LOGIN,L_IS_BLOCKED,L_IN_USE,L_SESSION_ID) 
+	            VALUES($last_id,'$userEmail','$userPwd',now(),0,0,1,0,'$sessionId')";
+	            if($DEBUG_STATUS)
+					echo '$sql-2::'.$sql.'<br>';
+	            if(mysqli_query($dbcon,$sql))
+	            {
+	            	$err_code=0; // REGISTRATION AND LOGIN SUCCESS
+	            	if($DEBUG_STATUS)
+						echo 'REGISTRATION AND LOGIN SUCCESS<br>';
+					mysqli_commit($dbcon);
+					$_SESSION['userid']=$last_id;
+		            $_SESSION['userEmail']=$userEmail;
+		            $_SESSION['userRole']=$userRole;
+		            $_SESSION['LAST_ACTIVITY'] = time();
+	            }
+	            else
+	            {
+	            	$err_code=1; // ERROR EN LOGIN
+	            	if($DEBUG_STATUS)
+						echo 'ERROR EN LOGIN<br>';
+					mysqli_rollback($dbcon);
+	            }
+	        }
+	        else
+	        {
+	        	$err_code=1;// ERROR EN REGISTRATION
+	        	if($DEBUG_STATUS)
+					echo 'ERROR EN REGISTRATION<br>';
+	        }
+	        return $err_code;
+		}
+		public function doLogout($dbcon,$userId,$userEmail,$DEBUG_STATUS)
+		{
+			//session_start();
+			mysqli_autocommit($dbcon,FALSE);
+			$err_code=0;
+			$sql = "UPDATE z_login SET L_IN_USE=1,L_SESSION_ID='' WHERE L_ID=$userId and L_EMAIL='$userEmail'";
+			if($DEBUG_STATUS)
+				echo '$sql-1::'.$sql.'<br>';
+	        if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+	        {
+	        	mysqli_commit($dbcon);
+	        	$err_code=0;
+	        	if($DEBUG_STATUS)
+					echo 'LOGOUT SUCCESSFUL<br>';
+				session_destroy();
+	        }
+	        else
+	        {
+	        	$err_code=1;// ERROR EN LOGOUT
+	        	if($DEBUG_STATUS)
+					echo 'ERROR EN LOGOUT<br>';
+	        }
+	        return $err_code;
+		}
+
+		public function doLogin($dbcon,$userEmail,$userPwd,$strUserDtlArr,$DEBUG_STATUS)
+		{
+			//session_start();
+			mysqli_autocommit($dbcon,TRUE);
+			$err_code=0;
+			$sessionId = time().'_'.mt_rand();
+			if($DEBUG_STATUS)
+			{
+				echo '$UserId retrieved::'.$strUserDtlArr[0].'<br>';
+				//echo '$User Role retrieved::'.$strUserDtlArr[2].'<br>';
+			}
+			$sql = "UPDATE z_login SET L_LAST_LOGIN_DT=now(),L_IN_USE=0,L_SESSION_ID='$sessionId' WHERE 
+				L_EMAIL='$userEmail' and L_PWD='$userPwd' and l_id=$strUserDtlArr[0] and l_is_eliminado_por_usuario=1";
+			if($DEBUG_STATUS)
+				echo '$sql-1::'.$sql.'<br>';
+	        if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+	        {
+	        	//mysqli_commit($dbcon);
+	        	$err_code=0;
+	        	if($DEBUG_STATUS)
+					echo 'LOGIN SUCCESSFUL<br>';
+				$_SESSION['userid']=$strUserDtlArr[0];
+	            $_SESSION['userEmail']=$userEmail;
+	            $_SESSION['userRole']=$strUserDtlArr[6];
+	            $_SESSION['LAST_ACTIVITY'] = time();
+				//session_destroy();
+	        }
+	        else
+	        {
+	        	$err_code=1;// ERROR EN LOGOUT
+	        	if($DEBUG_STATUS)
+					echo 'ERROR EN LOGIN<br>';
+	        }
+	        return $err_code;
+		}
+
+		public function getUserDtlFromEmail($dbcon,$userEmail,$DEBUG_STATUS)
+		{
+			$sql="select u_id,u_name, u_celular, u_conventional, u_cedula, u_licence_number,u_role 
+					from z_users where u_emailid='$userEmail'";
+			$usrDtl=array();
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				if($row = mysqli_fetch_assoc($result)) 
+				{
+					$usrDtl[0] = $row["u_id"];
+					$usrDtl[1] = $row["u_name"];
+					$usrDtl[2] = $row["u_celular"];
+					$usrDtl[3] = $row["u_conventional"];
+					$usrDtl[4] = $row["u_cedula"];
+					$usrDtl[5] = $row["u_licence_number"];
+					$usrDtl[6] = $row["u_role"];
+				}
+			}
+			return $usrDtl;
+		}
+
+		public function getPerfil($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select u.u_id,u.u_name,u.u_celular, u.u_conventional, u.u_cedula, u.u_licence_number,
+			u.u_profile_pic,u.u_emailId from z_users u where u_id=".$userId;
+
+			$usrDtl=array();
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				if($row = mysqli_fetch_assoc($result)) 
+				{
+					$usrDtl[0] = $row["u_id"];
+					$usrDtl[1] = $row["u_name"];
+					//$usrDtl[2] = $row["u_role"];
+					$usrDtl[2] = $row["u_celular"];
+					$usrDtl[3] = $row["u_conventional"];
+					$usrDtl[4] = $row["u_cedula"];
+					$usrDtl[5] = $row["u_licence_number"];
+					$usrDtl[6] = $row["u_profile_pic"];
+					$usrDtl[7] = $row["u_emailId"];
+				}
+			}
+			return $usrDtl;
+		}
+		public function getDocuments($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select d.d_id,c.d_desc,d.d_document_name,d.d_is_doc_verified from z_userdocs d, z_users u,z_docs c
+					where u.u_id=d.d_user and c.d_id=d.d_document_type and u.u_id=".$userId."
+					and d_document_type in(1,3)";
+
+			//echo $sql;
+			$docDtl=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$docDtl[$count] = array($row["d_id"],$row["d_desc"],$row["d_document_name"],$row["d_is_doc_verified"]);
+					$count++;
+				}
+			}
+			return $docDtl;
+		}
+
+		public function getVehicleDetails($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select a_id,a_userid,a_marca,a_modelo,a_ano,a_capacidad,a_placa,a_nro_matricula,a_pic_automovil,
+				(select d_document_name from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id) a_pic_matriculation,
+				(select d_id from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id) a_docId 
+				from z_automovil a,z_users u
+				where a.a_userid=u.u_id and u.u_id=".$userId;
+
+			$vehDtl=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$vehDtl[$count] = array($row["a_id"],$row["a_marca"],$row["a_modelo"],$row["a_ano"],$row["a_capacidad"],$row["a_placa"],$row["a_nro_matricula"],$row["a_pic_automovil"],$row["a_pic_matriculation"],$row["a_docId"]);
+					$count++;
+				}
+			}
+			return $vehDtl;
+		}
+
+		public function getVehicleDetailsById($dbcon,$userId,$aid,$DEBUG_STATUS)
+		{
+			if($aid==0)
+			{
+				$vehDtl=array();
+				#$vehDtl[0] = array(0,'','',0,0,'','','','',0);
+			}
+			else
+			{
+				$sql="select a_id,a_userid,a_marca,a_modelo,a_ano,a_capacidad,a_placa,a_nro_matricula,a_pic_automovil,
+					(select d_document_name from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id) a_pic_matriculation,
+					(select d_id from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id) a_docId 
+					from z_automovil a,z_users u
+					where a.a_userid=u.u_id and u.u_id=".$userId." and a.a_id=".$aid;
+
+				$vehDtl=array();
+				$count=0;
+				$result = mysqli_query($dbcon,$sql);
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+					while($row = mysqli_fetch_assoc($result)) 
+					{
+						$vehDtl[$count] = array($row["a_id"],$row["a_marca"],$row["a_modelo"],$row["a_ano"],$row["a_capacidad"],$row["a_placa"],$row["a_nro_matricula"],$row["a_pic_automovil"],$row["a_pic_matriculation"],$row["a_docId"]);
+						$count++;
+					}
+				}				
+			}
+			return $vehDtl;
+		}
+
+		public function updateProfileDetails($dbcon,$userId,$username,$celular,$userConventional,$userCedula,$userLicence,$target_file,$DEBUG_STATUS)
+		{
+			$sql = "UPDATE z_users SET U_NAME='".$username."', U_CELULAR='".$celular."', 
+    			U_CONVENTIONAL='".$userConventional."', U_CEDULA='".$userCedula."', 
+    			U_MODIFIED_ON=now(),U_MODIFIED_BY=".$userId;
+    		if(isset($target_file))
+    			$sql=$sql.", U_PROFILE_PIC='".$target_file."'";
+    		//if(isset($userLicence) and $_SESSION['userRole']==2)
+    			$sql = $sql.",U_LICENCE_NUMBER='".$userLicence."'";
+    		$sql = $sql." WHERE U_ID=".$userId;
+
+    		if($DEBUG_STATUS)
+	        	echo $sql;
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	$updStatus=0;
+	        }
+	        else
+	        	$updStatus=1;
+
+	        return $updStatus;
+		}
+
+		public function updateDocument($dbcon,$vehId,$userId,$docId,$docType,$target_file,$DEBUG_STATUS)
+		{
+			if($docId==0)
+				$sql = "INSERT INTO z_userdocs(D_USER,D_DOCUMENT_TYPE,D_DOCUMENT_NAME,d_CREATED_ON,D_VEH_ID) 
+						VALUES(".$userId.",".$docType.",'".$target_file."',NOW(),".$vehId.")";
+			else
+				$sql = "UPDATE z_userdocs SET D_USER=".$userId.", D_DOCUMENT_TYPE=".$docType.", 
+    					D_MODIFIED_ON= now(), D_DOCUMENT_NAME='".$target_file."' where d_id=".$docId;  		
+
+	        //echo $sql;
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	if($docType==4)
+	        	{
+	        		$updStatus = mysqli_insert_id($dbcon);
+		        	//echo '`DOCUMENT ID::'.$updStatus.'<br>';
+	        	}
+	        	else
+	        		$updStatus=0;
+	        }
+	        else
+	        	$updStatus=1;
+
+	        return $updStatus;
+		}
+
+
+		public function updateVehicleDetails($dbcon,$aid,$userId,$marca,$modelo,$ano,$capacidad,$placa,$matricula, $target_file,$DEBUG_STATUS)
+		{
+			$sql = "UPDATE z_automovil SET a_userid=".$userId.",a_marca='".$marca."',a_modelo='".$modelo."',
+			a_ano=".$ano.",a_capacidad=".$capacidad.",a_placa='".$placa."',a_nro_matricula='".$matricula."',
+			a_modified_on=now(),A_MODIFIED_BY=".$userId;
+    		if(isset($target_file))
+    			$sql=$sql.", a_pic_automovil='".$target_file."'";
+    		$sql = $sql." WHERE a_ID=".$aid;
+
+	        //echo $sql;
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	$updStatus=0;
+	        }
+	        else
+	        	$updStatus=1;
+
+	        return $updStatus;
+		}
+
+		public function insertVehicleDetails($dbcon,$userId,$marca,$modelo,$ano,$capacidad,$placa,$matricula, $target_file,$DEBUG_STATUS)
+		{
+			$sql = "INSERT INTO z_automovil(a_userid,a_marca,a_modelo,a_ano,a_capacidad,a_placa,a_nro_matricula,
+				a_created_on,a_created_by,a_pic_automovil) 
+			VALUES(".$userId.",'".$marca."','".$modelo."',
+			".$ano.",".$capacidad.",'".$placa."','".$matricula."',
+			now(),".$userId.", '".$target_file."')";
+	        //echo $sql;
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	$updStatus = mysqli_insert_id($dbcon);
+	        	//echo 'AUTOMOVIL ID::'.$updStatus.'<br>';
+	        }
+	        else
+	        	$updStatus=0;
+
+	        return $updStatus;
+		}
+
+
+		public function getDetallesVuelos($dbcon,$tipovuelo,$DEBUG_STATUS)
+		{
+			$vueloDtl=array();
+			if($tipovuelo==1)
+			{
+	            $vueloDtl[0] = array(1,'TAME-755','QUITO','QUAYAQUIL','02/Nov/2016 15:40PM');
+	            $vueloDtl[1] = array(2,'TAME-125','QUITO','LOJA','02/Nov/2016 16:05PM');
+	            $vueloDtl[2] = array(3,'TAME-008','QUITO','CUENCA','02/Nov/2016 16:40PM');
+				$vueloDtl[3] = array(4,'TAME-688','QUITO','GALAPAGOS','02/Nov/2016 17:15PM');
+				$vueloDtl[4] = array(5,'TAME-956','QUITO','ESMERALDAS','02/Nov/2016 17:50PM');
+			}
+			if($tipovuelo==2)
+			{
+	            $vueloDtl[0] = array(1,'KLM-755','QUITO','AMSTERDAM','02/Nov/2016 15:30PM');
+	            $vueloDtl[1] = array(2,'TAME-125','QUITO','BAGOTA','02/Nov/2016 15:55PM');
+	            $vueloDtl[2] = array(3,'EMIRATES-008','QUITO','LIMA','02/Nov/2016 16:10PM');
+				$vueloDtl[3] = array(4,'AI-688','QUITO','HYDERABAD','02/Nov/2016 16:45PM');
+				$vueloDtl[4] = array(5,'BA-956','QUITO','NEW YORK','02/Nov/2016 17:30PM');
+			}
+			return $vueloDtl;
+		}
+
+		
+		public function getDetallesViajesAAeropuerto($dbcon,$horavuelo,$sector,$nroasientes,$DEBUG_STATUS)
+		{
+			$viajeDtl=array();
+			$sql="select v.v_id,
+					(select CONCAT(a_marca,' ',a_modelo,'-',a_ano) from z_automovil a where a.a_id=v.v_automovil_id) v_automovil_id,
+					a.a_placa,
+					(select t.t_name from z_terminal t where t.t_id=v.v_desde) origen,
+					(select t.t_name from z_terminal t where t.t_id=v.v_hasta) destino,
+					DATE_FORMAT(v.v_fecha_salida,'%d-%b-%Y %H:%i:%s') v_fecha_salida,
+					v_costo_viaje,
+					v_acceptas_mascotas,
+					v_acceptas_fumar,
+					v_acceptas_alcohol 
+					from z_viajes v,z_users u,z_automovil a
+					where v.v_created_by=u.u_id and u.u_id=a.a_userid and v.v_desde=".$sector." and v.v_hasta=1 and 
+					v.v_fecha_salida = DATE_FORMAT('".$horavuelo."','%Y-%m-%d %H:%i:%s') 					
+					and v.v_estado in (0,1,2) and (v.v_min_pasajeros - v.v_ocupado)>=".$nroasientes." order by v.v_created_on,v_id desc";
+					//and v.v_fecha_salida >= DATE_SUB(DATE_FORMAT('".$horavuelo."','%Y-%m-%d %H:%i:%s'),INTERVAL 5 HOUR)
+
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				if($row = mysqli_fetch_assoc($result)) 
+				{
+					$viajeDtl[$count] = array($row["v_id"],$row["v_automovil_id"],$row["a_placa"],$row["origen"],$row["destino"],$row["v_fecha_salida"],$row["v_costo_viaje"]);
+					$count++;
+				}
+			}
+
+			
+			return $viajeDtl;
+		}
+
+		public function getDetallesViajesDesdeAeropuerto($dbcon,$horavuelo,$sector,$nroasientes,$DEBUG_STATUS)
+		{
+			$viajeDtl=array();
+			$sql="select v.v_id,
+						(select CONCAT(a_marca,' ',a_modelo,'-',a_ano) from z_automovil a where a.a_id=v.v_automovil_id) v_automovil_id,
+						a.a_placa,
+						(select t.t_name from z_terminal t where t.t_id=v.v_desde) origen,
+						(select t.t_name from z_terminal t where t.t_id=v.v_hasta) destino,
+						DATE_FORMAT(v.v_fecha_salida,'%d-%b-%Y %H:%i:%s') v_fecha_salida,
+						v_costo_viaje,
+						v_acceptas_mascotas,
+						v_acceptas_fumar,
+						v_acceptas_alcohol 
+						from z_viajes v,z_users u,z_automovil a
+					where v.v_created_by=u.u_id and u.u_id=a.a_userid and v.v_desde=".$sector." and 
+					v.v_fecha_salida = DATE_FORMAT('".$horavuelo."','%Y-%m-%d %H:%i:%s') 					
+					and v.v_estado in(0,1,2) and (v.v_min_pasajeros - v.v_ocupado)>=".$nroasientes." order by v.v_created_on,v_id desc";
+
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				if($row = mysqli_fetch_assoc($result)) 
+				{
+					$viajeDtl[$count] = array($row["v_id"],$row["v_automovil_id"],$row["a_placa"],$row["origen"],$row["destino"],$row["v_fecha_salida"],$row["v_costo_viaje"],$nroasientes);
+					$count++;
+				}
+			}
+
+			
+			return $viajeDtl;
+		}
+
+
+		public function getDetallesViajesNacional($dbcon,$ciudad_origen,$ciudad_destino,$horavuelo,$sector,$destino,$nroasientes,$mascotas,$fumar,$alcohol,$DEBUG_STATUS)
+		{
+			$viajeDtl=array();
+
+			$sql="select v.v_id,
+						(select CONCAT(a_marca,' ',a_modelo,'-',a_ano) from z_automovil a where a.a_id=v.v_automovil_id) v_automovil_id,
+						a.a_placa,
+						(select t.t_name from z_terminal t where t.t_id=v.v_desde) origen,
+						(select t.t_name from z_terminal t where t.t_id=v.v_hasta) destino,
+						DATE_FORMAT(v.v_fecha_salida,'%d-%b-%Y %H:%i:%s') v_fecha_salida,
+						v_costo_viaje,
+						v_acceptas_mascotas,
+						v_acceptas_fumar,
+						v_acceptas_alcohol,
+						v_paradas_comer,
+						v_diligencias,
+						v_mercancias 
+						from z_viajes v,z_users u,z_automovil a,z_terminal t1,z_terminal t2 						
+					where v.v_created_by=u.u_id and u.u_id=a.a_userid and 
+					t1.t_id_ciudad=".$ciudad_origen." and t2.t_id_ciudad=".$ciudad_destino." and 
+					t1.t_id=v.v_desde and t2.t_id=v.v_hasta and 
+					v.v_fecha_salida <= DATE_ADD(DATE_FORMAT('".$horavuelo."','%Y-%m-%d %H:%i:%s'),INTERVAL 5 HOUR) 
+					and v.v_fecha_salida >= DATE_SUB(DATE_FORMAT('".$horavuelo."','%Y-%m-%d %H:%i:%s'),INTERVAL 5 HOUR)
+					and v.v_estado in (1,2) and v.v_acceptas_mascotas>=".$mascotas." and v.v_acceptas_fumar>=".$fumar." and v.v_acceptas_alcohol>=".$alcohol." 
+					and (v.v_min_pasajeros - v.v_ocupado)>=".$nroasientes." order by v_costo_viaje asc";
+
+			$count=0;
+			//echo $sql.'<br>';
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$viajeDtl[$count] = array($row["v_id"],$row["v_automovil_id"],$row["a_placa"],$row["origen"],$row["destino"],$row["v_fecha_salida"],$row["v_costo_viaje"],$nroasientes,$row["v_acceptas_mascotas"],$row["v_acceptas_fumar"],$row["v_acceptas_alcohol"],$row["v_paradas_comer"],$row["v_diligencias"],$row["v_mercancias"]);
+					$count++;
+				}
+			}
+
+			
+			return $viajeDtl;
+		}
+
+		public function getDetallesViajesById($dbcon,$idviaje,$cantpass,$DEBUG_STATUS)
+		{
+			$viajeDtl=array();
+
+
+			$sql="select v.v_id,a.a_placa,(select t.t_name from z_terminal t where t.t_id=v.v_desde) origen,
+					(select t.t_name from z_terminal t where t.t_id=v.v_hasta) destino,
+					DATE_FORMAT(v.v_fecha_salida,'%d-%b-%Y %H:%i:%s') v_fecha_salida,v_costo_viaje,
+					v_acceptas_mascotas,v_acceptas_fumar,v_acceptas_alcohol from z_viajes v,z_users u,z_automovil a
+					where v.v_created_by=u.u_id and u.u_id=a.a_userid and v.v_id=".$idviaje;
+
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$viajeDtl[$count] = array($row["v_id"],$row["a_placa"],$row["origen"],$row["destino"],$row["v_fecha_salida"],$row["v_costo_viaje"],$cantpass,$row["v_acceptas_mascotas"],$row["v_acceptas_fumar"],$row["v_acceptas_alcohol"]);
+					$count++;
+				}
+			}
+
+			
+			return $viajeDtl;
+		}
+
+		
+		public function reservarViaje($dbcon,$idviaje,$target_dir,$tipoPago,$direccion,$cantpass,$userid,$eligoretorno,$costo_uio_aero,$costo_aero_uio,$DEBUG_STATUS)
+		{
+			//echo $idviaje.'-'.$direccion.'-'.$cantpass.'-'.$userid;
+			
+			$codigo_viaje=0;
+			$counterviajeDtl=0;
+			$viajeDtl='';
+			/*$sql="select v_codigo_viaje from z_viajes v where v.v_id=".$idviaje;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				if($row = mysqli_fetch_assoc($result)) 
+				{
+					$codigo_viaje=$row["v_codigo_viaje"];
+				}
+			}*/
+			$codigo_viaje=mt_rand();
+
+			$sql="select v_id from z_viajes v where v.v_id!=".$idviaje." 
+			and v.v_fecha_salida=DATE_ADD(DATE_FORMAT((select v_fecha_salida from z_viajes v where v.v_id=".$idviaje."),'%Y-%m-%d %H:%i:%s'),INTERVAL 60 MINUTE)";
+			$v_retorno_id=0;
+			
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				if($row = mysqli_fetch_assoc($result)) 
+				{
+					$v_retorno_id=$row["v_id"];
+				}
+			}
+
+
+			$sql="select v2.v_id from z_viajes v2 where 
+				(v2.v_fecha_salida<DATE_ADD((select v_fecha_salida from z_viajes v where v.v_id=".$idviaje."),INTERVAL 150 MINUTE) 
+					and v2.v_fecha_salida>DATE_SUB((select v_fecha_salida from z_viajes v where v.v_id=".$idviaje."),INTERVAL 150 MINUTE)) 
+				and v2.v_estado =0 and v2.v_created_by=(select v.v_created_by from z_viajes v where v.v_id=".$idviaje.") 
+				and v2.v_id not in (".$idviaje.",".$v_retorno_id.")";
+
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$viajeDtl = $viajeDtl.$row["v_id"].",";
+					$counterviajeDtl++;
+				}
+				$viajeDtl=$viajeDtl."0";
+			}
+
+
+			//echo '<br>'.$codigo_viaje;
+
+			mysqli_autocommit($dbcon,FALSE);
+			$target_file = $target_dir .'PagoPic-'.$codigo_viaje.'-'.$userid.'.jpg';
+			$sql="insert into z_viajespasajero(vp_viaje_id,vp_codigo_viaje,vp_pass_id, vp_fecha_aceptacion,vp_fecha_pago, vp_direccion,vp_pic_pago,vp_tipo_pago,vp_estado_viaje) 
+			 		values(".$idviaje.",'".$codigo_viaje."',".$userid.",now(),now(),'".$direccion."','".$target_file."',".$tipoPago.",2)";
+			if($DEBUG_STATUS)
+				echo '$sql::'.$sql.'<br>';
+			$ctr=0;
+			for($x=0;$x<$cantpass;$x++)
+			{
+				if(mysqli_query($dbcon,$sql))
+	            {
+	            	$ctr++;
+	            }
+			}
+			//echo '<br>CTR:'.$ctr;
+			$cantretorno = 0;
+			if(isset($eligoretorno) && $eligoretorno==1)
+				$cantretorno = 1; //replace 1 with variable cantpass if return to be aplicable for all users in same ticket
+
+			//by default vp_estado_viaje will be 0 and vp_viaje_id is set to default conductor through which he actually went to airport.
+			//vp_fecha_aceptacion, vp_viaje_id should be updated once any user reserve this return journey.
+			//vp_estado_viaje should changed to programmed once any user reserve this return journey
+			//vp_estado_viaje should changed to terminated once journey completed by passenger
+			$sql="insert into z_viajespasajero(vp_viaje_id,vp_codigo_viaje,vp_pass_id, vp_fecha_pago, vp_direccion,vp_pic_pago,vp_tipo_pago) 
+			 		values(".$v_retorno_id.",".$codigo_viaje.",".$userid.",now(),'QUITO AEROPUERTO','".$target_file."',".$tipoPago.")";
+			if($DEBUG_STATUS)
+				echo '$sql::'.$sql.'<br>';
+			$ctr_retorno=0;
+			for($x=0;$x<$cantretorno;$x++)
+			{
+				if(mysqli_query($dbcon,$sql))
+	            {
+	            	$ctr_retorno++;
+	            }
+			}
+
+			/*$sql="update z_viajes set v_estado=2,v_codigo_viaje='".$codigo_viaje."',v_costo_viaje=".$costo_uio_aero.",v_ocupado=v_ocupado+".$cantpass.", 
+			v_cant_pagado_retorno=".$cantretorno.",	v_cant_retorno_servido=0 where v_id=".$idviaje;*/
+			$sql="update z_viajes set v_estado=2,v_costo_viaje=".$costo_uio_aero.",v_ocupado=v_ocupado+".$cantpass.", 
+			v_cant_pagado_retorno=".$cantretorno.",	v_cant_retorno_servido=0 where v_id=".$idviaje;
+            if($ctr==$cantpass && $ctr_retorno==$cantretorno)
+            {
+            	if(mysqli_query($dbcon,$sql))
+	            {
+	            	/*$sql="update z_viajes set v_estado=1,v_codigo_viaje='".$codigo_viaje."',v_desde=1,v_hasta=6,v_costo_viaje=".$costo_aero_uio.",
+	            	v_ocupado=0, v_cant_pagado_retorno=".$cantretorno.",
+					v_cant_retorno_servido=0 where v_id=".$v_retorno_id;*/
+					$sql="update z_viajes set v_estado=1,v_desde=1,v_hasta=6,v_costo_viaje=".$costo_aero_uio.",
+	            	v_ocupado=0, v_cant_pagado_retorno=".$cantretorno.",
+					v_cant_retorno_servido=0 where v_id=".$v_retorno_id;
+	            	if(mysqli_query($dbcon,$sql))
+	            	{
+	            		if($counterviajeDtl>0)
+	            		{
+	            			$sql="update z_viajes v3 set v3.v_estado=99 where v3.v_id in(".$viajeDtl.")";
+			            	if(mysqli_query($dbcon,$sql))
+			            	{
+				            	mysqli_commit($dbcon);
+				            	//echo '<br>OK';
+			            		return $idviaje;
+			            	}
+			            	else
+			            	{
+			            		mysqli_rollback($dbcon);
+		            			return 0;
+			            	}
+	            		}
+	            		else
+	            		{
+	            			mysqli_commit($dbcon);
+			            	//echo '<br>OK';
+		            		return $idviaje;
+	            		}
+	            		
+	            	}
+	            	else
+	            	{
+	            		mysqli_rollback($dbcon);
+            			return 0;
+	            	}
+            	}
+            	else
+            	{
+            		//echo '<br>UPDATE ERR';
+            		mysqli_rollback($dbcon);
+            		return 0;
+            	}
+            }
+            else
+            {
+            	//echo '<br>INSERT ERR';
+            	mysqli_rollback($dbcon);
+            	return 0;
+            }
+		}
+
+
+		public function reservarViajeNacional($dbcon,$idviaje,$target_dir,$tipoPago,$direccion,$cantpass,$userid,$costo,$DEBUG_STATUS)
+		{
+			$codigo_viaje=0;
+			$counterviajeDtl=0;
+			$viajeDtl='';
+			$codigo_viaje=mt_rand();
+
+			mysqli_autocommit($dbcon,FALSE);
+			$target_file = $target_dir .'PagoPic-'.$codigo_viaje.'-'.$userid.'.jpg';
+			$sql="insert into z_viajespasajero(vp_viaje_id,vp_codigo_viaje,vp_pass_id, vp_fecha_aceptacion,vp_fecha_pago, vp_direccion,vp_pic_pago,vp_tipo_pago,vp_estado_viaje) 
+			 		values(".$idviaje.",'".$codigo_viaje."',".$userid.",now(),now(),'".$direccion."','".$target_file."',".$tipoPago.",2)";
+			if($DEBUG_STATUS)
+				echo '<br><br><br>'.'$sql::'.$sql.'<br>';
+			$ctr=0;
+			for($x=0;$x<$cantpass;$x++)
+			{
+				if(mysqli_query($dbcon,$sql))
+	            {
+	            	$ctr++;
+	            }
+			}
+			$sql="update z_viajes set v_estado=2,v_ocupado=v_ocupado+".$cantpass.", 
+			v_cant_pagado_retorno=0,	v_cant_retorno_servido=0 where v_id=".$idviaje;
+			//echo '$sql::'.$sql.'<br>';
+            if($ctr==$cantpass)
+            {
+            	if(mysqli_query($dbcon,$sql))
+            	{
+            		mysqli_commit($dbcon);
+	            	return $idviaje;	
+            	}
+            	else
+            	{
+            		mysqli_rollback($dbcon);
+            		return 0;
+            	}
+            	
+            }
+            else
+            {
+            	//echo '<br>INSERT ERR';
+            	mysqli_rollback($dbcon);
+            	return 0;
+            }
+		}
+
+		public function reservarViajeDesdeAeropuerto($dbcon,$idviajenew,$cantpass,$codigo_viaje,$userid,$DEBUG_STATUS)
+		{
+			mysqli_autocommit($dbcon,FALSE);
+			//by default vp_estado_viaje will be 0 and vp_viaje_id is set to default conductor through which he actually went to airport.
+			//vp_fecha_aceptacion, vp_viaje_id should be updated once any user reserve this return journey.
+			//vp_estado_viaje should changed to programmed once any user reserve this return journey
+			//vp_estado_viaje should changed to terminated once journey completed by passenger
+			$codigo_viaje_para_reservar=0;
+			$sql="select v_codigo_viaje from z_viajes where v_id=".$idviajenew;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				if($row = mysqli_fetch_assoc($result)) 
+				{
+					$codigo_viaje_para_reservar=$row["v_codigo_viaje"];
+				}
+			}
+			echo $codigo_viaje_para_reservar.'<br>';
+
+			$sql="update z_viajespasajero set vp_viaje_id=".$idviajenew.",vp_fecha_aceptacion=now(),vp_estado_viaje=2 
+			 		where vp_codigo_viaje='".$codigo_viaje."' and vp_pass_id=".$userid." and vp_estado_viaje =0";
+			if($DEBUG_STATUS)
+				echo '$sql::'.$sql.'<br>';
+			$ctr=0;
+			for($x=0;$x<$cantpass;$x++)
+			{
+				if(mysqli_query($dbcon,$sql))
+	            {
+	            	$ctr++;
+	            }
+			}
+			echo $ctr.'<br>';
+			
+			
+
+			$sql="update z_viajes set v_estado=2,v_ocupado=v_ocupado+".$cantpass." where v_id=".$idviajenew;
+            if($ctr==$cantpass)
+            {
+            	if(mysqli_query($dbcon,$sql))
+	            {
+	            	mysqli_commit($dbcon);
+	            	echo 'OK<br>';
+            		return $idviajenew;
+            	}
+            	else
+            	{
+            		echo 'UPD ERR<br>';
+            		mysqli_rollback($dbcon);
+            		return 0;
+            	}
+            }
+            else
+            {
+            	echo 'CTR ERR<br>';
+            	mysqli_rollback($dbcon);
+            	return 0;
+            }
+		}
+
+
+		/*public function publicarViaje($dbcon,$userId,$desde,$hasta,$fechaviaje,$nroequipaje,$nroasientes,$costoviaje,$automovilId,$DEBUG_STATUS)
+		{
+			$codigo_viaje=mt_rand();
+			mysqli_autocommit($dbcon,FALSE);
+			$sql="INSERT INTO z_viajes(V_CODIGO_VIAJE,V_AUTOMOVIL_ID,V_DESDE,V_HASTA,V_FECHA_SALIDA,V_MIN_PASAJEROS,V_EQUIPAJE_PASAJERO,V_COSTO_VIAJE,V_ACCEPTAS_MASCOTAS,V_ACCEPTAS_FUMAR,V_ACCEPTAS_ALCOHOL,V_CREATED_ON,V_CREATED_BY) 
+					VALUES('".$codigo_viaje."',".$automovilId.",".$desde.",".$hasta.",DATE_FORMAT('".$fechaviaje."','%Y-%m-%d %H:%i:%s'),".$nroasientes.",".$nroequipaje.",".$costoviaje.",".$mascotas.",".$fumar.",".$alcohol.",now(),".$userId.")";
+			if($DEBUG_STATUS)
+				echo '$sql::'.$sql.'<br>';
+            if(mysqli_query($dbcon,$sql))
+            {
+            	$sql="INSERT INTO z_viajes(V_CODIGO_VIAJE,V_AUTOMOVIL_ID,V_DESDE,V_HASTA,V_FECHA_SALIDA,V_MIN_PASAJEROS,V_EQUIPAJE_PASAJERO,V_COSTO_VIAJE,V_ACCEPTAS_MASCOTAS,V_ACCEPTAS_FUMAR,V_ACCEPTAS_ALCOHOL,V_CREATED_ON,V_CREATED_BY) 
+					VALUES('".$codigo_viaje."',".$automovilId.",".$hasta.",".$desde.",DATE_ADD(DATE_FORMAT('".$fechaviaje."','%Y-%m-%d %H:%i:%s'),INTERVAL 1 HOUR),1,1,4,".$mascotas.",".$fumar.",".$alcohol.",now(),".$userId.")";
+            	if(mysqli_query($dbcon,$sql))
+            	{
+            		mysqli_commit($dbcon);
+            		return $codigo_viaje;
+            	}
+            	else
+            	{
+            		mysqli_rollback($dbcon);
+            		return 0;
+            	}
+            }
+            else
+            {
+            	mysqli_rollback($dbcon);
+            	return 0;
+            }
+		}*/
+		public function publicarViaje($dbcon,$userId,$duraciondisponible,$desde,$hasta,$fechaviaje,$nroequipaje,$nroasientes,$automovilId,$DEBUG_STATUS)
+		{
+			//$codigo_viaje=mt_rand();
+			mysqli_autocommit($dbcon,FALSE);
+			if($duraciondisponible>150)
+				$duraciondisponibleNew=$duraciondisponible;
+			else
+				$duraciondisponibleNew=150;
+			$sql="select v2.v_id from z_viajes v2 where 
+				(v2.v_fecha_salida<DATE_ADD(date_format('".$fechaviaje."','%y-%m-%d %H:%i:%s'),INTERVAL ".$duraciondisponible." MINUTE) 
+					and v2.v_fecha_salida>DATE_SUB(date_format('".$fechaviaje."','%y-%m-%d %H:%i:%s'),INTERVAL ".$duraciondisponibleNew." MINUTE)) 
+				and v2.v_estado in(1,2,3,4,5,6,7) and v2.v_created_by=".$userId."
+				and v2.v_hasta=1";
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				return 98;//trip planned to airport in the new calender requested.
+			}
+			else
+			{
+				$sql="select v2.v_id from z_viajes v2 where 
+				(v2.v_fecha_salida<DATE_ADD(date_format('".$fechaviaje."','%y-%m-%d %H:%i:%s'),INTERVAL 90 MINUTE) 
+					and v2.v_fecha_salida>DATE_SUB(date_format('".$fechaviaje."','%y-%m-%d %H:%i:%s'),INTERVAL 90 MINUTE)) 
+				and v2.v_estado in(1,2,3,4,5,6,7) and v2.v_created_by=".$userId."
+				and v2.v_desde=1";
+				$result = mysqli_query($dbcon,$sql);
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+	            	return 99;//trip planned from airport in the new calender requested.
+	            }
+	            else
+	            {
+	            	$planificacion=30;
+					$cantidadFranjasNormal=$duraciondisponible/$planificacion;
+					$cantidadFranjasRetornosExtras=2;
+					$ctr=0;
+					for($x=0;$x<($cantidadFranjasNormal+$cantidadFranjasRetornosExtras);$x++)
+					{
+						if($x<$cantidadFranjasNormal)
+							$estado=0;
+						else
+							$estado=99;
+						$sql="INSERT INTO z_viajes(V_ESTADO,V_DESDE,V_HASTA,V_AUTOMOVIL_ID,V_FECHA_SALIDA,V_MIN_PASAJEROS,V_EQUIPAJE_PASAJERO,V_CREATED_ON,V_CREATED_BY) 
+							VALUES(".$estado.",".$desde.",".$hasta.",".$automovilId.",DATE_ADD(DATE_FORMAT('".$fechaviaje."','%Y-%m-%d %H:%i:%s'),INTERVAL ".($planificacion*$x)." MINUTE),".$nroasientes.",".$nroequipaje.",now(),".$userId.")";
+						//if($DEBUG_STATUS)
+							//echo '$sql::'.$sql.'<br>';
+			            if(mysqli_query($dbcon,$sql))
+			            {
+			            	$ctr++;
+			            }	            
+			        }
+			        if($ctr==$x)
+			        {
+			        	mysqli_commit($dbcon);
+			        	return 1;
+			        }
+			        else
+		            {
+		            	mysqli_rollback($dbcon);
+		            	return 0;
+		            }
+	            }
+			}
+
+
+
+				        
+		}
+
+		public function publicarViajeNacional($dbcon,$userId,$desde,$hasta,$fechaviaje,$nroequipaje,$nroasientes,$costoviaje,$mascotas,$fumar,$alcohol,$automovilId,$paradascomer,$diligencias,$mercancias,$DEBUG_STATUS)
+		{
+			$codigo_viaje=mt_rand();
+			mysqli_autocommit($dbcon,FALSE);
+			$sql="INSERT INTO z_viajes(V_CODIGO_VIAJE,V_AUTOMOVIL_ID,V_DESDE,V_HASTA,V_FECHA_SALIDA,V_MIN_PASAJEROS,V_EQUIPAJE_PASAJERO,V_COSTO_VIAJE,V_ACCEPTAS_MASCOTAS,V_ACCEPTAS_FUMAR,V_ACCEPTAS_ALCOHOL,V_PARADAS_COMER,V_DILIGENCIAS,V_MERCANCIAS,V_CREATED_ON,V_CREATED_BY) 
+					VALUES('".$codigo_viaje."',".$automovilId.",".$desde.",".$hasta.",DATE_FORMAT('".$fechaviaje."','%Y-%m-%d %H:%i:%s'),".$nroasientes.",".$nroequipaje.",".$costoviaje.",".$mascotas.",".$fumar.",".$alcohol.",".$paradascomer.",".$diligencias.",".$mercancias.",now(),".$userId.")";
+			if($DEBUG_STATUS)
+				echo '$sql::'.$sql.'<br>';
+            if(mysqli_query($dbcon,$sql))
+        	{
+        		mysqli_commit($dbcon);
+        		return 1;
+        	}
+        	else
+        	{
+        		mysqli_rollback($dbcon);
+        		return 0;
+        	}
+		}
+
+
+		public function isUserPerfilCompleted($dbcon,$filtro,$userEmail,$userRole,$DEBUG_STATUS)
+		{
+			$is_verified=99;
+			if($filtro>=0)
+			{
+				$sql="select * from z_users where u_emailid='$userEmail' and ((u_celular is not null and u_celular!='') or (u_conventional is not null and u_conventional!=''))";
+				
+				$result = mysqli_query($dbcon,$sql);
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+					$is_verified=0;
+				}
+				else
+				{
+					$is_verified=1;	// contacto no desponible
+					return $is_verified;
+				}			
+
+				$sql="select * from z_users where u_emailid='$userEmail' and u_is_email_verified=0";
+				$result = mysqli_query($dbcon,$sql);
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+					$is_verified=0;
+				}
+				else
+				{
+					$is_verified=2;	// email no verificado
+					return $is_verified;
+				}
+
+				$sql="select * from z_users u,z_userdocs ud where u.u_emailId='$userEmail' and u.u_id=ud.d_user and ud.d_document_type=1 and ud.d_document_name is not null and ud.d_is_doc_verified=0";
+				$result = mysqli_query($dbcon,$sql);
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+					$is_verified=0;
+				}
+				else
+				{
+					$is_verified=3;	// cedula no desponible
+					return $is_verified;
+				}
+			}
+
+			if($filtro>=1)
+			{
+				$sql="select * from z_users u,z_userdocs ud where u.u_emailId='$userEmail' and u.u_id=ud.d_user and ud.d_document_type=3 and ud.d_document_name is not null and ud.d_is_doc_verified=0";
+				$result = mysqli_query($dbcon,$sql);
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+					$is_verified=0;
+				}
+				else
+				{
+					$is_verified=4;	// licencia no desponible
+					return $is_verified;
+				}
+
+						
+				$sql="select a_is_approved,a_docId,a_pic_automovil,a_pic_matriculation from (select a_is_approved,a_pic_automovil,
+				(select d_document_name from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id) a_pic_matriculation,
+				(select d_id from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id and d_is_doc_verified=0) a_docId 
+				from z_automovil a,z_users u
+				where a.a_userid=u.u_id and u.u_emailId='".$userEmail."') a
+				where ((a_pic_automovil is not null and a_pic_automovil!='') and (a_pic_matriculation is not null and a_pic_matriculation!=''))	and a_is_approved=0 and 	a_docId>0";
+				$result = mysqli_query($dbcon,$sql);
+				
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+					$is_verified=6;	// Detalles de automovil o matricula no desponible
+					return $is_verified;
+					
+				}
+				else
+				{
+					$is_verified=6;	// Detalles de automovil o matricula no desponible
+					
+				}
+
+				$sql="select a_is_approved,a_docId,a_pic_automovil,a_pic_matriculation from (select a_is_approved,a_pic_automovil,
+				(select d_document_name from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id) a_pic_matriculation,
+				(select d_id from z_userdocs where d_user=a_userid and d_document_type=4 and d_veh_id=a_id and d_is_doc_verified=1) a_docId 
+				from z_automovil a,z_users u
+				where a.a_userid=u.u_id and u.u_emailId='".$userEmail."') a
+				where ((a_pic_automovil is not null and a_pic_automovil!='') and (a_pic_matriculation is not null and a_pic_matriculation!=''))	and a_is_approved=1 and 	a_docId>0";
+				$result = mysqli_query($dbcon,$sql);
+				
+	            if(mysqli_num_rows($result) > 0)  
+	            {
+					$is_verified=0;	// Detalles de automovil o matricula son aprobado
+					
+				}
+				else
+				{
+					$is_verified=5;	// Detalles de automovil o matricula no aprobados
+					return $is_verified;
+				}
+
+
+
+
+			}
+
+
+			return $is_verified;
+		}
+
+		public function getCiudad($dbcon,$cuidad,$DEBUG_STATUS)
+		{
+			$sql="select c_id,c_name from z_ciudad where c_estado=0 order by c_id ";
+			$ciudad=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$ciudad[$count] = array($row["c_id"],$row["c_name"]);
+					$count++;
+				}
+			}
+			return $ciudad;
+
+		}
+
+		public function getTerminals($dbcon,$cuidad,$DEBUG_STATUS)
+		{
+			$sql="select t_id,t_name from z_terminal where t_estado=0 and t_id_ciudad=$cuidad and t_id >1 order by t_name ";
+			$terminal=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$terminal[$count] = array($row["t_id"],$row["t_name"]);
+					$count++;
+				}
+			}
+			return $terminal;
+
+		}
+
+
+
+		public function misreservas($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select vp.vp_codigo_viaje v_codigo_viaje,t1.t_name desde,t2.t_name hasta,
+				DATE_FORMAT(v.v_fecha_salida,'%d-%b-%Y %H:%i:%s') v_fecha_salida,
+				(select p_desc from z_parametros where p_id=vp.vp_estado_viaje) v_estado,v.v_costo_viaje,
+				vp.vp_tipo_pago,DATE_FORMAT(vp.vp_fecha_aceptacion,'%d-%b-%Y %H:%i:%s') vp_fecha_aceptacion	,vp.vp_estado_viaje,vp.vp_viaje_id  		 
+				from z_viajes v,z_viajespasajero vp,z_users u,z_terminal t1,
+				z_terminal t2 where v.v_id=vp.vp_viaje_id and vp.vp_pass_id=u.u_id and v.v_desde=t1.t_id and 
+				v.v_hasta=t2.t_id and vp.vp_pass_id=".$userId." order by v.v_fecha_salida";
+			$misreservas=array();
+			$count=0;
+			//$cant_retorno_pendiente = 0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					/*if($row["cant_retorno_pendiente"]>0)
+						$cant_retorno_pendiente= $cant_retorno_pendiente + $row["cant_retorno_pendiente"];*/
+					if($row["vp_estado_viaje"]==0)
+						$misreservas[$count] = array($row["v_codigo_viaje"],$row["desde"],$row["hasta"],'',$row["v_estado"],$row["v_costo_viaje"],$row["vp_tipo_pago"],$row["vp_fecha_aceptacion"],$row["vp_viaje_id"]);
+					else
+						$misreservas[$count] = array($row["v_codigo_viaje"],$row["desde"],$row["hasta"],$row["v_fecha_salida"],$row["v_estado"],$row["v_costo_viaje"],$row["vp_tipo_pago"],$row["vp_fecha_aceptacion"],$row["vp_viaje_id"]);
+					$count++;
+				}
+			}
+			return $misreservas;
+		}
+
+		//TODO - map passenger to view
+		public function consultapagos($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select v.v_codigo_viaje,t1.t_name desde,t2.t_name hasta,
+				DATE_FORMAT(v.v_fecha_salida,'%d-%b-%Y %H:%i:%s') v_fecha_salida,
+				(select p_desc from z_parametros where p_id=v.v_estado) v_estado,v.v_costo_viaje,
+				vp.vp_tipo_pago,DATE_FORMAT(vp.vp_fecha_aceptacion,'%d-%b-%Y %H:%i:%s') vp_fecha_aceptacion,
+				(select u_name from z_users u where u.u_id=vp.vp_pass_id) nombre_pasajero,
+				vp.vp_estado_viaje,DATE_FORMAT(vp.vp_fecha_pago,'%d-%b-%Y %H:%i:%s') vp_fecha_pago  
+				from z_viajes v,z_viajespasajero vp,z_terminal t1,
+				z_terminal t2 where v.v_id=vp.vp_viaje_id and v.v_desde=t1.t_id and 
+				v.v_hasta=t2.t_id and vp.vp_estado_viaje>0 and v.v_created_by=".$userId." order by v.v_fecha_salida";
+			$misconsultas=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$misconsultas[$count] = array($row["v_codigo_viaje"],$row["desde"],$row["hasta"],$row["v_fecha_salida"],$row["v_estado"],$row["v_costo_viaje"],$row["vp_tipo_pago"],$row["vp_fecha_aceptacion"],$row["nombre_pasajero"],$row["vp_estado_viaje"],$row["vp_fecha_pago"]);
+					$count++;
+				}
+			}
+			return $misconsultas;
+		}
+
+	
+
+		public function mispublicaciones($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select v.v_id,v.v_codigo_viaje,t1.t_name desde,t2.t_name hasta,DATE_FORMAT(v.v_fecha_salida,'%d-%b-%Y %H:%i:%s') v_fecha_salida,(select p_desc from z_parametros where p_id=v.v_estado) v_estado,v.v_costo_viaje,v.v_min_pasajeros,v.v_ocupado,
+			DATE_FORMAT(v.v_created_on,'%d-%b-%Y %H:%i:%s') v_created_on from z_viajes v,z_users u,z_terminal t1,z_terminal t2 where v.v_created_by=u.u_id and 
+			v.v_desde=t1.t_id and v.v_hasta=t2.t_id and v.v_created_by=".$userId." order by v.v_fecha_salida";
+			$misreservas=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$misreservas[$count] = array($row["v_codigo_viaje"],$row["desde"],$row["hasta"],$row["v_fecha_salida"],$row["v_estado"],$row["v_costo_viaje"],$row["v_min_pasajeros"],$row["v_ocupado"],$row["v_created_on"],$row["v_id"]);
+					$count++;
+				}
+			}
+			return $misreservas;
+		}
+
+		public function micuenta($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select c_id,c_nro_cuenta, c_banco_id, c_tipo_cuenta from z_cuenta where c_userid=".$userId;
+			$micuenta=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$micuenta[$count] = array($row["c_id"],$row["c_nro_cuenta"],$row["c_banco_id"],$row["c_tipo_cuenta"]);
+					$count++;
+				}
+			}
+			return $micuenta;
+		}
+
+		
+		public function actualizarCuenta($dbcon,$id,$nroCuenta,$bancoId,$tipoCuenta,$userid,$DEBUG_STATUS)
+		{
+			//echo '<br><br><br><br>'.$id;
+			if($id==0)
+			{
+				$sql = "insert into z_cuenta(c_userid, c_nro_cuenta,c_banco_id, c_tipo_cuenta,c_created_on,c_created_by)
+				 		values(".$userid.",'".$nroCuenta."',".$bancoId.",".$tipoCuenta.",now(),".$userid.")";
+			}
+			else
+			{
+				$sql="update z_cuenta set c_nro_cuenta='".$nroCuenta."',c_banco_id=".$bancoId.",c_tipo_cuenta=".$tipoCuenta.",c_modified_on=now(),c_modified_by=".$userid." where c_id=".$id;
+			}
+			if(mysqli_query($dbcon,$sql))
+            {
+				return 0;
+			}
+			else
+				return 1;
+		}
+
+		public function configNotificacion($dbcon,$userId,$DEBUG_STATUS)
+		{
+			$sql="select n_id,n_noti_publicacion,n_noti_reservacion,n_noti_publicacion_cambio,n_noti_reservacion_cambio,
+			n_noti_publicos,n_noti_privados from z_notificacion where n_user_id=".$userId;
+			$minotificacionsettings=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$minotificacionsettings[$count] = array($row["n_id"],$row["n_noti_publicacion"],$row["n_noti_reservacion"],
+						$row["n_noti_publicacion_cambio"],$row["n_noti_reservacion_cambio"],$row["n_noti_publicos"],$row["n_noti_privados"]);
+					$count++;
+				}
+			}
+			return $minotificacionsettings;
+		}
+		public function configurarPermisosNotificaciones($dbcon,$userId,$id,$n_noti_publicacion,$n_noti_reservacion,$n_noti_publicacion_cambio,$n_noti_reservacion_cambio,$n_noti_publicos,$n_noti_privados,$DEBUG_STATUS)
+		{
+			$sql="update z_notificacion set n_noti_publicacion=".$n_noti_publicacion.",n_noti_reservacion=".$n_noti_reservacion.",
+				n_noti_publicacion_cambio=".$n_noti_publicacion_cambio.",n_noti_reservacion_cambio=".$n_noti_reservacion_cambio.",
+				n_noti_publicos=".$n_noti_publicos.",n_noti_privados=".$n_noti_privados.",n_modified_on=now(),n_modified_by=".$userId." where n_id=".$id;
+			
+			if(mysqli_query($dbcon,$sql))
+            {
+				return 0;
+			}
+			else
+				return 1;
+		}
+
+		public function getBancos($dbcon,$DEBUG_STATUS)
+		{
+			$sql="select b_id,b_name from z_bancos where b_estado=0 order by b_name ";
+			$bancos=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$bancos[$count] = array($row["b_id"],$row["b_name"]);
+					$count++;
+				}
+			}
+			return $bancos;
+
+		}
+
+		public function getTipoCuentas($dbcon,$DEBUG_STATUS)
+		{
+			$sql="select tc_id,tc_desc from z_tipo_cuenta order by tc_desc ";
+			$tipocuentas=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$tipocuentas[$count] = array($row["tc_id"],$row["tc_desc"]);
+					$count++;
+				}
+			}
+			return $tipocuentas;
+
+		}
+
+		public function actualizarClave($dbcon,$newpwd,$oldpwd,$userid,$DEBUG_STATUS)
+		{
+			//echo '<br><br><br><br>'.$id;
+			$sql="update z_login set l_pwd='".$newpwd."',l_modified_on=now(),l_modified_by=".$userid." where l_id=".$userid." and l_pwd='".$oldpwd."'";
+			if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+            {
+				return 0;
+			}
+			else
+				return 1;
+		}
+
+		public function eliminarCuenta($dbcon,$obser,$userid,$DEBUG_STATUS)
+		{
+			//echo '<br><br><br><br>'.$id;
+			mysqli_autocommit($dbcon,FALSE);
+			$err_code=0;
+			$sql = "UPDATE z_login SET L_IN_USE=1,L_SESSION_ID='',l_modified_by=".$userid.",l_modified_on=now(),
+			l_is_eliminado_por_usuario=0, l_observacion='".$obser."'
+				WHERE L_ID=".$userid;
+			if($DEBUG_STATUS)
+				echo '$sql-1::'.$sql.'<br>';
+	        if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+	        {
+	        	mysqli_commit($dbcon);
+	        	$err_code=0;
+	        	if($DEBUG_STATUS)
+					echo 'LOGOUT SUCCESSFUL<br>';
+				session_destroy();
+	        }
+	        else
+	        {
+	        	$err_code=1;// ERROR EN LOGOUT
+	        	if($DEBUG_STATUS)
+					echo 'ERROR EN LOGOUT<br>';
+	        }
+	        return $err_code;
+		}
+
+
+		//ADMIN
+		public function controlDocuments($dbcon,$DEBUG_STATUS)
+		{
+			$sql="select u.u_id,u.u_emailId,d.d_id,c.d_desc,d.d_document_name,d_is_doc_verified, d_observacion 
+					from z_userdocs d, z_users u,z_docs c
+					where u.u_id=d.d_user and c.d_id=d.d_document_type 
+					and d_is_doc_verified=9
+					and d_document_type in(1,3,4) order by d.d_created_on";
+			$docs=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$docs[$count] = array($row["u_id"],$row["u_emailId"],$row["d_id"],$row["d_desc"],$row["d_document_name"],$row["d_is_doc_verified"],$row["d_observacion"]);
+					$count++;
+				}
+			}
+			return $docs;
+
+		}
+
+		public function controlDocumentsById($dbcon,$docId,$DEBUG_STATUS)
+		{
+			$sql="select u.u_id,u.u_emailId,d.d_id,c.d_desc,d.d_document_name,d_is_doc_verified, d_observacion 
+					from z_userdocs d, z_users u,z_docs c
+					where u.u_id=d.d_user and c.d_id=d.d_document_type 
+					and d.d_id=".$docId."
+					and d_document_type in(1,3,4) order by d.d_created_on";
+			$docs=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$docs[$count] = array($row["u_id"],$row["u_emailId"],$row["d_id"],$row["d_desc"],$row["d_document_name"],$row["d_is_doc_verified"],$row["d_observacion"]);
+					$count++;
+				}
+			}
+			return $docs;
+
+		}
+
+		public function getConductorIdFromCodigoViaje($dbcon,$codigoViaje,$DEBUG_STATUS)
+		{
+			/*$sql="select distinct v.v_created_by,v_automovil_id from z_viajes v where v.v_codigo_viaje='".$codigoViaje."'";*/
+			$sql="select distinct v.v_created_by,v_automovil_id from z_viajes v where v.v_id=".$codigoViaje;
+			$conductor=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$conductor[$count] = array($row["v_created_by"],$row["v_automovil_id"]);
+					$count++;
+				}
+			}
+			return $conductor;
+		}
+
+		public function updateDocumentVerification($dbcon,$docId,$estado,$observacion,$DEBUG_STATUS)
+		{
+			$sql="update z_userdocs set d_is_doc_verified=".$estado.", d_observacion='".$observacion."',d_ultimo_verificacion=now() 
+					where d_id=".$docId;
+			if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+            {
+				return 0;
+			}
+			else
+				return 1;
+			//return $docs;
+
+		}
+
+		
+		
+		public function getCoductorRating($dbcon,$conductorID,$DEBUG_STATUS)
+		{
+			$sql="select round((a.rating_total/a.ctr),2) rating from 
+				(select count(*) ctr, sum(r_calificacion_conductor) rating_total from z_ratings where r_conductor_id=".$conductorID.") a";
+			$rating= 0; 
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					if(isset($row["rating"]))
+						$rating=$row["rating"];
+				}
+			}
+			return $rating;
+		}
+
+		public function getCoductorRatingByUser($dbcon,$conductorID,$viajeId,$userId,$DEBUG_STATUS)
+		{
+			$sql="select r_calificacion_conductor rating from z_ratings r where r_conductor_id=".$conductorID." and r.r_viaje_id=".$viajeId." and 
+					(r_calificado_por=".$userId." or r_modificado_por=".$userId.")";
+			$rating= 0; 
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					if(isset($row["rating"]))
+						$rating=$row["rating"];
+				}
+			}
+			return $rating;
+		}
+
+		public function updateConductorRating($dbcon,$condustorID,$viajeID,$userId,$rating,$DEBUG_STATUS)
+		{
+			$sql="select count(*) ctr from z_ratings where r_viaje_id=".$viajeID." 
+				and (r_calificado_por=".$userId." or r_modificado_por=".$userId.")";
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					if($row["ctr"]>0)
+					{
+						//echo '1';
+						$sql="update z_ratings set r_calificacion_conductor=".$rating.",r_modificado_on=now(),r_modificado_por=".$userId."
+							where r_viaje_id=".$viajeID." and r_conductor_id=".$condustorID." and 
+							(r_calificado_por=".$userId." or r_modificado_por=".$userId.")";
+						if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+			            {
+			            	//echo '2';
+							return 0;
+						}
+						else
+							return 1;
+					}
+					else
+					{
+						$sql = "insert into z_ratings(r_viaje_id, r_conductor_id, r_calificacion_conductor, r_calificado_on, r_calificado_por)
+								values(".$viajeID.",".$condustorID.",".$rating.",now(),".$userId.")";
+						if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+			            {
+			            	//echo '3';
+							return 0;
+						}
+						else
+							return 1;
+					}
+				}
+			}
+			else
+			{
+				//echo '0';
+				return 1;
+			}
+		}
+
+		public function automovilRating($dbcon,$vehicleID,$DEBUG_STATUS)
+		{
+			$sql="select round((a.rating_total/a.ctr),2) rating from 
+				(select count(*) ctr, sum(r_calificacion_vehicle) rating_total from z_ratings where r_vehicle_id=".$vehicleID.") a";
+			$rating= 0; 
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					if(isset($row["rating"]))
+						$rating=$row["rating"];
+				}
+			}
+			return $rating;
+		}
+
+		public function getVehicleRatingByUser($dbcon,$vehicleID,$viajeId,$userId,$DEBUG_STATUS)
+		{
+			$sql="select r_calificacion_vehicle rating from z_ratings r where r_vehicle_id=".$vehicleID." and r.r_viaje_id=".$viajeId." and 
+					(r_calificado_veh_por=".$userId." or r_modificado_veh_por=".$userId.")";
+			$rating= 0; 
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					if(isset($row["rating"]))
+						$rating=$row["rating"];
+				}
+			}
+			return $rating;
+		}
+
+		public function updateVehicleRating($dbcon,$vehicleID,$viajeID,$userId,$rating,$DEBUG_STATUS)
+		{
+			$sql="select count(*) ctr from z_ratings where r_vehicle_id=".$vehicleID." and r_viaje_id=".$viajeID." 
+				and (r_calificado_veh_por=".$userId." or r_modificado_veh_por=".$userId.")";
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					if($row["ctr"]>0)
+					{
+						//echo '1';
+						$sql="update z_ratings set r_calificacion_vehicle=".$rating.",r_modificado_veh_on=now(),r_modificado_veh_por=".$userId."
+							where r_viaje_id=".$viajeID." and r_vehicle_id=".$vehicleID." and 
+							(r_calificado_veh_por=".$userId." or r_modificado_veh_por=".$userId.")";
+						if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+			            {
+			            	//echo '2';
+							return 0;
+						}
+						else
+							return 1;
+					}
+					else
+					{
+						$sql = "insert into z_ratings(r_viaje_id, r_vehicle_id, r_calificacion_vehicle, r_calificado_veh_on, r_calificado_veh_por)
+								values(".$viajeID.",".$vehicleID.",".$rating.",now(),".$userId.")";
+						if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+			            {
+			            	//echo '3';
+							return 0;
+						}
+						else
+							return 1;
+					}
+				}
+			}
+			else
+			{
+				//echo '0';
+				return 1;
+			}
+		}
+
+
+		public function getGalleryByUserId($dbcon,$viajeId,$userId,$DEBUG_STATUS)
+		{
+			$sql="select g.g_caption,g.g_desc,g.g_image_path,g.g_img_uploaded_by,g.g_img_uploaded_on 
+				from z_gallery g where g.g_viaje_id=".$viajeId;
+			$gallery=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$gallery[$count] = array($viajeId,$userId,$row["g_caption"],$row["g_desc"],$row["g_image_path"],$row["g_img_uploaded_by"],$row["g_img_uploaded_on"]);
+					$count++;
+				}
+			}
+			return $gallery;
+
+		}
+
+		
+		public function insertGalleryImage($dbcon,$viajeIDGallery,$userId,$img_caption,$img_desc,$target_file,$DEBUG_STATUS)
+		{
+			$sql="insert into z_gallery(g_viaje_id,g_userId,g_caption,g_desc,g_image_path,g_img_uploaded_by,g_img_uploaded_on) 
+			 values(".$viajeIDGallery.",".$userId.",'".$img_caption."','".$img_desc."','".$target_file."',".$userId.",now())";
+			//echo $sql.'<br>';
+			if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+            {
+				return 0;
+			}
+			else
+				return 1;
+			//return $docs;
+
+		}
+
+		public function getTopCommentsForHomePage($dbcon,$DEBUG_STATUS)
+		{
+			$sql="select c_comments, c_commented_by,c_commented_on,u.u_name,u.u_profile_pic 
+				from z_comments c,z_users u where c.c_enable_for_home_page=1 and c.c_commented_by=u.u_id";
+			$comments=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$comments[$count] = array(0,0,$row["c_comments"],$row["c_commented_by"],$row["c_commented_on"],$row["u_name"],$row["u_profile_pic"]);
+					$count++;
+				}
+			}
+			return $comments;
+
+		}
+
+		public function getCommentsByUserId($dbcon,$viajeId,$userId,$DEBUG_STATUS)
+		{
+			$sql="select c_comments, c_commented_by,c_commented_on,u.u_name,u.u_profile_pic 
+				from z_comments c,z_users u where c.c_viaje_id=".$viajeId." and c.c_commented_by=u.u_id";
+			$comments=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$comments[$count] = array($viajeId,$userId,$row["c_comments"],$row["c_commented_by"],$row["c_commented_on"],$row["u_name"],$row["u_profile_pic"]);
+					$count++;
+				}
+			}
+			return $comments;
+
+		}
+
+
+		public function insertComments($dbcon,$viajeIDComment,$userId,$comment,$DEBUG_STATUS)
+		{
+			$sql="insert into z_comments(c_viaje_id,c_comments,c_commented_by,c_commented_on) 
+			 values(".$viajeIDComment.",'".$comment."',".$userId.",now())";
+			//echo $sql.'<br>';
+			if(mysqli_query($dbcon,$sql) && mysqli_affected_rows($dbcon)>0)
+            {
+				return 0;
+			}
+			else
+				return 1;
+			//return $docs;
+
+		}
+
+		public function getGalleryForHomePage($dbcon,$DEBUG_STATUS)
+		{
+			$sql="select g.g_viaje_id,g.g_caption,g.g_desc,g.g_image_path,g.g_img_uploaded_by,g.g_img_uploaded_on 
+				from z_gallery g , z_users u where g.g_enable_for_home_page=1 and g.g_img_uploaded_by=u.u_id ";
+			$gallery=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$gallery[$count] = array(0,0,$row["g_caption"],$row["g_desc"],$row["g_image_path"],$row["g_img_uploaded_by"],$row["g_img_uploaded_on"]);
+					$count++;
+				}
+			}
+			return $gallery;
+
+		}
+
+
+
+		
+
+
+	}	
+?>

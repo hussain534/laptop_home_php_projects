@@ -1,0 +1,2 @@
+[14-Mar-2017 16:05:46 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/bushidoec/public_html/dbcontroller.php on line 14
+[14-Mar-2017 16:05:46 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/bushidoec/public_html/dbcontroller.php:14) in /home4/bushidoec/public_html/datacontroller.php on line 30

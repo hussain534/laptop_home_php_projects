@@ -1,0 +1,1306 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"id",
+				"id_paralelo"
+			],
+			[
+				"str",
+				"strcmp"
+			],
+			[
+				"margin",
+				"margin-bottom\tproperty"
+			],
+			[
+				"paddin",
+				"padding\tproperty"
+			],
+			[
+				"transform",
+				"text-transform\tproperty"
+			],
+			[
+				"tr",
+				"transform\tproperty"
+			],
+			[
+				"bor",
+				"border\tproperty"
+			],
+			[
+				"back",
+				"background\tproperty"
+			],
+			[
+				"min",
+				"min-width\tproperty"
+			],
+			[
+				"text",
+				"text-orientation\tproperty"
+			],
+			[
+				"fon",
+				"font-style\tproperty"
+			],
+			[
+				"tet",
+				"text-overflow\tproperty"
+			],
+			[
+				"profile",
+				"profile_name"
+			],
+			[
+				"padding",
+				"padding-left\tproperty"
+			],
+			[
+				"backgrou",
+				"background-color\tproperty"
+			],
+			[
+				"font",
+				"font-size\tproperty"
+			],
+			[
+				"font-w",
+				"font-weight\tproperty"
+			],
+			[
+				"mar",
+				"margin-bottom\tproperty"
+			],
+			[
+				"lin",
+				"letter-spacing\tproperty"
+			],
+			[
+				"font-s",
+				"font-size\tproperty"
+			],
+			[
+				"ma",
+				"margin\tproperty"
+			],
+			[
+				"text-a",
+				"text-align\tproperty"
+			],
+			[
+				"in",
+				"inline-block\tdisplay"
+			],
+			[
+				"backg",
+				"background\tproperty"
+			],
+			[
+				"_",
+				"_GET"
+			],
+			[
+				"us",
+				"user"
+			],
+			[
+				"is_n",
+				"is_null"
+			],
+			[
+				"usuario",
+				"usuario_red"
+			],
+			[
+				"au",
+				"auto_load"
+			],
+			[
+				"id_in",
+				"id_intervalo"
+			],
+			[
+				"craedo_po",
+				"creado_por_usuario"
+			],
+			[
+				"widt",
+				"width\tproperty"
+			],
+			[
+				"background-c",
+				"background-color\tproperty"
+			],
+			[
+				"p",
+				"p\tTag"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"font-",
+				"font-weight\tproperty"
+			],
+			[
+				"com",
+				"comercial"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"border-co",
+				"border-color\tproperty"
+			],
+			[
+				"background-",
+				"background-size\tproperty"
+			],
+			[
+				"co",
+				"cover\tbackground-size"
+			],
+			[
+				"text-",
+				"text-align\tproperty"
+			],
+			[
+				"pr",
+				"projects"
+			],
+			[
+				"min-",
+				"min-height\tproperty"
+			],
+			[
+				"margin-",
+				"margin-bottom\tproperty"
+			],
+			[
+				"im",
+				"important"
+			],
+			[
+				"col",
+				"color\tproperty"
+			],
+			[
+				"conta",
+				"container"
+			],
+			[
+				"max",
+				"max-width\tproperty"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"border",
+				"border\tproperty"
+			],
+			[
+				"bo",
+				"border\tproperty"
+			],
+			[
+				"doc",
+				"doc_viewer"
+			],
+			[
+				"form",
+				"form-control"
+			],
+			[
+				"courses",
+				"courses-classroom-admin-edit"
+			],
+			[
+				"te",
+				"textarea\tTag"
+			],
+			[
+				"tex",
+				"text-align\tproperty"
+			],
+			[
+				"fl",
+				"float\tproperty"
+			],
+			[
+				"inl",
+				"inline-block\tdisplay"
+			],
+			[
+				"modified",
+				"modified_on"
+			],
+			[
+				"di",
+				"display\tproperty"
+			],
+			[
+				"contact",
+				"contact_number"
+			],
+			[
+				"url",
+				"url()\tbackground"
+			],
+			[
+				"A",
+				"ACTUALIZADO"
+			],
+			[
+				"emai",
+				"email_confirmation_token"
+			],
+			[
+				"a",
+				"array\t$… = array (…)"
+			],
+			[
+				"re",
+				"readonly\tAttr"
+			],
+			[
+				"project",
+				"project_id"
+			],
+			[
+				"tas",
+				"taskDate"
+			],
+			[
+				"b",
+				"bolder"
+			],
+			[
+				"ta",
+				"taskDtl"
+			],
+			[
+				"alert_god",
+				"alert_godown2"
+			],
+			[
+				"aler",
+				"alert_store"
+			],
+			[
+				"parse",
+				"parseInt"
+			],
+			[
+				"ite",
+				"item_id"
+			],
+			[
+				"up",
+				"updStatus"
+			],
+			[
+				"l",
+				"length"
+			],
+			[
+				"date",
+				"date_format"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"ove",
+				"overflow-y"
+			],
+			[
+				"TD",
+				"td"
+			],
+			[
+				"backgr",
+				"background"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"pa",
+				"padding"
+			],
+			[
+				"inc",
+				"include_once"
+			],
+			[
+				"row",
+				"rows\tAttr"
+			],
+			[
+				"unse",
+				"session_unset"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"ser",
+				"serviceDesc"
+			],
+			[
+				"serv",
+				"serviceId"
+			],
+			[
+				"cl",
+				"clientId"
+			],
+			[
+				"tetx",
+				"text-center"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"o",
+				"overflow"
+			],
+			[
+				"li",
+				"line-height"
+			],
+			[
+				"cod",
+				"codigo_pago"
+			],
+			[
+				"loca",
+				"Location"
+			],
+			[
+				"st",
+				"st_time"
+			],
+			[
+				"next",
+				"NextTemp"
+			],
+			[
+				"nodes",
+				"nodesFound"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"fon-s",
+				"font-size"
+			],
+			[
+				"connector",
+				"connector_type"
+			],
+			[
+				"b_conn",
+				"b_connector_type"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"u_con",
+				"u_contactId"
+			],
+			[
+				"userI",
+				"userInteresesNegocio"
+			],
+			[
+				"userIn",
+				"userInteresesPersonal"
+			],
+			[
+				"img",
+				"img\tTag"
+			],
+			[
+				"ter",
+				"terminalSalida"
+			],
+			[
+				"vp_se",
+				"vp_sector_destino"
+			],
+			[
+				"est",
+				"estadoText"
+			],
+			[
+				"inn",
+				"innerText"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"for",
+				"form-control"
+			],
+			[
+				"codi",
+				"codigo_retorno"
+			],
+			[
+				"can",
+				"cantretorno"
+			],
+			[
+				"vp_sec",
+				"vp_sector_inicio"
+			],
+			[
+				"cedu",
+				"cedulas"
+			],
+			[
+				"eq",
+				"equipo_id"
+			],
+			[
+				"from",
+				"from_airport"
+			],
+			[
+				"fecha",
+				"fecha_modificacion"
+			],
+			[
+				"che",
+				"check_valida"
+			],
+			[
+				"repo",
+				"reportDtl"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"pei",
+				"peticionDtl"
+			],
+			[
+				"peti",
+				"peticionDtl"
+			],
+			[
+				"tipo_",
+				"tipo_cliente"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "tracker/controladorProceso.php",
+			"settings":
+			{
+				"buffer_size": 16684,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tracker/planevaluacion.php",
+			"settings":
+			{
+				"buffer_size": 9348,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tracker/listaevaluacion.php",
+			"settings":
+			{
+				"buffer_size": 5706,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tracker/datos.php",
+			"settings":
+			{
+				"buffer_size": 18241,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tracker/js/myjs.js",
+			"settings":
+			{
+				"buffer_size": 22910,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tracker/controladorDB.php",
+			"settings":
+			{
+				"buffer_size": 43239,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tracker/evaluar.php",
+			"settings":
+			{
+				"buffer_size": 6078,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "tracker/preguntas.php",
+			"settings":
+			{
+				"buffer_size": 6944,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 131.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 490.0
+	},
+	"console":
+	{
+		"height": 219.0,
+		"history":
+		[
+			"php app/console doctrine:database:create"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/G/xampp/htdocs/tracker",
+		"/G/xampp/htdocs/tracker/js"
+	],
+	"file_history":
+	[
+		"/G/xampp/htdocs/tracker/preguntas.php",
+		"/G/xampp/htdocs/tracker/paralelo.php",
+		"/G/xampp/htdocs/tracker/crearCuenta.php",
+		"/G/xampp/htdocs/tracker/perfil.php",
+		"/G/xampp/htdocs/tracker/config.php",
+		"/G/xampp/htdocs/mpplanner/revision.php",
+		"/C/Users/EQUIPO 1/Downloads/desktop 15jul2019/WhatsApp Video/Private/.nomedia",
+		"/G/xampp/htdocs/mpplanner/menu.php",
+		"/G/xampp/htdocs/mpplanner/dashboard.php",
+		"/G/xampp/htdocs/olguer/revision.php",
+		"/G/xampp/htdocs/olguer/config.php",
+		"/G/xampp/htdocs/mpplanner/css/style.css",
+		"/G/xampp/htdocs/mpplanner/loginController.php",
+		"/G/xampp/htdocs/mpplanner/securityDBController.php",
+		"/G/xampp/htdocs/mpplanner/profile.php",
+		"/G/xampp/htdocs/mpplanner/js/myjs.js",
+		"/G/xampp/htdocs/mpplanner/config.php",
+		"/G/phonegap/MerakiJqueryApp2/config.xml",
+		"/G/xampp/htdocs/concil/config.php",
+		"/G/xampp/htdocs/mpplanner/client.php",
+		"/G/xampp/htdocs/mpplanner/access.php",
+		"/G/xampp/htdocs/mpplanner/sessionData.php",
+		"/G/xampp/htdocs/mpplanner/header.php",
+		"/G/xampp/htdocs/mpplanner/footer.php",
+		"/G/xampp/htdocs/concil/controladorProceso.php",
+		"/G/xampp/htdocs/mpplanner/index.php",
+		"/G/xampp/htdocs/concil/js/myjs.js",
+		"/G/xampp/htdocs/concil/controladorDB.php",
+		"/G/xampp/htdocs/mpplanner/recoverPassword.php",
+		"/G/xampp/htdocs/mpplanner/logout.php",
+		"/G/xampp/htdocs/mpplanner/controladorDB.php",
+		"/G/xampp/htdocs/mpplanner/controladorProceso.php",
+		"/G/xampp/htdocs/concil/encryptpwd.php",
+		"/G/xampp/htdocs/ayaanfms/css/style.css",
+		"/G/xampp/htdocs/ayaanfms/index.php",
+		"/G/xampp/htdocs/modular/home_header.php",
+		"/G/xampp/htdocs/modular/common/db_config.php",
+		"/G/xampp/htdocs/modular/index.php",
+		"/G/xampp/htdocs/modular/home.php",
+		"/G/xampp/htdocs/merakipm/config.php",
+		"/G/xampp/htdocs/concil/conciliacion.php",
+		"/G/xampp/htdocs/concil/verConciliacionHistory.php",
+		"/G/xampp/htdocs/concil/monitor_notifier.php",
+		"/G/xampp/htdocs/concil/jobs_notifier.php",
+		"/G/xampp/htdocs/concil/admin-usuario.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/encryptpwd.php",
+		"/G/xampp/htdocs/m360hd/config.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/conciliacion.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/js/myjs.js",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/controladorProceso.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/config.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/controladorDB.php",
+		"/G/xampp/htdocs/m360hd/dbcontroller.php",
+		"/C/Users/EQUIPO 1/Desktop/m360hd.sql",
+		"/G/xampp/htdocs/m360hd/js/myjs.js",
+		"/G/xampp/htdocs/m360hd/registrarGestion.php",
+		"/G/xampp/htdocs/m360hd/controller.php",
+		"/G/xampp/htdocs/m360hd/doUpload.php",
+		"/G/xampp/htdocs/m360hd/dashboard.php",
+		"/G/xampp/htdocs/m360hd/sit.sql",
+		"/G/xampp/htdocs/m360hd/asignarTrabajo.php",
+		"/G/xampp/htdocs/m360hd/exportFullTaskReport.php",
+		"/G/xampp/htdocs/m360hd/mostrarTodoTrabajo.php",
+		"/G/xampp/htdocs/m360hd/searchData.php",
+		"/G/xampp/htdocs/m360hd/baseConocimiento.php",
+		"/G/xampp/htdocs/m360hd/userRegister.php",
+		"/G/xampp/htdocs/m360hd/index.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/formatos.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/crearUsuario.php",
+		"/G/xampp/htdocs/m360hd/mostrarTrabajo.php",
+		"/G/xampp/htdocs/m360hd/css/style.css",
+		"/G/xampp/htdocs/m360hd/logopanel.php",
+		"/G/xampp/htdocs/m360hd/report_status_por_notification.php",
+		"/G/xampp/htdocs/m360hd/report_status_por_tiempo.php",
+		"/G/xampp/htdocs/m360hd/sessionData.php",
+		"/G/xampp/htdocs/m360hd/header.php",
+		"/G/proyectos/bk/Docs/HDGS/website/css/style.css",
+		"/G/proyectos/bk/Docs/HDGS/website/nosotros.html",
+		"/G/proyectos/htdocs/SIT-V2/config.php",
+		"/G/xampp/htdocs/conjunto/css/style.css",
+		"/G/proyectos/bk/Docs/HDGS/website/index.html",
+		"/G/proyectos/bk/Docs/HDGS/website/locales.html",
+		"/G/proyectos/bk/Docs/HDGS/website/eventos.html",
+		"/G/proyectos/bk/Docs/HDGS/website/menu.html",
+		"/G/proyectos/bk/Docs/HDGS/website/contact.html",
+		"/G/proyectos/bk/Docs/HDGS/website/js/myjs.js",
+		"/G/proyectos/htdocs/nexosafe/index.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/footer.php",
+		"/G/xampp/htdocs/conjunto/banner.php",
+		"/G/xampp/htdocs/conjunto/inicio.php",
+		"/G/xampp/htdocs/conjunto/index.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/util.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/index.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/crearUsuarioEtapa.php",
+		"/G/proyectos/bk/Docs/paginas WEB HDGS/RESPALDOS/3.jpg",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/ldap_check.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/crearCuenta.php",
+		"/G/xampp/htdocs/nexosafe/terminos.php",
+		"/G/proyectos/htdocs/nexosafe/terminos.php",
+		"/G/proyectos/htdocs/nexosafe/contact.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-dashboard.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/css/style.css",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-usercpu.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-systemcpu.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-memorypaging.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-memoryfisico.php",
+		"/G/proyectos/htdocs/SIT-V2/js/myjs.js",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-memorypaging.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-memoryfisico.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-usercpu.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-systemcpu.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testreport.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testreportdata.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testreportshow.php",
+		"/G/proyectos/htdocs/SIT-V2/dashboard.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/subirArchivoConciliacion.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testsql.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor_notifier.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/logopanel.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/header.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/autoconcil.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/checkUrl.php",
+		"/C/Users/EQUIPO 1/Desktop/phpservermon-3.2.0/index.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/verConciliacionHistory.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/verConciliacionResumen.php",
+		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/~menu.php",
+		"/C/xampp/htdocs/concil/controladorDB.php"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 135.0,
+		"where_history":
+		[
+			"G:\\xampp\\htdocs\\mpplanner",
+			"G:\\xampp\\htdocs\\m360hd",
+			"G:\\proyectos\\htdocs\\SIT-V2",
+			"G:\\proyectos\\bk\\Docs\\Concil_Etapa\\migraciones_prod_20mayo2019\\concil",
+			"C:\\xampp\\htdocs\\concil",
+			"G:\\proyectos\\bk\\Docs\\Concil Etapa\\migraciones_prod_20mayo2019\\concil",
+			"G:\\xampp\\htdocs\\olguer",
+			"C:\\Users\\EQUIPO 1\\Desktop\\concil",
+			"G:\\PRY_IONIC\\myApp",
+			"G:\\xampp\\htdocs\\concil",
+			"C:\\Users\\EQUIPO 1\\Downloads\\concil",
+			"G:\\phonegap\\acme",
+			"G:\\xampp\\htdocs\\Joomla",
+			"G:\\xampp\\htdocs\\Joomla\\components\\com_shop\\views\\shop\\tmpl",
+			"G:\\xampp\\htdocs\\Joomla",
+			"G:\\xampp\\htdocs\\nexosafe",
+			"G:\\xampp\\htdocs\\modular",
+			"G:\\xampp\\htdocs\\clinicosight",
+			"G:\\xampp\\htdocs\\restaurant",
+			"G:\\xampp\\htdocs\\merakipm",
+			"G:\\xampp\\htdocs\\olguer",
+			"G:\\xampp\\htdocs\\skrimer",
+			"G:\\PRY_IONIC\\helloworld",
+			"G:\\xampp\\htdocs\\contable",
+			"G:\\xampp\\htdocs\\mackausweet",
+			"G:\\xampp\\htdocs\\olguer",
+			"G:\\xampp\\htdocs\\Joomla\\components\\com_shop\\views\\shop\\tmpl",
+			"G:\\xampp\\htdocs\\BushidoApp",
+			"G:\\xampp\\htdocs\\BushidoApp\\admin",
+			"G:\\xampp\\htdocs\\BushidoApp\\appgini",
+			"G:\\xampp\\htdocs\\BushidoApp\\hooks",
+			"G:\\xampp\\htdocs\\BushidoApp\\resources",
+			"G:\\xampp\\htdocs\\BushidoApp",
+			"G:\\xampp\\htdocs\\bushido"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"update",
+			"ID_",
+			"logo",
+			"session",
+			"133",
+			"sidemenu.php",
+			"usuario_red",
+			"adminUserIdConstant",
+			"cont",
+			"crimson",
+			"add",
+			"!=5",
+			"!=3",
+			"$_SESSION[\"user_perfil\"]",
+			"btn",
+			"tr",
+			"navbar",
+			"sit-v2",
+			"font-size",
+			"messsage",
+			"SYSTEM_CPU",
+			"myChartEstadosPorNotificacion2",
+			"error",
+			"explode",
+			"@",
+			"SMART",
+			"CONCIL",
+			"$subject",
+			"error",
+			"admin_db_concil",
+			"format",
+			"remote_file_path",
+			"localhost",
+			"parse",
+			"login",
+			"registrar",
+			"json",
+			"ANY",
+			"*\n",
+			";\n",
+			"ef0031",
+			"mysqli_connect",
+			"welcome to ionic",
+			"bg-dark",
+			".</",
+			"\">\n",
+			"remote_file_dir",
+			"remote_file_path",
+			"INSERT INTO `c_ventas_temp` (`id_txn_interna`, `id_txn_integrador`, `id_integrador`, `id_canal`, `id_plan`, `monto`, `fecha_venta`, `habilitado`) VALUES (1001, 101, 1, 3, 'P_01', 3, '2019-01-02 21:34:04', 1);\nINSERT INTO `c_ventas_temp` (`id_txn_interna`, `id_txn_integrador`, `id_integrador`, `id_canal`, `id_plan`, `monto`, `fecha_venta`, `habilitado`) VALUES (1002, 102, 1, 4, 'P_02', 1.5, '2019-01-02 21:35:17', 1);\nINSERT INTO `c_ventas_temp` (`id_txn_interna`, `id_txn_integrador`, `id_integrador`, `id_canal`, `id_plan`, `monto`, `fecha_venta`, `habilitado`) VALUES (1003, 901, 1, 4, 'P_03', 4, '2019-01-05 21:36:05', 1);\nINSERT INTO `c_ventas_temp` (`id_txn_interna`, `id_txn_integrador`, `id_integrador`, `id_canal`, `id_plan`, `monto`, `fecha_venta`, `habilitado`) VALUES (1004, 902, 1, 3, 'p_04', 2, '2019-01-05 21:36:33', 1);",
+			"sidemenu.php",
+			"merakiad_concil",
+			"sitadmin",
+			"pricing",
+			"googleapis",
+			"itemdt",
+			"form-control",
+			"hideme",
+			"container-fluid",
+			"MERAKI MINDS",
+			"reserved",
+			"container",
+			"visitors",
+			"contact us",
+			"zoo",
+			"contain",
+			"navbar",
+			"container",
+			"hussain1_homeshop",
+			"90%",
+			"status_call",
+			"rn_category",
+			"rn_order_management",
+			"creating session",
+			"http:",
+			"font-si",
+			"glyp",
+			"doUpload",
+			"addNew",
+			"input",
+			"table",
+			"getAllSelfStudyCourses",
+			"teachers",
+			"tr",
+			"thead",
+			"table",
+			"alert",
+			"gly",
+			"menu02",
+			"alert",
+			"form",
+			"info",
+			"input",
+			"imput",
+			"input",
+			"logo",
+			"btn",
+			"message_global.php",
+			"basket",
+			"deshabilitado",
+			"contable",
+			"menu.php",
+			"barChart",
+			"add_row",
+			"view product",
+			"body",
+			".btn.btn-flat",
+			".login-page, .register-page",
+			"fa fa-files-o",
+			".content-wrapper",
+			"tr ",
+			"tr",
+			".content-wrapper",
+			".main-header",
+			".main-header .navbar",
+			".main-sidebar",
+			".main-header .navbar",
+			".main-header .logo",
+			"adminlte.min.css",
+			"index2.html",
+			"img-circle",
+			".img-circle",
+			"htmlfooter",
+			"SYSLANG",
+			"container06",
+			"meraki",
+			"form",
+			"inputData",
+			"taskId"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"#073849",
+			"m360hd",
+			"192.168.0.107",
+			"ef0000",
+			"merakiprod01",
+			"skrimmerV2",
+			"client_cust_type",
+			"ct_distributors_customers",
+			"aligh-right",
+			"h4",
+			"task",
+			"controller",
+			"sistececuador",
+			"nroasientesid",
+			"z_viajesPasajerosRetorno",
+			"<br><br>"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "tracker/controladorProceso.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16684,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								13117,
+								13117
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 13692.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "tracker/planevaluacion.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9348,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2467,
+								2467
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 5608.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "tracker/listaevaluacion.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5706,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4671,
+								4671
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4049.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "tracker/datos.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1068,
+								1093
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1388.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "tracker/js/myjs.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22910,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								16751,
+								16751
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 19151.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "tracker/controladorDB.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 43239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								42081,
+								42092
+							]
+						],
+						"settings":
+						{
+							"rulers":
+							[
+							],
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 46622.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "tracker/evaluar.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								763,
+								791
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 589.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "tracker/preguntas.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6944,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5059,
+								5059
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4189.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 49.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 142.0
+	},
+	"pinned_build_system": "",
+	"project": "26nov2017.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 243.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

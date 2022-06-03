@@ -1,0 +1,4 @@
+<!-- Edit this file to change the layout of the highlighted record in the table view -->
+		<td id="reglamento-archivo-<%%VALUE(id)%%>" class=""><a href="link.php?t=reglamento&f=archivo&i=<%%VALUE(id)%%>" target="_blank" title="<%%VALUE(archivo)%%>" class="btn btn-default"><i class="glyphicon glyphicon-file text-info"></i></a></td>
+		<td id="reglamento-descripcion-<%%VALUE(id)%%>" class=""><%%VALUE(descripcion)%%></td>
+		<script>jQuery(function(){ var e_archivo = '<%%VALUE(archivo)%%>'; if(e_archivo == '' || e_archivo == '&nbsp;') jQuery(/*<*/ '#reglamento-archivo-<%%VALUE(id)%%>' /*>*/).html(''); });</script>

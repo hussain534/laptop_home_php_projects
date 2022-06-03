@@ -1,0 +1,403 @@
+*
+{
+	#font-family: 'Bree Serif', serif !important;
+	#font-family: 'Pathway Gothic One', sans-serif;
+	#font-family: 'Amita', cursive;
+	#font-family: 'Acme', sans-serif;
+	#font-family: 'Cinzel', serif;
+	#font-family: 'Open Sans', sans-serif;
+	#font-family: 'Taviraj', serif;	
+	#font-family: 'Copse', serif;
+
+    #font-family: 'Cuprum', sans-serif;
+    #font-family: 'Courgette', cursive;
+    #font-family: 'Permanent Marker', cursive;
+    font-family: 'Kalam', cursive;
+    #font-family: 'Bad Script', cursive;
+	
+    #font-size: 14px;
+}
+
+a
+{
+    text-decoration: none !important;
+}
+
+.form-control
+{
+	font-size: 14px;
+	border-radius: 0 !important;
+    background: antiquewhite;
+}
+
+
+
+.navbar
+{
+	margin-bottom: 0;
+	border-radius: 0px !important;
+}
+
+.navbar-nav>li>a 
+{
+	letter-spacing: .1em;
+    margin: 0;
+    font-size: 14px;
+}
+
+.navbar-nav>li>a:hover 
+{
+    color: #fbc96c !important;
+    font-size: 14px;
+    color: bisquewhite;
+}
+
+.navbar-toggle 
+{
+    #background-color: teal;
+    background-image: none;
+    border: 1px solid teal;
+    border-radius: 4px;
+    border-color: teal;
+}
+
+.container
+{
+	width: 100%;
+	#padding-right: 0px !important;
+	#padding-left: 0px !important;
+}
+
+
+#myNavbar>ul>li
+{
+	padding-left: 2px;
+	padding-right: 3px;
+}
+
+
+.nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover 
+{
+	#background-color: #3f535a !important;	
+	color:  black;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover 
+{
+	background-color: #3f535a !important;	
+	color: antiquewhite;
+}
+
+
+img
+{
+	width: 100%;
+	overflow: hidden;
+}
+
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12
+{
+    position: relative;
+    min-height: 1px;
+    //padding-right: 0px !important; 
+    //padding-left: 0px !important; 
+}
+
+a
+{
+    color: #95b733 !important;
+    text-decoration: none;
+}
+
+
+.btn-warning 
+{
+    color: white;
+    background-color: #95b733;
+    border-color: #eea236;
+}
+
+.btn-warning:hover
+{
+    color: white;
+    background-color: #00b0f0;
+    border-color: #95b733;
+}
+
+
+/*
+USER-DEFINED STYLES
+*/
+
+.add-on .input-group-btn > .btn 
+{
+	
+	background: #00b0f0;
+
+}
+
+.input-group-btn > .btn:hover 
+{
+	background: red;
+}
+
+#demo
+{
+    background: #80cbf0;
+    padding: 20px;
+}
+.search
+{
+	width: 80%;
+	left: 10%;
+}
+
+.mandatoryCheck
+{
+    color: red;
+    font-weight: bolder;
+}
+
+
+logo
+{
+    font-size: 28px;
+	color: #5df2e6;
+	#border:1px dashed red;
+	padding: 1px 8px;
+}
+logo>img
+{
+    width:40px !important;
+    height:40px;
+}
+
+.navbar-brand
+{
+    padding: 3px;
+}
+
+.login-register-block
+{
+    padding:2%;
+    color:antiquewhite;
+    background:#222;
+    opacity:0.9;
+    border:1px solid #222;
+    margin: 20px !important;
+}
+
+
+/*.order
+{
+	position: absolute;
+    z-index: 999;
+    bottom: 25%;
+    width:40%;
+    left: 30%;
+    margin-bottom:10px;
+    margin-top:30px;
+    letter-spacing:.2em;
+    margin-left: auto;
+	margin-right: auto;
+	display: block;
+}*/
+
+.btn_center
+{    
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+label
+{
+    margin-top: 10px !important;
+    margin-bottom: 0px !important;
+    background: aquamarine;
+    width: 100%;
+    padding: 5px 5px 3px 18px;
+}
+
+.graph
+{
+    margin: 5% 10%;
+    width: 80%;
+}
+
+thead>tr>td
+{
+    font-weight: bold;
+}
+
+.pageTitle
+{
+    background-color: #00b0f0;
+    margin-bottom: 30px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 24px !important;
+    color: #f0f0f0;
+}
+
+.inputData,.tblData,.sessionUserData
+{
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+}
+
+.poster
+{
+    padding: 25px;
+    #box-shadow: 13px 8px 5px #87724c;
+}
+
+.poster-header
+{
+    background: #920b0b;
+    line-height: 35px;
+    padding: 10px 0px;
+}
+
+.poster-id
+{
+    text-align: center;
+    border-radius: 50%;
+    background: beige;
+    margin: 5px 0px;
+}
+
+.poster-title
+{
+    background: bisque;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.poster-duration
+{
+    color: bisque;
+}
+
+.poster-short-desc
+{
+    min-height: 100px;
+    
+    background: #540404;
+    font-weight: bold;
+    color: #f5f5f5;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 5px;
+}
+
+.poster-desc
+{
+    height: 250px;
+    text-align: justify;
+    background: #9fe4fd;
+    padding: 10px 0;
+    overflow-y: scroll;
+}
+
+.glyphicon
+{
+    color: cornsilk !important;
+}
+
+.glyphicon-pencil
+{
+    color: blue;
+}
+
+.glyphicon-remove
+{
+    color: red;
+    font-size: 16px;
+}
+.glyphicon-list-alt-doc-exist
+{
+    color: green !important;
+    font-size: 35px;
+    text-align: center;
+}
+
+.glyphicon-list-alt-no-doc
+{
+    color: grey !important;
+    font-size: 35px;
+    opacity: .2;
+    text-align: center;
+}
+
+.poster-actions
+{
+    line-height: 25px;
+    background: #333;
+}
+
+.linkBtn
+{
+    float: right;
+    margin: 3px;
+}
+
+
+.dataTblHead
+{
+    border:1px solid #f0f0f0;
+    font-weight: bold;
+    background-color: #00b0f0;
+    line-height:36px;
+    padding: 3px 10px !important;
+    color: #f0f0f0;
+}
+
+.dataTblRow
+{
+    border:1px solid #ccc;
+    //font-weight: bold;
+    //background-color: #ccc;
+    line-height:24px;
+    padding: 3px 10px !important;
+}
+
+.info
+{
+    border:3px solid green;
+    color:#ffffff;
+    //font-weight: bold;
+    border-radius:50%;
+    padding: 1px 7px;
+    margin-right: 10px;
+    background-color: green;
+    font-family: 'Bree Serif', serif !important;
+}
+
+.delete
+{
+    //border:3px solid green;
+    //color:#ffffff;
+    font-weight: bold;
+    border-radius:50%;
+    padding: 4px 10px;
+    margin-right: 10px;
+    background-color: #9d0303;
+    font-family: 'Bree Serif', serif !important;
+}
+
+
+
+@media only screen and (max-width: 1024px) {	
+
+}
+
+
+@media only screen and (max-width: 768px) {
+	
+}
+
+
+@media only screen and (max-width: 320px) {	
+
+}

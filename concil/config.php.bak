@@ -1,0 +1,11 @@
+<?php
+	#db-desarrollo
+    #$databasecon = mysqli_connect('localhost','sitadmin','sitadmin534','concil') or die('Error:DB Connect error.');//IP,user,pwd,db
+	
+	#db-prod
+    $databasecon = mysqli_connect('localhost','merakiad_concil','concil534','merakiad_concil') or die('Error:DB Connect error.');//IP,user,pwd,db
+	
+	$PRINT_LOG=false;
+	$session_expirry_time=2700;
+
+?>

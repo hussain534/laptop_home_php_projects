@@ -1,0 +1,6 @@
+05/21/18 05:19:54 [10248][1][FATAL] SugarPHPMailer encountered an error: SMTP Error: Could not connect to SMTP host.
+05/21/18 05:19:54 [10248][1][FATAL] SugarPHPMailer encountered an error: SMTP Error: Could not connect to SMTP host.
+05/21/18 05:20:30 [10248][-none-][FATAL] ERROR: rmdir_recursive(): argument cache/themes/SuiteP/modules is not a file or a dir.
+05/21/18 05:21:31 [10248][1][FATAL] SugarBean::populateDefaultValues $field_defs should be an array
+05/21/18 05:28:58 [10248][1][FATAL] SugarBean::populateDefaultValues $field_defs should be an array
+05/21/18 05:32:39 [10248][1][FATAL] SugarBean::populateDefaultValues $field_defs should be an array

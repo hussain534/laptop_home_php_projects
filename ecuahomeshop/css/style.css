@@ -1,0 +1,604 @@
+body
+{
+	#font-family: 'Bree Serif', serif !important;
+	#font-family: 'Pathway Gothic One', sans-serif;
+	#font-family: 'Amita', cursive;
+	#font-family: 'Acme', sans-serif;
+	#font-family: 'Cinzel', serif;
+	#font-family: 'Open Sans', sans-serif;
+	#font-family: 'Taviraj', serif;	
+	font-family: 'Copse', serif;
+	font-weight: lighter;
+	font-size: 13px;
+	#background: gold;
+	background-image: url('../images/tiles021.jpg');
+	background-size: stretch;
+	height: 100%;
+	color:#222;
+}
+
+.container
+{
+	width: 100%;
+
+}
+
+a:hover
+{
+	text-decoration: none;
+
+}
+
+
+
+logo
+{
+	#font-family: 'Lobster', cursive !important;
+	font-family: 'Dancing Script', cursive !important;
+	#font-family: 'Cinzel', serif !important;
+	#font-family: 'Lobster Two', cursive !important;
+	#font-family: 'Yellowtail', cursive !important;
+	#font-family: 'Kaushan Script', cursive !important;
+	#font-family: 'Courgette', cursive !important;
+	font-size: 36px;
+	font-weight: bold;
+}
+
+.navbar
+{
+	border-radius: 0;
+	width:80%;
+	left:10%;
+	#min-height: 60px;
+	z-index: 999;
+
+}
+
+.navbar-brand 
+{
+	#padding:20px 30px 35px; 
+	font-size: 20px;
+}
+
+.navbar-login 
+{
+	padding:30px 30px 35px; 
+	font-size: 20px;
+	background: #482c2c;
+}
+
+.navbar-inverse {
+    background-color: #8a877e;
+    border:none;
+    opacity: .9;
+}
+
+.navbar-header
+{
+	#background: #482c2c;	
+	background: deepskyblue;
+	padding: 15px;
+}
+.container-fluid
+{
+	margin:0 !important;
+	padding: 0 !important;
+}
+
+.prolist
+{
+	padding:0px;
+	#opacity: 0.6;
+}
+
+input[type='file'] 
+{
+    color: transparent;
+    width: 142px;
+    padding: 10px 0;
+}
+
+
+.banner
+{
+	position: absolute;
+	
+}
+
+.banner_img
+{
+	width: 100%;
+	min-height: 400px;
+}
+
+.navbar-header>a
+{
+	color:#fff !important;
+}
+
+.navbar-header>a:hover
+{
+	#font-size: 24px;
+}
+
+#myNavbar
+{
+	padding: 10px 15px 0;
+	margin: 0;
+}
+
+.navbar-inverse .navbar-nav>li
+{
+    padding:2px;
+}
+
+.navbar-inverse .navbar-nav>li>a 
+{
+    color: #fff;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover 
+{
+    #font-size: 18px;
+    border-bottom: 2px solid #fff;
+    #border-radius: 3px;
+}
+
+.navbar-nav {
+    margin: 0px 0px !important;
+}
+
+.glyphicon
+{
+	line-height: 1.6;
+	min-width:30px;
+}
+.glyphicon-style
+{
+	color:#222;
+	font-size: 14px;
+	top:1px;
+}
+
+.fa
+{
+	color:deepskyblue;
+	font-size: 24px;
+	top:15px;
+	min-width:30px;
+}
+
+.data
+{
+	position: relative;
+	top:300px;
+	#background: #222;
+	#padding: 25px;
+}
+
+.login-data
+{
+	position: relative;
+	top:80px;
+	opacity: 0.9;
+	#background: #222;
+	#padding: 25px;
+}
+
+.home-data
+{
+	position: relative;
+	top:300px;
+	#background: #222;
+	padding: 25px;
+}
+
+.search
+{
+	background: transparent;
+	padding: 5px 25px 25px;
+}
+
+.filter
+{
+	background: #222;
+	padding: 10px;
+}
+
+.footer
+{
+	#background: #222;
+	padding: 10px;
+}
+
+.buscar
+{
+	padding: 5px 12px !important;
+}
+.busqueda_btn
+{
+	border-radius: 5px;
+}
+
+#busquedaLocal>ul,#busquedaCategoria>ul
+{
+	float: right;
+}
+
+#busquedaLocal>ul>li,#busquedaCategoria>ul>li
+{
+	display: inline-block;
+	padding:5px;
+}
+
+.filterList
+{
+	#min-height: 200px;
+	height: 100%;
+	#border: 1px solid deepskyblue;
+	#margin: 2px 0px;
+	padding: 0;
+	background: #ccc;
+}
+
+
+.dropdown>ul
+{
+	margin: 0;
+	padding: 0;
+}
+.dropdown>ul>li
+{
+	padding: 5px 10px;
+	display: block;
+	border-left:6px solid #48a0c8;
+	border-right:3px solid #48a0c8;
+}
+
+.bg-01
+{
+	background: #8a877e;
+}
+
+.border-01
+{
+	border-bottom: 1px solid darkgray;
+	border-top: 1px solid darkgray;
+}
+
+.divider
+{
+	border-bottom: 1px solid lightgrey;
+	padding: 0px !important;
+}
+
+.dropdown-header
+{
+	font-size: 16px;
+	font-weight: bold;
+	background:deepskyblue;
+	color: #fff;
+	padding: 10px 10px !important;
+}
+
+.dropdown-data
+{
+	font-size: 14px;
+	padding: 10px 10px !important;
+	background:#626262;
+}
+
+.dropdown-data:hover
+{
+	background:#8a877e;
+}
+
+.dropdown-data>a
+{
+	color:#fff;
+}
+
+.databox
+{
+	padding: 0px 20px 20px;
+	/*border-left:1px solid deepskyblue;*/
+	#border-right:1px solid deepskyblue;
+	/*border-right:1px solid deepskyblue;
+	border-bottom:1px solid deepskyblue;
+	box-shadow: 5px 5px 5px #c8e0e8;*/
+	padding-bottom: 40px;
+}
+
+.pagination
+{
+	#border-bottom: 5px solid #ccc;
+	margin:5px;
+}
+
+.databox-title
+{
+	background: #8a877e;
+	color: #fff;
+	font-size: 24px;
+	font-weight: bold;
+	padding: 20px;
+	margin-bottom: 2px;
+	text-align: center;
+}
+
+.databox-count
+{
+	font-size: 16px;
+	padding: 5px 15px;
+	margin-bottom: 2px;
+	color: floralwhite;
+	text-align: center;
+	font-weight: bold;
+	#font-family: 'Lobster', cursive !important;
+	#font-family: 'Dancing Script', cursive !important;
+	#font-family: 'Cinzel', serif !important;
+	#font-family: 'Lobster Two', cursive !important;
+	#font-family: 'Yellowtail', cursive !important;
+	font-family: 'Kaushan Script', cursive !important;
+	#font-family: 'Courgette', cursive !important;
+}
+
+hr
+{
+	border:1px solid deepskyblue;
+}
+
+.databox-img
+{
+	padding: 10px;
+	//border:3px solid lightgrey;
+	//box-shadow: 5px 5px 5px grey;
+}
+
+.databox-compact
+{
+	#padding: 3px 20px 20px;
+	padding: 0px;
+	#border:1px solid deepskyblue;
+	#box-shadow: 5px 5px 5px #c8e0e8;
+}
+
+.databox-img-2
+{
+	padding: 10px;
+	#border:3px solid lightgrey;
+	#box-shadow: 2px 3px 3px grey;
+}
+
+.databox-data
+{
+	padding: 10px 15px 0;
+}
+
+.databox-label,.databox-desc
+{
+	padding: 0px 15px;
+	margin-bottom: 3px;
+}
+
+.databox-label
+{
+	font-weight: bold;
+	#border-right: 3px solid lightgrey;
+	border-right: 2px solid deepskyblue;
+}
+
+.databox-desc
+{
+	font-style: italic;
+}
+
+.contact>ul
+{
+	padding: 0;
+}
+.contact>ul>li
+{
+	display: inline-block;
+	color: #fff;
+}
+
+/*login*/
+.data-panel
+{
+	margin:5px 1px;
+	min-height: 150px;
+}
+
+.home-data-panel
+{
+	margin:2px;
+	#min-height: 150px;
+	padding:5px 50px 0px;
+	#background: #ccc;
+}
+
+.button-style
+{
+	margin:1px !important;
+}
+
+.bg-info
+{
+	background: #cfcfcf;
+	border-radius: 6px;
+	box-shadow: 5px 5px 5px #a38b8b;
+}
+
+.bg-info2
+{
+	background: #cfcfcf;
+	border-radius: 6px;
+	box-shadow: 5px 5px 5px #a38b8b;
+}
+
+
+.h3-style
+{
+	#font-family: 'Lobster', cursive !important;
+	#font-family: 'Dancing Script', cursive !important;
+	#font-family: 'Cinzel', serif !important;
+	#font-family: 'Lobster Two', cursive !important;
+	#font-family: 'Yellowtail', cursive !important;
+	font-family: 'Kaushan Script', cursive !important;
+	#font-family: 'Courgette', cursive !important;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.h3-style-2
+{
+	#font-family: 'Lobster', cursive !important;
+	#font-family: 'Dancing Script', cursive !important;
+	#font-family: 'Cinzel', serif !important;
+	#font-family: 'Lobster Two', cursive !important;
+	#font-family: 'Yellowtail', cursive !important;
+	font-family: 'Kaushan Script', cursive !important;
+	#font-family: 'Courgette', cursive !important;
+	font-size: 20px;
+	font-weight: bold;
+	background: #FFF;
+	padding: 4px;
+	margin: 0;
+}
+
+.data-panel-2>ul>li>a
+{
+	#color: #000;
+	color: #4e8a9e;
+}
+
+.data-panel-2>ul>li>a:hover
+{
+	color:#1a3741;
+}
+.data-panel-2>ul>li
+{
+	display: inline-block;
+	padding:5px 8px;
+	font-size: 18px;
+}
+.data-panel-2>ul>li:hover
+{
+	#background: #eaeaea;
+	
+	font-weight: bold;
+	font-family: 'Kaushan Script', cursive !important;
+}
+
+.headerBox
+{
+	#background: deepskyblue;
+}
+.label-style-1
+{
+	padding-top: 10px;
+}
+
+
+.filterList>div>ul>li>a
+{
+	color: #fff;
+}
+
+.filterList>div>ul>li>a:hover
+{
+	color: #000;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*@media only screen and (max-width: 1024px) {
+
+	
+}
+*/
+
+
+@media only screen and (max-width: 768px) {
+	.navbar
+	{
+		width:90%;
+		left:5%;
+	}
+
+	logo
+	{
+		font-size: 20px;
+	}
+
+	.navbar-brand 
+	{
+	    #padding: 30px 30px 50px;
+	    font-size: 20px;
+	}
+
+	
+}
+
+
+@media only screen and (max-width: 320px) {
+	.container-fluid 
+	{
+	    margin: 0 !important;
+	    padding: 0 15px !important;
+	}
+
+	.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form 
+	{
+	    border:none;
+	}
+
+	.navbar-inverse .navbar-toggle 
+	{
+	    border: 2px solid grey;
+	}
+
+	.icon-bar
+	{
+		border: 2px solid grey;
+	}
+
+	.navbar-header 
+	{
+	    background: deepskyblue;
+	    padding: 0px;
+	}
+
+	.navbar-brand 
+	{
+	    padding: 15px 30px 50px;
+	    font-size: 20px;
+	}
+
+	.navbar
+	{
+		min-height: auto;
+	}
+	.banner_img
+	{
+		display: none;
+		height: 0px;
+	}
+	.data
+	{
+		top:80px;
+	}
+	
+}

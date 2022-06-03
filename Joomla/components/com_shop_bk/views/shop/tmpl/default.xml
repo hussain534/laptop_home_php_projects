@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_SHOP_SHOP_VIEW_DEFAULT_TITLE">
+		<message>COM_SHOP_SHOP_VIEW_DEFAULT_DESC</message>
+	</layout>
+	<fields name="request">
+		<fieldset name="request">
+			<field
+					name="id"
+					type="list"
+					label="COM_SHOP_SHOP_FIELD_GREETING_LABEL"
+					description="COM_SHOP_SHOP_FIELD_GREETING_DESC"
+					default="1">
+                                <option value="1">Hello shop 534!</option>
+                                <option value="2">Good bye shop 534!</option>
+                        </field>
+		</fieldset>
+	</fields>
+</metadata>

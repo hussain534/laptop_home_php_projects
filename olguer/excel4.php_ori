@@ -1,0 +1,161 @@
+<?php
+error_reporting(0);
+require_once 'Spreadsheet/Excel/Writer.php';
+
+// Creating a workbook
+$workbook = new Spreadsheet_Excel_Writer();
+
+// sending HTTP headers
+$workbook->send('test.xls');
+
+// Creating a worksheet
+$worksheet =& $workbook->addWorksheet('REPORT-3');
+
+// The actual data
+
+$worksheet->write(0, 0, 'TECNICO');
+$worksheet->write(0, 1, 'CLIENTE');
+$worksheet->write(0, 2, 'MES');
+$worksheet->write(0, 3, 'PETICIONES');
+// Let's send the file
+//$workbook->close();
+
+defined('__JEXEC') or ('Access denied');
+    session_start();
+    include_once('config.php');    
+    $DEBUG_STATUS = $PRINT_LOG;
+
+    require 'dbcontroller.php';
+    $controller = new controller();
+
+    $estado=$_POST["estadoPeticion"];
+    $id_tecnico=$_POST["clientId"];//id_tecnico is recieved in param-clientId
+    $dt_ini=$_POST["dt_ini"];
+    $dt_fin=$_POST["dt_fin"];
+    $tec_name=$_POST["tec_name"];
+
+    if($_POST["estadoPeticion"]==1)
+        $estadoTsxt="ABIERTO";
+    else if($_POST["estadoPeticion"]==2)
+        $estadoTsxt="EN CURSO";
+    else if($_POST["estadoPeticion"]==3)
+        $estadoTsxt="CERRADO";
+    
+    //echo 'dt_ini:'.$dt_ini.'<br>';
+    //echo 'dt_fin:'.$dt_fin.'<br>';
+
+    $total_meses=0;
+    $strMeses='{"id":"","label":"Meses","pattern":"","type":"string"}';
+    $strData="";
+    $iterrator=0;
+    //$sqlClientes= "select id client_id,nombre client_name from p_clientes pc where pc.id>1 and pc.habilitado=1 order by pc.nombre";
+    $sqlClientes="select distinct pc.id client_id,pc.nombre client_name from p_solicitud ps,p_clientes pc where ps.client_id=pc.id and ps.id_tecnico=".$id_tecnico;
+    $resultClientes = mysqli_query($databasecon,$sqlClientes);
+    if(mysqli_num_rows($resultClientes) > 0)  
+    {
+        while($rowClientes = mysqli_fetch_assoc($resultClientes)) 
+        {
+            $iterrator++;
+            $clientName = $rowClientes["client_name"];
+            $client = $rowClientes["client_id"];
+            $strData = $strData.'{"c":[{"v":"'.$clientName.'","f":null}';
+
+            $sql="select period_diff(date_format('".$dt_fin."','%Y%m'),date_format('".$dt_ini."','%Y%m')) total_meses from dual";
+            
+            $result = mysqli_query($databasecon,$sql);
+            if(mysqli_num_rows($result) > 0)  
+            {
+                if($row = mysqli_fetch_assoc($result)) 
+                {
+                    $clientes=array();
+                    $count=0;
+                    $strTemp="";
+                    $total_meses=$row["total_meses"];
+                    for($x=0;$x<=$total_meses;$x++)
+                    {
+                        $sqlMes = "select date_format(date_add(date_format('".$dt_ini."','%Y%m%d'),interval ".$x." month),'%b %Y') period from dual";
+                        $resultMes = mysqli_query($databasecon,$sqlMes);
+                        if(mysqli_num_rows($resultMes) > 0)  
+                        {
+                            if($rowMes = mysqli_fetch_assoc($resultMes)) 
+                            {
+                                $period= $rowMes["period"];
+                            }
+                        }
+                        if($iterrator<=1)
+                            $strMeses = $strMeses.',{"id":"","label":"'.$period.'","pattern":"","type":"number"}';
+
+                                                                        
+                        $sql="select ps.client_id,count(*) ctr from p_solicitud ps
+                        where date_format(ps.fecha_creacion,'%Y%m')=date_format(date_add(date_format('".$dt_ini."','%Y%m%d'),interval ".$x." month),'%Y%m') 
+                        and ps.estado=".$estado." and ps.client_id=".$client." and ps.id_tecnico=".$id_tecnico." and ps.habilitado=1 group by ps.client_id";
+                        //echo 'sql:'.$sql.'<br>';
+                        $result = mysqli_query($databasecon,$sql);
+                        if(mysqli_num_rows($result) > 0)  
+                        {
+                            if($row = mysqli_fetch_assoc($result)) 
+                            {
+                                $strTemp=$strTemp.',{"v":'.$row["ctr"].',"f":null}';
+                                $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 0, $tec_name);
+                                $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 1, $clientName); 
+                                $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 2, $period); 
+                                $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 3, $row["ctr"]); 
+                                $count++;
+                            }
+                        }
+                        else
+                        {
+                            $strTemp=$strTemp.',{"v":0,"f":null}';
+                            $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 0, $tec_name);
+                            $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 1, $clientName); 
+                            $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 2, $period); 
+                            $worksheet->write(((($iterrator-1)*($total_meses+1))+($x+1)), 3, 0); 
+                            $count++;
+                        }                        
+                    }
+                    $strData=$strData.$strTemp.']},';
+                }
+            }
+        }
+    }
+    if(isset($strData) && strlen($strData)>1)
+    {
+        $strData=substr($strData,0,strlen($strData)-1);
+    }
+    $strData='"rows": ['.$strData.']';
+     $strMeses='"cols": ['.$strMeses.']';
+
+     if(isset($_POST["cltest"]))
+     {
+         $clId=$_POST["cltest"];
+         //echo $clId;
+         $worksheet =& $workbook->addWorksheet('REPORT-4-PETICIONES');
+         $worksheet->write(0, 0, 'PETICIONES');
+         $worksheet->write(0, 1, 'DIAS');
+         $worksheet->write(0, 2, 'FECHA INICIO');
+         $worksheet->write(0, 3, 'FECHA FIN');
+
+         $sql="select ps.id, IFNULL(datediff((select max(pc.fecha_creacion) from p_peticion_comments pc where pc.id=ps.id),ps.fecha_creacion),0) nro_dias,
+                 ps.fecha_creacion,(select max(pc.fecha_creacion) from p_peticion_comments pc where pc.id=ps.id) fecha_fin
+                from p_solicitud ps where  ps.client_id=".$clId." and 
+                ps.id_tecnico=".$_POST["clientId"]." and ps.estado=".$estado." and date_format(ps.fecha_creacion,'%Y%m')>=date_format('".$dt_ini."','%Y%m') 
+                and date_format(ps.fecha_creacion,'%Y%m')<=date_format('".$dt_fin."','%Y%m') ";
+        //$worksheet->write(0, 2, $sql);
+        $result = mysqli_query($databasecon,$sql);
+        if(mysqli_num_rows($result) > 0)  
+        {
+            $ctr=1;
+            
+            while($row = mysqli_fetch_assoc($result)) 
+            {
+                $worksheet->write($ctr, 0, $row["id"]);
+                $worksheet->write($ctr, 1, $row["nro_dias"]);
+                $worksheet->write($ctr, 2, $row["fecha_creacion"]);
+                $worksheet->write($ctr, 3, $row["fecha_fin"]);
+                $ctr++;
+            }
+        }
+    }
+
+$workbook->close();
+?>

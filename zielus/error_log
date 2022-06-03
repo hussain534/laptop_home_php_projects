@@ -1,0 +1,176 @@
+[13-Feb-2017 23:45:00 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'merakiprod01'@'localhost' (using password: YES) in /home4/hussain123/public_html/zielus/config.php on line 2
+[13-Feb-2017 23:45:08 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'merakiprod01'@'localhost' (using password: YES) in /home4/hussain123/public_html/zielus/config.php on line 2
+[13-Feb-2017 23:45:17 America/Chicago] PHP Warning:  mysqli_connect(): (28000/1045): Access denied for user 'merakiprod01'@'localhost' (using password: YES) in /home4/hussain123/public_html/zielus/config.php on line 2
+[13-Feb-2017 23:52:25 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1376
+[13-Feb-2017 23:56:32 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/asignarConductorAction.php:32) in /home4/hussain123/public_html/zielus/asignarConductorAction.php on line 44
+[14-Feb-2017 00:10:36 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1376
+[14-Feb-2017 00:19:52 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1376
+[14-Feb-2017 00:19:56 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1376
+[14-Feb-2017 00:19:58 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1376
+[14-Feb-2017 00:20:52 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1376
+[11-Apr-2017 20:33:43 America/Chicago] PHP Parse error:  syntax error, unexpected '/' in /home4/hussain123/public_html/zielus/dbcontroller.php on line 365
+[11-Apr-2017 20:37:06 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/dbcontroller.php:365) in /home4/hussain123/public_html/zielus/insertDetallesAutomovil.php on line 284
+[11-Apr-2017 20:39:19 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/insertDetallesAutomovil.php:163) in /home4/hussain123/public_html/zielus/insertDetallesAutomovil.php on line 284
+[11-Apr-2017 20:41:26 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/dbcontroller.php:347) in /home4/hussain123/public_html/zielus/insertDetallesAutomovil.php on line 284
+[11-Apr-2017 20:43:15 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/dbcontroller.php:347) in /home4/hussain123/public_html/zielus/insertDetallesAutomovil.php on line 284
+[12-Apr-2017 06:54:42 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[12-Apr-2017 06:54:42 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1880
+[12-Apr-2017 06:54:42 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 247
+[12-Apr-2017 06:54:42 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[15-Apr-2017 21:26:36 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/util.php:55) in /home4/hussain123/public_html/zielus/reservarRetornoDesdeAeropuerto.php on line 27
+[15-Apr-2017 22:18:23 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/util.php:55) in /home4/hussain123/public_html/zielus/reservarRetornoDesdeAeropuerto.php on line 27
+[16-Apr-2017 00:28:07 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 2440
+[19-Apr-2017 10:06:51 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[19-Apr-2017 10:06:51 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1927
+[19-Apr-2017 10:06:51 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[19-Apr-2017 10:06:51 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[19-Apr-2017 10:07:09 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[19-Apr-2017 10:07:15 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[19-Apr-2017 10:07:15 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1927
+[19-Apr-2017 10:07:15 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[19-Apr-2017 10:07:15 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[19-Apr-2017 10:07:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[19-Apr-2017 10:07:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1927
+[19-Apr-2017 10:07:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[19-Apr-2017 10:07:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[19-Apr-2017 10:07:22 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[19-Apr-2017 10:07:22 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1927
+[19-Apr-2017 10:07:22 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[19-Apr-2017 10:07:22 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[23-Apr-2017 23:27:52 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[23-Apr-2017 23:28:43 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[24-Apr-2017 21:43:07 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[24-Apr-2017 21:47:33 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[24-Apr-2017 21:52:43 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[24-Apr-2017 23:32:38 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[24-Apr-2017 23:34:14 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[24-Apr-2017 23:38:20 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[24-Apr-2017 23:38:31 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[24-Apr-2017 23:46:25 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[24-Apr-2017 23:47:01 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[24-Apr-2017 23:49:41 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[25-Apr-2017 00:14:44 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[26-Apr-2017 21:08:16 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[26-Apr-2017 21:11:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[27-Apr-2017 16:13:49 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[27-Apr-2017 16:13:49 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[27-Apr-2017 16:13:49 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[27-Apr-2017 16:13:49 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[27-Apr-2017 16:13:53 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[27-Apr-2017 16:14:02 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[27-Apr-2017 16:14:02 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[27-Apr-2017 16:14:02 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[27-Apr-2017 16:14:02 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[27-Apr-2017 16:14:04 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[27-Apr-2017 16:14:04 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[27-Apr-2017 16:14:04 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[27-Apr-2017 16:14:04 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[27-Apr-2017 16:14:05 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[27-Apr-2017 16:14:06 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[27-Apr-2017 16:14:06 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[27-Apr-2017 16:14:06 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[27-Apr-2017 16:14:06 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[27-Apr-2017 16:14:07 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[27-Apr-2017 16:14:07 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[27-Apr-2017 16:14:07 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1945
+[27-Apr-2017 16:14:07 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[27-Apr-2017 16:14:07 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[29-Apr-2017 18:59:23 America/Chicago] PHP Catchable fatal error:  Object of class Facebook\Helpers\FacebookRedirectLoginHelper could not be converted to string in /home4/hussain123/public_html/zielus/fb-callback.php on line 11
+[29-Apr-2017 19:03:15 America/Chicago] PHP Catchable fatal error:  Object of class Facebook\Helpers\FacebookRedirectLoginHelper could not be converted to string in /home4/hussain123/public_html/zielus/fb-callback.php on line 11
+[29-Apr-2017 19:12:49 America/Chicago] PHP Fatal error:  Cannot access self:: when no class scope is active in /home4/hussain123/public_html/zielus/fb-callback.php on line 12
+[29-Apr-2017 19:22:57 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[29-Apr-2017 19:24:45 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 19:30:41 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[29-Apr-2017 19:30:45 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 19:31:13 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 19:31:43 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 19:47:46 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 19:48:00 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 19:48:22 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 19:59:54 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[29-Apr-2017 20:04:23 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 2557
+[29-Apr-2017 20:04:28 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 2557
+[01-May-2017 16:56:26 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[01-May-2017 18:11:13 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[01-May-2017 20:19:01 America/Chicago] PHP Parse error:  syntax error, unexpected '[' in /home4/hussain123/public_html/zielus/submenu.php on line 19
+[01-May-2017 22:51:13 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[01-May-2017 22:51:13 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1946
+[01-May-2017 22:51:13 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[01-May-2017 22:51:13 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[01-May-2017 22:51:17 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[01-May-2017 22:51:17 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1946
+[01-May-2017 22:51:17 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[01-May-2017 22:51:17 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[01-May-2017 22:51:34 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/util.php:58) in /home4/hussain123/public_html/zielus/asignarConductor.php on line 17
+[02-May-2017 12:44:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1863
+[02-May-2017 12:44:19 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[02-May-2017 12:59:13 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[02-May-2017 13:07:41 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[02-May-2017 21:35:33 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[02-May-2017 21:37:50 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[02-May-2017 21:39:59 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[02-May-2017 21:46:40 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1872
+[02-May-2017 21:46:40 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[02-May-2017 21:53:41 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1872
+[02-May-2017 21:53:41 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[02-May-2017 21:54:23 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1872
+[02-May-2017 21:54:23 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[02-May-2017 21:57:33 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1872
+[02-May-2017 21:57:33 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[02-May-2017 21:57:45 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1872
+[02-May-2017 21:57:45 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[02-May-2017 22:05:04 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[02-May-2017 22:05:10 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[02-May-2017 22:05:21 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[02-May-2017 22:07:22 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[02-May-2017 22:07:26 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[02-May-2017 22:07:35 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:16:41 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[03-May-2017 13:18:39 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:18:39 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:19:17 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:20:52 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:21:09 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:21:09 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:37:47 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:38:17 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 13:38:43 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 22:24:43 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[03-May-2017 22:25:08 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 22:25:34 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[03-May-2017 22:25:44 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[06-May-2017 16:53:22 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/util.php:58) in /home4/hussain123/public_html/zielus/misreservas.php on line 17
+[06-May-2017 16:53:22 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1243
+[06-May-2017 16:53:25 America/Chicago] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/hussain123/public_html/zielus/util.php:58) in /home4/hussain123/public_html/zielus/pagar.php on line 19
+[06-May-2017 16:53:30 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[06-May-2017 16:53:30 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1955
+[06-May-2017 16:53:30 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[06-May-2017 16:53:30 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[06-May-2017 16:53:30 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[06-May-2017 16:53:31 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[06-May-2017 16:53:31 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1955
+[06-May-2017 16:53:31 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[06-May-2017 16:53:31 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[06-May-2017 16:53:32 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 196
+[06-May-2017 16:53:32 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 1955
+[06-May-2017 16:53:32 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 248
+[06-May-2017 16:53:32 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/dbcontroller.php on line 223
+[06-May-2017 19:11:44 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[06-May-2017 23:45:36 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34
+[07-May-2017 20:57:03 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[07-May-2017 21:22:16 America/Chicago] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, boolean given in /home4/hussain123/public_html/zielus/revision.php on line 53
+[10-May-2017 23:00:52 America/Chicago] PHP Notice:  Undefined index: secret_code in /home4/hussain123/public_html/zielus/revision.php on line 34

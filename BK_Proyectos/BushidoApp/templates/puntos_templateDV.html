@@ -1,0 +1,190 @@
+<!-- Edit this file to change the layout of the detail view form -->
+
+<script src="resources/datepicker/js/datepicker.packed.js"></script>
+<link href="resources/datepicker/css/datepicker.css" rel="stylesheet">
+
+<a name="detail-view"></a>
+<div class="panel-heading"><h3 class="panel-title"><strong><%%DETAIL_VIEW_TITLE%%></strong></h3></div>
+
+<div class="panel-body" id="puntos_dv_container">
+	<!-- child links -->
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<!-- form inputs -->
+		<div class="col-md-8 col-lg-10" id="puntos_dv_form">
+			<fieldset class="form-horizontal">
+
+				<div class="form-group">
+					<label for="fecha_actividad" class="control-label col-lg-3">Fecha de la Actividad<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fecha_actividad-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="fecha_actividad-description"><div class="alert alert-info">Fecha de la actividad</div></span>
+
+						<%%COMBO(fecha_actividad)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="fecha_ingreso" class="control-label col-lg-3">Fecha ingreso <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#fecha_ingreso-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="fecha_ingreso-description"><div class="alert alert-info">Fecha en la cual se regitro el punto Bushido</div></span>
+
+						<div class="form-control-static" id="fecha_ingreso"><%%VALUE(fecha_ingreso)%%></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="motivo" class="control-label col-lg-3">Motivo<span class="text-danger"><%%TRANSLATION(*)%%></span> <i class="glyphicon glyphicon-info-sign text-info" data-toggle="collapse" data-target="#motivo-description"></i></label>
+					<div class="col-lg-9">
+						<span class="help-block collapse" id="motivo-description"><div class="alert alert-info">Aqui se describira el motivo por el cual se adquirio el puntaje.</div></span>
+
+						<textarea class="form-control" name="motivo" id="motivo" rows="5"><%%VALUE(motivo)%%></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="puntaje" class="control-label col-lg-3">Puntaje<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<%%COMBO(puntaje)%%>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="impacto" class="control-label col-lg-3" data-parent_link="view_parent_modal">Impacto<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(impacto)%%><%%PLINK(impacto)%%><%%ADDNEW(impactos)%%></div><div class="col-xs-1"><span id="impactoLoading"></span></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="emblema" class="control-label col-lg-3">Emblema</label>
+					<div class="col-lg-9">
+						<div class="form-control-static" id="emblema"></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="postulante" class="control-label col-lg-3" data-parent_link="view_parent_modal">Postulante<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(postulante)%%><%%PLINK(postulante)%%><%%ADDNEW(persona)%%></div></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="persona" class="control-label col-lg-3" data-parent_link="view_parent_modal">Ganador<span class="text-danger"><%%TRANSLATION(*)%%></span></label>
+					<div class="col-lg-9">
+						<div class="row form-control-static"><div class="col-xs-11"><%%COMBO(persona)%%><%%PLINK(persona)%%><%%ADDNEW(persona)%%></div></div>
+					</div>
+				</div>
+
+			</fieldset>
+		</div>
+
+		<!-- DV action buttons -->
+		<div class="col-md-4 col-lg-2" id="puntos_dv_action_buttons">
+			<div class="btn-toolbar">
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%UPDATE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%DESELECT_BUTTON%%>
+					<%%DVPRINT_BUTTON%%>
+					<%%DELETE_BUTTON%%>
+				</div><p></p>
+				<div class="btn-group-vertical btn-group-lg" style="width: 100%;">
+					<%%INSERT_BUTTON%%>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</div><!-- /div class="panel-body" -->
+	<script>
+		$j(function() {
+			var add_new_mode = (!$j('input[name=SelectedID]').val());
+			var embedded_mode = ($j('input[name=Embedded]').val() == 1);
+
+			/* enable DV action buttons to float on scrolling down the form */
+			enable_dvab_floating();
+
+			$j('select, input[type=text], textarea').not(':disabled').eq(0).focus();
+			$j('form').eq(0).change(function(){
+				if($j(this).data('already_changed')) return;
+				if($j('#deselect').length) $j('#deselect').removeClass('btn-default').addClass('btn-warning').get(0).lastChild.data = " <%%TRANSLATION(Cancel)%%>";
+				$j(this).data('already_changed', true);
+			});
+
+			$j('a[href="<%%TRANSLATION(ImageFolder)%%>"]').click(function(){ return false; });
+
+
+			if(!embedded_mode){
+				/* add a horizontal spacer to [add new parent] buttons that don't have a spacered element before them */
+				$j('.add_new_parent').prev(':not(.hspacer-md)').next().addClass('hspacer-md');
+
+				$j('.add_new_parent').click(function(){
+					var pt = $j(this).attr('id').replace(/_add_new$/, '');
+					modal_window({
+						url: pt + '_view.php?addNew_x=1&Embedded=1',
+						close: function(){
+							var field_id = $j('#' + pt + '_add_new').prevAll('input:hidden').eq(0).attr('id');
+							$j('#' + field_id + '-container').select2('focus').select2('focus');
+						},
+						size: 'full',
+						title: $j(this).attr('title')
+					});
+				});
+			}
+
+			/* find and hide parent links if field label has data 'parent_link' set to 'view_parent_hidden' */
+			$j('label[data-parent_link=view_parent_hidden]').each(function(){
+				$j(this).parents('.form-group').find('.view_parent').hide();
+			});
+
+			$j('form').on('click', '.view_parent', function(){
+				var pt = $j(this).attr('id').replace(/_view_parent$/, '');
+				if($j(this).prevAll('input:hidden').length){
+					var parent_id = $j(this).prevAll('input:hidden').eq(0).val();
+				}else{
+					var parent_id = $j(this).prevAll().children('input:hidden').eq(0).val();
+				}
+
+				/* handle radio lookups */
+				if($j(this).prevAll('[type=radio]').length){
+					parent_id = $j(this).prevAll('[type=radio]').eq(0).val();
+				}
+
+				if(parent_id != '{empty_value}'){
+					var parent_link = $j(this).parents('.form-group').children('label').data('parent_link');
+					switch(parent_link){
+						case 'view_parent_hidden':
+							break;
+						case 'view_parent_modal':
+							modal_window({
+								url: pt + '_view.php?Embedded=1&SelectedID=' + encodeURIComponent(parent_id),
+								close: function(){
+									var field_id = $j('#' + pt + '_view_parent').prevAll('input:hidden').eq(0).attr('id');
+									$j('#' + field_id + '-container').select2('focus').select2('focus');
+								},
+								size: 'full',
+								title: $j(this).attr('title')
+							});
+							break;
+						case 'view_parent_same_window':
+							window.location = pt + '_view.php?Embedded=' + (embedded_mode ? '1' : '') + '&SelectedID=' + encodeURIComponent(parent_id);
+							break;
+						case 'view_parent_new_window':
+							window.open(pt + '_view.php?SelectedID=' + encodeURIComponent(parent_id));
+							break;
+					}
+
+				}
+			});
+
+
+		});
+	</script>

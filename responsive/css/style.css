@@ -1,0 +1,168 @@
+*
+{
+	#font-family: 'Bree Serif', serif !important;
+	#font-family: 'Pathway Gothic One', sans-serif;
+	#font-family: 'Amita', cursive;
+	#font-family: 'Acme', sans-serif;
+	#font-family: 'Cinzel', serif;
+	#font-family: 'Open Sans', sans-serif;
+	#font-family: 'Taviraj', serif;	
+	font-family: 'Copse', serif;
+	font-size: 12px;
+}
+
+
+
+.form-control
+{
+	font-size: 12px;
+	border-radius: 0 !important;
+}
+
+
+
+.navbar
+{
+	margin-bottom: 0;
+	border-radius: 0px !important;
+}
+
+.navbar-nav>li>a 
+{
+	letter-spacing: .1em;
+    margin: 0;
+    font-size: 12px;
+}
+
+.navbar-nav>li>a:hover 
+{
+    color: #fbc96c !important;
+    font-size: 14px;
+    color: bisquewhite;
+}
+
+.navbar-toggle 
+{
+    background-color: teal;
+    background-image: none;
+    border: 1px solid teal;
+    border-radius: 4px;
+    border-color: teal;
+}
+
+.container
+{
+	width: 100%;
+	#padding-right: 0px !important;
+	#padding-left: 0px !important;
+}
+
+
+#myNavbar>ul>li
+{
+	padding-left: 2px;
+	padding-right: 3px;
+}
+
+
+.nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover 
+{
+	#background-color: #3f535a !important;	
+	color:  black;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover 
+{
+	background-color: #3f535a !important;	
+	color: antiquewhite;
+}
+
+
+img
+{
+	width: 100%;
+	overflow: hidden;
+}
+
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12
+{
+    position: relative;
+    min-height: 1px;
+    padding-right: 0px !important; 
+    padding-left: 0px !important; 
+}
+
+
+.btn-warning {
+    color: #fff;
+    background-color: #c50012;
+    border-color: #eea236;
+}
+
+
+/*
+USER-DEFINED STYLES
+*/
+
+.add-on .input-group-btn > .btn 
+{
+	
+	background: #00b0f0;
+
+}
+
+.input-group-btn > .btn:hover 
+{
+	background: red;
+}
+
+
+.search
+{
+	width: 80%;
+	left: 10%;
+}
+
+
+
+
+logo
+{
+	font-size: 36px;
+	color: red;
+	border:1px dashed red;
+	padding: 1px 8px;
+}
+.order
+{
+	position: absolute;
+    z-index: 999;
+    bottom: 25%;
+    width:40%;
+    left: 30%;
+    margin-bottom:10px;
+    margin-top:30px;
+    letter-spacing:.2em;
+    margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1024px) {	
+
+}
+
+
+@media only screen and (max-width: 768px) {
+	
+}
+
+
+@media only screen and (max-width: 320px) {	
+
+}

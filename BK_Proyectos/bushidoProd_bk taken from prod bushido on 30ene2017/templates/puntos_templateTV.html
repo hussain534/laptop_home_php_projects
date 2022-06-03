@@ -1,0 +1,17 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!--
+	If you wish to hide the table view header that contains the column titles,
+	add the following to the puntos_init() hook (in hooks/puntos.php file)
+	  $options->ShowTableHeader = 0;
+-->
+
+		<td id="puntos-fecha_actividad-<%%VALUE(id)%%>" class="puntos-fecha_actividad "><%%SELECT%%><%%VALUE(fecha_actividad)%%><%%ENDSELECT%%></td>
+		<td id="puntos-fecha_ingreso-<%%VALUE(id)%%>" class="puntos-fecha_ingreso "><%%SELECT%%><%%VALUE(fecha_ingreso)%%><%%ENDSELECT%%></td>
+		<td id="puntos-motivo-<%%VALUE(id)%%>" class="puntos-motivo "><%%SELECT%%><%%VALUE(motivo)%%><%%ENDSELECT%%></td>
+		<td id="puntos-puntaje-<%%VALUE(id)%%>" class="puntos-puntaje text-right"><%%VALUE(puntaje)%%></td>
+		<td id="puntos-impacto-<%%VALUE(id)%%>" class="puntos-impacto "><%%SELECT%%><%%VALUE(impacto)%%><%%ENDSELECT%%></td>
+		<td id="puntos-emblema-<%%VALUE(id)%%>" class="puntos-emblema "><%%SELECT%%><img src="<%%TRANSLATION(ImageFolder)%%><%%VALUE(emblema)%%>" class="img-responsive img-thumbnail"><%%ENDSELECT%%></td>
+		<td id="puntos-postulante-<%%VALUE(id)%%>" class="puntos-postulante "><%%SELECT%%><%%VALUE(postulante)%%><%%ENDSELECT%%></td>
+		<td id="puntos-persona-<%%VALUE(id)%%>" class="puntos-persona "><%%SELECT%%><%%VALUE(persona)%%><%%ENDSELECT%%></td>

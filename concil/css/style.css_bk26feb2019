@@ -1,0 +1,308 @@
+*
+{
+	#font-family: 'Bree Serif', serif !important;
+	#font-family: 'Pathway Gothic One', sans-serif;
+	#font-family: 'Amita', cursive;
+	
+    #font-family: 'Acme', sans-serif;
+	#font-family: 'Cinzel', serif;
+	#font-family: 'Open Sans', sans-serif;
+	#font-family: 'Taviraj', serif;	
+	font-family: 'Copse', serif;
+
+    #font-family: 'Cuprum', sans-serif;
+    #font-family: 'Courgette', cursive;
+    #font-family: 'Permanent Marker', cursive;
+    #font-family: 'Kalam', cursive;
+    #font-family: 'Bad Script', cursive;
+	
+    #font-size: 14px;
+}
+
+a
+{
+    text-decoration: none !important;
+}
+
+body
+{
+    #background-image: url('../images/background.jpg');
+    background-image: url('../images/background.png');
+    background-size: cover;
+}
+
+
+.pageTitle
+{
+    #background-image: linear-gradient(to left, rgba(255,0,0,0), lightslategrey);
+    margin:0px;
+    #padding: 20px 20px 20px 3px;
+    font-weight: bold;
+    font-size: 20px;
+
+    background-image: linear-gradient(to left, rgba(255,0,0,0), #ae1c1f);
+    padding: 10px 20px 10px 3px;
+    color:ivory;
+}
+
+.table-responsive
+{
+    #background: antiquewhite !important;
+}
+
+ul
+{
+    z-index: 999;
+}
+
+ .dash_panel
+ {
+    padding: 80px 0px;
+    border-radius: 10px;
+ }
+
+.dash_panel:hover
+{
+    background: black;
+    opacity: .5;
+}
+.form-control
+{
+	font-size: 14px;
+	border-radius: 0 !important;
+    #background: aliceblue;
+    background: #ffdead;
+}
+
+
+
+.form-control-rounded
+{
+    font-size: 14px;
+    border-radius: 10px !important;
+}
+
+.container-fluid
+{
+    margin-top: 10px;
+}
+
+
+input[type=radio]
+{
+    margin-top: 14px !important;
+    padding-right: 30px !important;
+}
+
+.navbar
+{
+	margin-bottom: 0;
+	border-radius: 0px !important;
+    height: 85px;
+}
+
+.navbar-inverse 
+{
+    background-color: #504e4e;
+    #border-color: transparent;
+    border-top: 5px solid #ae1c1f;
+}
+
+.navbar-nav
+{
+    #background: deepskyblue;
+    background: #f29100;
+}
+
+.navbar-nav>li>a 
+{
+	letter-spacing: .1em;
+    margin: 0;
+    font-size: 14px;
+}
+
+.navbar-nav>li>a:hover 
+{
+    color: #fbc96c !important;
+    font-size: 14px;
+    
+}
+
+.navbar-toggle 
+{
+    #background-color: teal;
+    background-image: none;
+    border: 1px solid teal;
+    border-radius: 4px;
+    border-color: teal;
+}
+
+.container
+{
+	width: 100%;
+	#padding-right: 0px !important;
+	#padding-left: 0px !important;
+}
+
+.login-register-block
+{
+    #background: chocolate;
+    padding:30px;
+}
+
+.nav-tabs>li>a, .nav-tabs>li>a:focus, .nav-tabs>li>a:hover 
+{
+	#background-color: #3f535a !important;	
+	color:  black;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover 
+{
+	background-color: #3f535a !important;	
+	color: antiquewhite;
+}
+
+
+img
+{
+	width: 100%;
+	overflow: hidden;
+}
+
+logo
+{
+    font-size: 28px;
+	color: ivory;
+	padding: 1px 8px 1px 3px;
+}
+logo>img
+{
+    width:300px !important;
+    height:60px;
+}
+
+.navbar-brand
+{
+    padding: 3px;
+}
+
+.btn_center
+{
+    width: 200px;
+
+}
+
+.btn-info
+{
+    background: #ae1c1f !important;
+    border-color: #ae1c1f !important;
+}
+
+.btn-info:hover
+{
+    background: #f29100 !important;
+    border-color: #f29100 !important;
+}
+.btn-side
+{
+    margin: 0px 2px;
+}
+
+.my_label
+{
+    background: #00b0f0;
+    #margin:10px;
+    padding:10px;
+    color:ivory;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.my_badge
+{
+    #float: right;
+    padding:10px;
+    background: crimson;
+    color:ivory;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-header
+{
+    #background: chocolate;
+    background: #ae1c1f;
+}
+
+.table-header td
+{
+    color: white;
+    border-right: 1px solid white;
+}
+
+.table-body
+{
+    #background: burlywood;
+}
+
+.glyphicon
+{
+    padding: 0px 10px;
+}
+
+.glyphicon-floppy-saved
+{
+    color: #00b0f0;
+}
+
+.glyphicon-floppy-remove
+{
+    color: red;
+}
+
+.caret
+{
+    margin-top: -15px;
+    margin-left: -10px;
+    color: ivory;
+}
+
+.dropdown-menu>li
+{
+    padding: 0px;
+    #background: deepskyblue;
+    background: #ae1c1f;
+}
+
+.dropdown-menu>li>a
+{
+    padding: 10px 15px;
+    color: ivory;
+}
+
+.dropdown-menu>li>a:hover
+{
+    #background: darkblue;
+    background: #f29100;
+    color: ivory;
+}
+
+label
+{
+    margin: 10px 0px 0px 3px !important;
+}
+
+@media only screen and (max-width: 1024px) {	
+
+}
+
+
+@media only screen and (max-width: 768px) {
+	
+}
+
+
+@media only screen and (max-width: 320px) {	
+
+}

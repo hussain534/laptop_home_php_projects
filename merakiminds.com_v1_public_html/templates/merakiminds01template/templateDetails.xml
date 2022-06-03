@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<extension version="3.4" type="template">
+	<name>MerakiMinds01template</name>
+	<author>MMHussain</author>
+	<authorEmail>hussain.mm.2006@gmail.com</authorEmail>
+	<version>1.0.0</version>
+	<description>This is first MerakiMinds custom joomla 3.4 template</description>
+	<files>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>index.html</filename>
+		<folder>images</folder>
+		<folder>css</folder>
+		<folder>js</folder>
+	</files>
+	<positions>
+		<position>contact_header</position>
+		<position>logo</position>
+		<position>menu</position>
+		<position>mobileMenuIcon</position>
+		<position>mobileMenu</position>
+		<position>slider</position>
+		<position>container</position>
+	</positions>
+</extension>

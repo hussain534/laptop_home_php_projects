@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<extension version="3.0" type="template">
+	<name>shop534_v2</name>
+	<author>MM HUSSAIN</author>
+	<authorEmail>hussain.mm.2006@gmail.com</authorEmail>
+	<version>1.0</version>
+	<description>This is secong version of shop534 template</description>
+	<files>
+		<filename>index.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>index.html</filename>
+		<folder>config</folder>
+		<folder>css</folder>
+		<folder>js</folder>
+		<folder>images</folder>
+	</files>
+</extension>

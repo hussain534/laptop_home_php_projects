@@ -1,0 +1,97 @@
+legend
+	{
+	  border:1px solid #ccc;
+	  padding:3px 40px;
+	  border-radius:5px;
+	  box-shadow:2px 2px 2px #2b2b2b;
+	  background:darkcyan;
+	  color:white;
+	}
+	fieldset
+	{
+	  margin: 30px auto;
+	  /*background: #2b2b2b;*/
+	  #background: antiquewhite;
+	  border-radius:8px;
+	  box-shadow:1px 1px 8px black;
+	  border:none;
+	  width:380px;
+	}
+	input[type='text']
+	{
+	  border-radius: 5px;
+	} 
+
+	.datarow
+	{
+	  #width: 33%;
+	  margin: 0 auto;
+	  float: left;
+	  position: relative;
+	  padding-bottom: 10px;
+	}
+
+	.data
+	{
+	  width: 400px;
+	  #border:1px solid white;
+	  #text-align: center;
+	  #margin:20px 0 0;
+	  float: left;
+	}
+
+	label
+	{
+	  display: block;
+	  padding: 10px 10px 2px;
+	  vertical-align: top;
+	  font-size: 13px;
+	  font-weight: bold;
+	  text-transform: uppercase;
+	  color: darkcyan;
+	  cursor: pointer;
+	}
+
+	.datarow input
+	{
+	  margin: 0 10px 0;
+	}
+
+	.datarow_desc, .datarow_submit
+	{
+	  margin: 0 0 20px; 
+	  width: 100%;
+	  #border: 1px solid black;
+	  #margin:0 auto;
+	}
+
+	textarea
+	{
+	  margin: 0 10px;
+	  /*background: #2b2b2b;*/
+	  #background: darkcyan;
+	  color:darkcyan;
+	  border-radius: 8px;
+	  padding: 5px;
+	  #box-shadow: 5px 5px 3px #2b2b2b;
+	}
+
+	 .submit_button:hover
+	{
+	  margin: 0 10px;
+	  background: darkcyan;
+	  border-radius: 5px;
+	  padding: 3px 8px;
+	  color:white;
+	}
+
+	.submit_button
+	{
+	  margin: 0 10px;
+	  background: white;
+	  border-radius: 5px;
+	  padding: 3px 8px;
+	  color:darkcyan;
+	  border: 1px solid #ccc;
+	  box-shadow: 3px 3px 3px #ccc;
+	}

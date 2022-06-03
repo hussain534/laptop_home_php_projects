@@ -1,0 +1,12 @@
+<!-- Edit this file to change the layout of each record in the table view -->
+<!-- To disable clicking of a field, remove the <%%SELECT%%> and <%%ENDSELECT%%> formatters around it-->
+
+<!--
+	If you wish to hide the table view header that contains the column titles,
+	add the following to the reglamento_init() hook (in hooks/reglamento.php file)
+	  $options->ShowTableHeader = 0;
+-->
+
+		<td id="reglamento-archivo-<%%VALUE(id)%%>" class="reglamento-archivo "><a href="link.php?t=reglamento&f=archivo&i=<%%VALUE(id)%%>" target="_blank" title="<%%VALUE(archivo)%%>" class="btn btn-default"><i class="glyphicon glyphicon-file text-info"></i></a></td>
+		<td id="reglamento-descripcion-<%%VALUE(id)%%>" class="reglamento-descripcion "><%%SELECT%%><%%VALUE(descripcion)%%><%%ENDSELECT%%></td>
+		<script>jQuery(function(){ var e_archivo='<%%VALUE(archivo)%%>'; if(e_archivo=='' || e_archivo=='&nbsp;') jQuery(/*<*/ '#reglamento-archivo-<%%VALUE(id)%%>' /*>*/).html(''); });</script>

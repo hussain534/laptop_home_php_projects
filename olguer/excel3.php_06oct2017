@@ -1,0 +1,94 @@
+<?php
+error_reporting(0);
+require_once 'Spreadsheet/Excel/Writer.php';
+
+// Creating a workbook
+$workbook = new Spreadsheet_Excel_Writer();
+
+// sending HTTP headers
+$workbook->send('test.xls');
+
+// Creating a worksheet
+$worksheet =& $workbook->addWorksheet('REPORT-3');
+
+// The actual data
+
+$worksheet->write(0, 0, 'CLIENTE');
+$worksheet->write(0, 1, 'TIPO CLIENTE');
+$worksheet->write(0, 2, 'ESTADO');
+$worksheet->write(0, 3, 'PETICIONES(%)');
+// Let's send the file
+//$workbook->close();
+
+defined('__JEXEC') or ('Access denied');
+    session_start();
+    include_once('config.php');    
+    $DEBUG_STATUS = $PRINT_LOG;
+
+    require 'dbcontroller.php';
+    $controller = new controller();
+    
+    $dt_ini=$_POST["dt_ini"];
+    $dt_fin=$_POST["dt_fin"];
+    //$tipo_cliente=1;
+    $estado=$_POST["estadoPeticion"];
+    $tipo_cliente=$_POST["tipoCliente"];
+
+    if($_POST["estadoPeticion"]==1)
+        $estadoTsxt="ABIERTO";
+    else if($_POST["estadoPeticion"]==2)
+        $estadoTsxt="EN CURSO";
+    else if($_POST["estadoPeticion"]==3)
+        $estadoTsxt="CERRADO";
+
+    //echo 'dt_ini:'.$dt_ini.'<br>';
+    //echo 'dt_fin:'.$dt_fin.'<br>';
+    $strHeader='{"id":"","label":"A","pattern":"","type":"string"},
+                {"id":"","label":"CLIENTES","pattern":"","type":"string"},
+                {"id":"","label":"NRO","pattern":"","type":"number"}';
+    $strData="";
+    $clientes=array();
+    $count=0;    
+    $total=0;                
+    //$strTemp="";
+    $sql="select pc.nombre client_name,count(*) ctr ,(case when pc.tipo_cliente=1 then 'RENAL' when pc.tipo_cliente=2 then 'LABORATORIO' else 'NA' end) tipo_cliente
+            from p_solicitud ps,p_clientes pc where ps.client_id=pc.id 
+        and date_format(ps.fecha_creacion,'%Y%m')>=date_format('".$dt_ini."','%Y%m')
+        and date_format(ps.fecha_creacion,'%Y%m')<=date_format('".$dt_fin."','%Y%m') 
+        and ps.estado=".$estado;
+    if($tipo_cliente!=99)
+        $sql=$sql." and pc.tipo_cliente=".$tipo_cliente;
+    $sql=$sql." group by client_name order by client_name";
+    //echo 'sql:'.$sql.'<br>';
+    $result = mysqli_query($databasecon,$sql);
+    if(mysqli_num_rows($result) > 0)  
+    {
+        while($row = mysqli_fetch_assoc($result)) 
+        {
+            $clientes[$count] = array($row["client_name"],$row["ctr"],$row["tipo_cliente"]);
+            $total=$total+$row["ctr"];
+            $count++;
+            
+        }
+    }
+    //echo print_r($clientes).'<br>';
+
+    for($x=0;$x<count($clientes);$x++)
+    {
+        $strData=$strData.'{"c":[{"v":"'.$clientes[$x][0].'","f":null},{"v":'.round($clientes[$x][1]*100/$total,2).',"f":null}]},';   
+        $worksheet->write((1+$x), 0, $clientes[$x][0]);                                  
+        $worksheet->write((1+$x), 1, $clientes[$x][2]); 
+        $worksheet->write((1+$x), 2, $estadoTsxt);  
+        $worksheet->write((1+$x), 3, round($clientes[$x][1]*100/$total,2));  
+    }
+
+    if(isset($strData) && strlen($strData)>1)
+    {
+        $strData=substr($strData,0,strlen($strData)-1);
+    }
+    $strData='"rows": ['.$strData.']';
+    
+    $strHeader='"cols": ['.$strHeader.']';
+
+$workbook->close();
+?>

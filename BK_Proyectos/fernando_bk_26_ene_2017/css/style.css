@@ -1,0 +1,75 @@
+
+@import url("//db.onlinewebfonts.com/c/c6f5218272f98dd91e0742b9c2bdb0a2?family=Gang+of+Three");
+
+html {
+
+  font-family: "Gang+of+Three",sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+
+}
+
+body {
+  font-family: "Gang of Three", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.42857143;
+  color: #ebebeb;
+  //background-color: #2b3e50;
+  
+}
+
+.navbar-inverse {
+    background-color: #4E5D6C;
+    border-color: #4E5D6C;
+}
+
+logo
+{
+    color:#dbddde;
+}
+
+.navbar
+{
+    height:40px;
+    min-height:40px;
+    border-radius: 0;
+    border-color: none;
+    margin: 0;
+}
+.navbar-brand
+{
+    padding: 9px 15px;
+}
+
+.container
+{
+    width: 97%;
+}
+
+#home
+{
+    min-height: 600px;
+    /*background: url('../images/gate.jpg');
+    background-attachment: fixed;
+    background-size: cover;*/
+}
+
+.login
+{
+    background-color:#4E5D6C;
+}
+
+.login_title
+{
+    background: #a81b1d;
+}
+
+.btn
+{
+    background: #a81b1d;
+}
+
+.link1
+{
+     color: #a81b1d;   
+}

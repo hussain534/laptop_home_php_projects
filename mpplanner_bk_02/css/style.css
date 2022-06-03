@@ -1,0 +1,150 @@
+*
+{
+	#font-family: 'Bree Serif', serif !important;
+	#font-family: 'Pathway Gothic One', sans-serif;
+	#font-family: 'Amita', cursive;
+	
+    #font-family: 'Acme', sans-serif;
+	#font-family: 'Cinzel', serif;
+	#font-family: 'Open Sans', sans-serif;
+	#font-family: 'Taviraj', serif;	
+	font-family: 'Copse', serif;
+
+    #font-family: 'Cuprum', sans-serif;
+    #font-family: 'Courgette', cursive;
+    #font-family: 'Permanent Marker', cursive;
+    #font-family: 'Kalam', cursive;
+    #font-family: 'Bad Script', cursive;
+	
+    font-size: 12px;
+}
+body
+{
+    background-image: url('../images/background.jpg');
+    #background-image: url('../images/background.png');
+    background-size: cover;
+}
+
+.index
+{
+    background: url(https://i0.nicepik.com/files/733/859/776/yellow-wallpaper-shapes-abstract.jpg);
+    background-size: cover;
+}
+
+.navbar_panel
+{
+    padding-right: 0px !important;
+    padding-left:  0px !important;
+}
+
+.navbar
+{
+    margin-bottom: 0px !important;
+    border-radius: 0px !important;
+}
+
+.navbar-inverse 
+{
+    background-color: #2d132c;
+    border-color: #2d132c;
+}
+
+logo
+{
+    font-size: 24px;
+    color: red;
+    text-orientation: mixed;
+}
+
+.dropdown-menu>li>a 
+{
+    display: block;
+    background: #28c3d4;
+    padding: 8px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: azure;
+    white-space: nowrap;
+}
+.close
+{
+    font-size: 14px;
+}
+
+.close>span
+{
+    font-size: 18px;
+}
+
+
+.glyphicon-pencil,.glyphicon-remove,.glyphicon-arrow-up,.glyphicon-arrow-down
+{
+    padding: 10px;
+    background-color: black;
+    font-size: small !important;
+    border-radius: 50%;
+}
+
+.sessionUserData
+{
+    background: #801336;
+    padding: 10px 0px;
+}
+
+.pageTitle
+{
+    background: #c72c41;
+    padding: 5px;
+    margin-bottom: 35px;
+    text-align: center;
+    font-size: 32px !important;
+}
+
+.pageTitle>div
+{
+    font-size: 18px !important;
+    color: ivory;
+}
+
+thead
+{
+    background-color: #248ea9;
+    color: ivory;
+}
+
+data 
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    text-align: center;
+    word-break: break-all;
+}
+label
+{
+    min-width: 150px;
+    padding: 5px 0px;
+    text-transform: uppercase !important;
+    #text-decoration: underline;
+}
+.data-grid
+{
+    padding: 30px;
+}
+
+@media only screen and (max-width: 1024px) {	
+
+}
+
+
+@media only screen and (max-width: 768px) {
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a 
+    {
+        color: azure;
+    }
+}
+
+
+@media only screen and (max-width: 320px) {	
+
+}

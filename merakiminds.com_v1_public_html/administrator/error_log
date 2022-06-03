@@ -1,0 +1,14 @@
+[06-Dec-2015 23:26:27 America/Chicago] PHP Warning:  simplexml_load_file(): I/O warning : failed to load external entity &quot;/home1/merakiadmin/public_html/templates/merakiminds01template/templateDetails.xml&quot; in /home1/merakiadmin/public_html/administrator/components/com_templates/models/style.php on line 381
+[06-Dec-2015 23:28:06 America/Chicago] PHP Warning:  simplexml_load_file(): I/O warning : failed to load external entity &quot;/home1/merakiadmin/public_html/templates/merakiminds01template/templateDetails.xml&quot; in /home1/merakiadmin/public_html/administrator/components/com_templates/models/style.php on line 381
+[07-Dec-2015 07:53:18 America/Chicago] PHP Warning:  Maximum number of allowable file uploads has been exceeded in Unknown on line 0
+[11-Dec-2015 23:39:28 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[11-Dec-2015 23:42:10 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[11-Dec-2015 23:42:39 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:21:04 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:21:25 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:30:23 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:30:39 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:33:06 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:33:34 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:43:09 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
+[12-Dec-2015 00:43:33 America/Chicago] PHP Warning:  constant(): Couldn't find constant JPATH_ in /home1/merakiadmin/public_html/libraries/cms/installer/adapter/module.php on line 127
