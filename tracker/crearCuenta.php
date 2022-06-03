@@ -145,6 +145,7 @@
                 <br>                        
                 <!-- <center> -->
                     <button type="submit" class="btn btn-info btn_center" title="Click to enter our portal">CREAR CUENTA<span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <a href="crearCuenta.php"><button type="button" class="btn btn-info" >RESET<span class="glyphicon glyphicon-chevron-right"></span></button></a>
                 <!-- </center> -->
             </form>
         </div>

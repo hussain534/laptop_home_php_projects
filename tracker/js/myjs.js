@@ -845,7 +845,7 @@ function sortTableByParalelo()
 
 function FindByName() {
   var input, filter, table, tr, td, i, txtValue;
-  document.getElementById("email").value='';
+  //document.getElementById("email").value='';
   input = document.getElementById("nombre");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
@@ -865,7 +865,7 @@ function FindByName() {
 
 function FindByEmail() {
   var input, filter, table, tr, td, i, txtValue;
-  document.getElementById("nombre").value='';
+  //document.getElementById("nombre").value='';
   input = document.getElementById("email");
   filter = input.value.toUpperCase();
   table = document.getElementById("myTable");
