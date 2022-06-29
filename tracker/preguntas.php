@@ -17,30 +17,34 @@
     $DEBUG_STATUS = $PRINT_LOG;
     require 'controladorDB.php';
     $controladorDB = new controladorDB();*/
-    $dbTable='preguntas';
-    if(isset($_GET["pid"]) && isset($_GET["sid"]))
+
+    if(isset($_SESSION["ID_TIPOEVALUACION"]))
+        $idTipoEvaluacion=$_SESSION["ID_TIPOEVALUACION"];
+    else
+        $idTipoEvaluacion=0;
+    if(isset($_SESSION["ID_SECCION"]))
+        $idSeccion=$_SESSION["ID_SECCION"];
+    else
+        $idSeccion=0;
+
+    if(isset($_GET["pid"]))
     {
-        $data = $controladorDB->obtenerPreguntas($databasecon,$_GET["pid"],$_GET["sid"],$dbTable,$DEBUG_STATUS);
-        $id=$data[0][0];
-        $id_session=$data[0][1];
-        $nombre=$data[0][2];
-    }
-    else if(isset($_SESSION["ID_SECCION"]))
-    {
-        $id_session=$_SESSION["ID_SECCION"];
-        $data = $controladorDB->obtenerPreguntas($databasecon,0,$_SESSION["ID_SECCION"],$dbTable,$DEBUG_STATUS);
-        $id=0;
-        //$id_session=$data[0][1];
-        $nombre="";
-        unset($_SESSION["ID_SECCION"]);
+        $id=$_GET["pid"];
+        $nombrePregunta=$_GET["pregunta"];
     }
     else
     {
         $id=0;
-        $id_session=0;
-        $nombre='';
-        $data = $controladorDB->obtenerPreguntas($databasecon,0,0,$dbTable,$DEBUG_STATUS);
+        $nombrePregunta="";
     }
+    
+    
+    /*unset($_SESSION['ID_TIPOEVALUACION']);
+    unset($_SESSION['ID_SECCION']);*/
+
+    $dbTable='preguntas';
+
+    $data = $controladorDB->obtenerTipoevaluacionSeccionPreguntas($databasecon,$idTipoEvaluacion,$idSeccion,0,$DEBUG_STATUS);
     //echo 'count::'.count($permisos);
 ?>
 <style type="text/css">
@@ -80,48 +84,23 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <form method="post" action="controladorProceso.php?proceso=7&task=2">
+            <form method="post" action="controladorProceso.php?proceso=7&task=4">
                 <div class="row">
                     <div class="col-sm-12">
-                        <input type="hidden" id="id" name ="id" value=<?php echo $id;?> /> 
-                        <input type="hidden" id="dbTable" name ="dbTable" value=<?php echo $dbTable;?> /> 
+                        <input type="hidden" id="id" name ="id" value=<?php echo $id;?> />
+                        <input type="hidden" id="idTipoEvaluacion" name ="idTipoEvaluacion" value=<?php echo $idTipoEvaluacion;?> /> 
+                        <input type="hidden" id="idSeccion" name ="idSeccion" value=<?php echo $idSeccion;?> /> 
+                        <!-- <input type="text" id="idPregunta" name ="idPregunta" value=<?php echo $idPregunta;?> />  -->
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-1"></div>
-                    <div class="col-sm-3">
-                        <label>SECCIÓN</label>
-                        <select name="seccion" class="form-control navbar-btn" id="idseccion"  onChange="selectSeccion()" required>
-                            <option value="0">ESCOGER SECCIÓN</option>
-                            <?php 
-                                $dbTable='seccion';
-                                $seccion = $controladorDB->obtenerData($databasecon,0,$dbTable,$DEBUG_STATUS);
-                                for($i=0;$i<count($seccion);$i++)
-                                {
-                                    if($id_session==$seccion[$i][0])
-                                    {
-                                        ?>
-                                            <option value=<?php echo $seccion[$i][0];?> selected="true"><?php echo '['.$seccion[$i][0].']:'.$seccion[$i][1];?></option>
-                                        <?php
-                                    }
-                                    else
-                                    {
-                                        ?>
-                                            <option value=<?php echo $seccion[$i][0];?>><?php echo '['.$seccion[$i][0].']:'.$seccion[$i][1];?></option>
-                                        <?php
-                                    }
-                                }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-sm-7">
+                    <div class="col-sm-12">
                         <label>PREGUNTA</label>
-                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="PREGUNTA" name="nombre" value="<?php echo $nombre;?>"required>
+                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="PREGUNTA" name="nombre" value="<?php echo $nombrePregunta;?>" required>
                     </div>
-                    <div class="col-sm-1"></div>
                 </div>
                 <div class="row text-center">
-                    <button type="submit" class="btn btn-info" title="Click to enter our portal">ACTUALIZAR<span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button type="submit" class="btn btn-info" title="Click to enter our portal">INGRESAR<span class="glyphicon glyphicon-chevron-right"></span></button>
                     <a href="preguntas.php"><button type="button" class="btn btn-info" >LIMPIAR<span class="glyphicon glyphicon-chevron-right"></span></button></a>
                 </div>
             </form>
@@ -138,6 +117,7 @@
                     <thead>
                         <tr class="table-header">
                             <td>#FILA</td>
+                            <td>TIPO EVALUACION</td>
                             <td>SECCION</td>
                             <td>PREGUNTAS</td>
                             <td>ACCION</td>
@@ -151,12 +131,13 @@
             ?>
                         <tr class="table-body">
                             <!-- <td><?php echo $data[$x][0];?></td> --> 
-                            <td><?php echo $x;?></td>
-                            <td><?php echo $data[$x][3];?></td> 
-                            <td><?php echo $data[$x][2];?></td>
+                            <td><?php echo $x+1;?></td>
+                            <td><?php echo $data[$x][5];?></td> 
+                            <td><?php echo $data[$x][4];?></td>
+                            <td><?php echo $data[$x][3];?></td>
                             <td>
-                                <a href="preguntas.php?pid=<?php echo $data[$x][0];?>&sid=<?php echo $data[$x][1];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a>
-                                <a href="controladorProceso.php?proceso=7&task=1&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
+                                <a href="preguntas.php?pid=<?php echo $data[$x][0];?>&pregunta=<?php echo $data[$x][3];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a>
+                                <a href="controladorProceso.php?proceso=7&task=5&id=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
                             </td>
                         </tr>
             <?php

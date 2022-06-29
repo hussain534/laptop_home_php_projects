@@ -175,56 +175,6 @@
                             ?>
                         </select>
                     </div>
-                    <!-- <div class="col-sm-4">
-                        <label>EVALUADOR</label>
-                        <select name="idEvalr" class="form-control" id="idEvalr" onChange="buscarComboData()" required>
-                            <option value=0><?php echo '[0]:TODO';?></option>
-                            <?php
-                                $dbTable='c_perfil';
-                                $evaluador = $controladorDB->obtenerData($databasecon,0,$dbTable,$DEBUG_STATUS);
-                                for($i=0;$i<count($evaluador);$i++)
-                                {
-                                    if($id_perfil_evaluador==$evaluador[$i][0])
-                                    {
-                                        ?>
-                                            <option value=<?php echo $evaluador[$i][0];?> selected="true"><?php echo '['.$evaluador[$i][0].']:'.$evaluador[$i][1];?></option>
-                                        <?php
-                                    }
-                                    else
-                                    {
-                                        ?>
-                                            <option value=<?php echo $evaluador[$i][0];?>><?php echo '['.$evaluador[$i][0].']:'.$evaluador[$i][1];?></option>
-                                        <?php
-                                    }                                    
-                                }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="col-sm-4">
-                        <label>EVALUADO</label>
-                        <select name="idEvalo" class="form-control" id="idEvalo" onChange="buscarComboData()" required>
-                            <option value=0><?php echo '[0]:TODO';?></option>
-                            <?php
-                                $dbTable='c_perfil';
-                                $evaluado = $controladorDB->obtenerData($databasecon,0,$dbTable,$DEBUG_STATUS);
-                                for($i=0;$i<count($evaluado);$i++)
-                                {
-                                    if($id_perfil_evaluado==$evaluado[$i][0])
-                                    {
-                                        ?>
-                                            <option value=<?php echo $evaluado[$i][0];?> selected="true"><?php echo '['.$evaluado[$i][0].']:'.$evaluado[$i][1];?></option>
-                                        <?php
-                                    }
-                                    else
-                                    {
-                                        ?>
-                                            <option value=<?php echo $evaluado[$i][0];?>><?php echo '['.$evaluado[$i][0].']:'.$evaluado[$i][1];?></option>
-                                        <?php
-                                    }                                    
-                                }
-                            ?>
-                        </select>
-                    </div> -->
                     <div class="col-sm-4">
                         <label>EVALUADOR</label>
                             <?php
@@ -264,10 +214,11 @@
                     <div class="col-sm-4">
                         <label>SECCION</label>
                         <select name="idSec" class="form-control navbar-btn" id="idSec" onChange="buscarComboData()" required>
-                            <option value=0><?php echo '[0]:TODO';?></option>
+                            <option value=0><?php echo '[0]:ESCOGER SECCION';?></option>
                             <?php
                                 $dbTable='seccion';
-                                $seccion = $controladorDB->obtenerData($databasecon,0,$dbTable,$DEBUG_STATUS);
+                                //$seccion = $controladorDB->obtenerData($databasecon,0,$dbTable,$DEBUG_STATUS);
+                                $seccion = $controladorDB->getSeccionPorTipoEvaluacion($databasecon,$idTipoEvaluacion,$DEBUG_STATUS);
                                 for($i=0;$i<count($seccion);$i++)
                                 {
                                     if($idSeccion==$seccion[$i][0])
@@ -289,7 +240,7 @@
                     <div class="col-sm-8">
                         <label>PREGUNTA</label>
                         <select name="idPreg" class="form-control navbar-btn" id="idPreg" onChange="buscarComboData()" required>
-                            <option value=0><?php echo '[0]:TODO';?></option>
+                            <option value=0><?php echo '[0]:ESCOGER PREGUNTA';?></option>
                             <?php
                                 $dbTable='preguntas';
                                 $pregunta = $controladorDB->obtenerPreguntas($databasecon,0,$idSeccion,$dbTable,$DEBUG_STATUS);
@@ -331,8 +282,8 @@
                     <thead>
                         <tr class="table-header">
                             <td>#FILA</td>
-                            <td>SECCION</td>
                             <td>TIPO EVALUACION</td>
+                            <td>SECCION</td>
                             <td>PREGUNTA</td>
                             <td>EVALUADO</td>
                             <td>EVALUADOR</td>
@@ -346,9 +297,9 @@
             ?>
                         <tr class="table-body">
                             <!-- <td><?php echo $data[$x][0];?></td>  -->
-                            <td><?php echo $x+1;?></td> 
+                            <td><?php echo $x+1;?></td>
+                            <td><?php echo $data[$x][4];?></td> 
                             <td><?php echo $data[$x][2];?></td>
-                            <td><?php echo $data[$x][4];?></td>
                             <td><?php echo $data[$x][6];?></td>
                             <td><?php echo $data[$x][8];?></td>
                             <td><?php echo $data[$x][10];?></td>

@@ -105,6 +105,25 @@
         $url='editCuenta.php?uid='.$_POST['userId'];
         header("Location:$url");
     }
+    //LIPIAR CACHE EN APLICACION
+    else if($_GET["proceso"]==0 && $_GET["task"]==999)
+    {
+        unset($_SESSION["message"]);
+        unset($_SESSION["PERMISOS_IDPERFIL"]);
+        unset($_SESSION["PERMISOS_IDMENU"]);
+        unset($_SESSION["ID_SECCION"]);
+        unset($_SESSION["ID_PREGUNTA"]);
+        unset($_SESSION["ID_COMPONENTE"]);
+        unset($_SESSION["ID_TIPOPAR"]);
+        unset($_SESSION["ID_EVALUADO"]);
+        unset($_SESSION["ID_EVALUADOR"]);
+        unset($_SESSION["ID_DESC_ANO_EVAL"]);
+        unset($_SESSION["ID_TIPOEVALUACION"]);
+        unset($_SESSION["ID_SATISFACCION_NIVEL"]);
+
+        $url=$_SERVER[HTTP_REFERER];
+        header("Location:$url");
+    }
     //ACTUALIZAR MENU
     else if($_GET["proceso"]==4 && $_GET["task"]==0)
     {   
@@ -226,7 +245,7 @@
     }
     else if($_GET["proceso"]==7 && $_GET["task"]==2)
     {   
-        $err = $controladorDB->actualizarPreguntasData($databasecon,$_POST["id"],$_POST["nombre"],$_POST["seccion"],$_POST["dbTable"],$DEBUG_STATUS);
+        $err = $controladorDB->actualizarPreguntasData($databasecon,$_POST["id"],$_POST["nombre"],$_POST["seccion"],$DEBUG_STATUS);
         if($err==0)
         {
             $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. INTENTA MAS TARDE</center>";
@@ -240,7 +259,46 @@
     }      
     else if($_GET["proceso"]==7 && $_GET["task"]==3)
     {   
-        $_SESSION["ID_SECCION"]=$_GET["idseccion"];
+        $_SESSION["ID_SECCION"]=$_GET["idSec"];
+    }
+    else if($_GET["proceso"]==7 && $_GET["task"]==4)
+    {   
+        $err = $controladorDB->actualizarPreguntasDataConUsoDeTipoEvaluacionySeccion($databasecon,$_POST["id"],$_POST["idTipoEvaluacion"],$_POST["idSeccion"],preg_replace('/\s+/', ' ',$_POST["nombre"]),$DEBUG_STATUS);
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN INGRESAR DATA. INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>DATA INGRESADO / ACTUALIZADO</center>";
+        }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN INGRESAR DATA. EXISTE MISMO PREGUNTA EN BASE CON MISMO TIPO EVALUACION Y SECCION SELECIONADA</center>";
+        }
+        if($_POST["id"]==0)
+            $url='preguntas.php';
+        else
+            $url="preguntas.php?pid=".$_POST["id"]."&pregunta=".$_POST["nombre"];
+        header("Location:$url");
+    }
+    else if($_GET["proceso"]==7 && $_GET["task"]==5)
+    {   
+        $err = $controladorDB->deshabilitarPreguntasDataConUsoDeTipoEvaluacionySeccion($databasecon,$_GET["id"],$DEBUG_STATUS);
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ELIMINAR DATA. INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>DATA ELIMINADO</center>";
+        }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN ELIMINAR DATA. EXISTE MISMO PREGUNTA EN EVALUACION ACTIVO</center>";
+        }
+        $url='preguntas.php';
+        header("Location:$url");
     }
     else if($_GET["proceso"]==8 && $_GET["task"]==0)
     {   
@@ -335,6 +393,10 @@
         {
             $_SESSION["message"]="<center>DATA ACTUALIZADO</center>";
         }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. EXISTE OTRO EVALUACION CON MISMO DESCRIPCION</center>";
+        }
         $url=$_POST["dbTable"].'.php';
         header("Location:$url");
     }
@@ -348,6 +410,10 @@
         else if($err==1)
         {
             $_SESSION["message"]="<center>EVALUACION INICIADA</center>";
+        }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN INICIAR EVALUACION. EXISTE OTRO EVALUACION ACTIVO Y DEBES FINALIZAR/DESHABILITAR PARA ACTIVAR NUEVA EVALUACION</center>";
         }
         $url='planevaluacion.php';
         header("Location:$url");
@@ -456,8 +522,57 @@
         {
             $_SESSION["message"]="<center>PARALELO DATA ELIMINADO</center>";
         }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN ELIMINAR PARALELO. EXISTEN ESTUDIANTES ACTIVOS ASIGNADO A PARALELO QUE QUIERES ELIMINAR.</center>";
+        }
         $url='paralelo.php';
         header("Location:$url");
+    }
+    else if($_GET["proceso"]==14 && $_GET["task"]==0)
+    {   
+        $err = $controladorDB->actualizarDataTipoEvaluacionYSeccion($databasecon,$_POST["idTiEv"],$_POST["idSec"],$DEBUG_STATUS);
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR MAPPING (TIPO EVALUACION-SECCION)</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>MAPPING (TIPO EVALUACION-SECCION) ACTUALIZADO</center>";
+        }
+        $url='mappingTipoEvaluacionSecion.php';
+        header("Location:$url");
+    }
+    else if($_GET["proceso"]==14 && $_GET["task"]==1)
+    {   
+        $err = $controladorDB->deshabilitarDataTipoEvaluacionYSeccion($databasecon,$_GET["id"],$_GET["tid"],$_GET["sid"],$DEBUG_STATUS);
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ELIMINAR MAPPING (TIPO EVALUACION-SECCION). INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>MAPPING (TIPO EVALUACION-SECCION) DATA ELIMINADO</center>";
+        }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN ELIMINAR MAPPING. EXISTEN MAPPING (TIPO EVALUACION-SECCION) ACTIVOS EN EVALUACION.</center>";
+        }
+        $url='mappingTipoEvaluacionSecion.php';
+        header("Location:$url");
+    }
+
+    else if($_GET["proceso"]==14 && $_GET["task"]==2)
+    {   
+        $_SESSION["ID_TIPOEVALUACION"]=$_GET["tid"];
+        $_SESSION["ID_SECCION"]=$_GET["sid"];
+        $url='preguntas.php';
+        header("Location:$url");
+    }
+    else if($_GET["proceso"]==14 && $_GET["task"]==3)
+    {   
+        $_SESSION["ID_TIPOEVALUACION"]=$_GET["idTiEv"];
+        $_SESSION["ID_SECCION"]=$_GET["idSec"];
     }
     else
     {

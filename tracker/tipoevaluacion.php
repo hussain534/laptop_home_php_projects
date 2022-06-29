@@ -118,7 +118,7 @@
                     </div>
                     <div class="col-sm-2">
                         <label>EVALUADOR</label>
-                        <select name="idEvalr" class="form-control navbar-btn" id="idEvalr" onChange="buscarComboData()" required>
+                        <select name="idEvalr" class="form-control navbar-btn" id="idEvalr" onChange="buscarComboData()" required readonly="true">
                             <option value=-1><?php echo '[-1]:TODO';?></option>
                             <!-- <option value=0><?php echo '[0]:MISMO';?></option> -->
                             <?php

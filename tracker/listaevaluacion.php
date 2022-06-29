@@ -106,6 +106,7 @@
     </div>
     <br>
     <?php
+        echo "Encontramos " . count($listaEvaluacion). " registros<br><br>";
         if(isset($listaEvaluacion))
         {
             ?>

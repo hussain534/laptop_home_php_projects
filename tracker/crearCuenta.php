@@ -171,7 +171,7 @@
                             <td>CELULAR</td>
                             <td>UBICACION <button style="background:maroon;border:none;padding:0px;margin-left:8px;"><span class="glyphicon glyphicon-arrow-down" onclick="sortTableByUbicacion()"></span></button></td>
                             <td>PARALELO <button style="background:maroon;border:none;padding:0px;margin-left:8px;"><span class="glyphicon glyphicon-arrow-down" onclick="sortTableByParalelo()"></span></button></td>
-                            <td>HABILITADO</td>
+                            <td>ACCIÓN</td>
                         </tr>
                     </thead>
                     <tbody>

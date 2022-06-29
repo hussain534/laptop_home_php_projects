@@ -8,7 +8,10 @@
 	"folders":
 	[
 		{
-			"path": "tracker"
-		}
+			"path": "tracker",
+		},
+		{
+			"path": "G:\\Hussain\\git_projects\\xfiv-incoming-messages",
+		},
 	],
 }

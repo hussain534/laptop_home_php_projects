@@ -79,7 +79,7 @@
             </div>          
         </div>
     </div>
-    <div class="row pageTitle">
+    <!-- <div class="row pageTitle">
         <div class="col-sm-12">
             DASHBOARD - EVALUADOR * TIPO EVALUACION
         </div>
@@ -131,5 +131,5 @@
                 <div class="col-sm-2"></div>
             </div>          
         </div>
-    </div>
+    </div> -->
 </div>

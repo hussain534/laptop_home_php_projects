@@ -4,6 +4,9 @@ window.setTimeout(function()
         $(this).remove(); 
     });
 }, 6000);
+
+var weburl="http://localhost/tracker/";
+//var weburl="https://tracker.ayaanfms.com/";
 $(document).ready(function()
 {
     $('img').each(function() 
@@ -12,7 +15,8 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion1.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion1.php",
+        //url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion1.php",
+        url: weburl+"myChartTipoEvaluacion1.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -59,7 +63,7 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion2.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion2.php",
+        url: weburl+"myChartTipoEvaluacion2.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -106,7 +110,7 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion3.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion3.php",
+        url: weburl+"myChartTipoEvaluacion3.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -153,7 +157,7 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion4.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion4.php",
+        url: weburl+"myChartTipoEvaluacion4.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -200,7 +204,7 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion1evaluador.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion1evaluador.php",
+        url: weburl+"myChartTipoEvaluacion1evaluador.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -247,7 +251,7 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion2evaluador.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion2evaluador.php",
+        url: weburl+"myChartTipoEvaluacion2evaluador.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -294,7 +298,7 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion3evaluador.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion3evaluador.php",
+        url: weburl+"myChartTipoEvaluacion3evaluador.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -341,7 +345,7 @@ $(document).ready(function()
     });
     $.ajax({
         //url: "http://localhost/tracker/myChartTipoEvaluacion4evaluador.php",
-        url: "https://tracker.ayaanfms.com/myChartTipoEvaluacion4evaluador.php",
+        url: weburl+"myChartTipoEvaluacion4evaluador.php",
         method: "GET",
         success: function(data) {
             console.log(data);
@@ -458,6 +462,45 @@ function buscarComboData()
     xmlhttp.open("GET", "controladorProceso.php?proceso=9&task=3&idPreg="+idPreg+"&idComp="+idComp+"&idTiPa="+idTiPa+"&idTiEv="+idTiEv+"&idSec="+idSec+"&idEvalo="+idEvalo+"&idEvalr="+idEvalr, true);
     xmlhttp.send();
 }
+
+function configurarSessionTipoEvalSeccion() 
+{
+    idTiEv=document.getElementById("idTiEv").value;
+    idSec=document.getElementById("idSec").value;
+    //alert(idSec);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            //document.getElementById("idPerfil").value = this.responseText;
+            location.reload();
+        }
+    };
+    xmlhttp.open("GET", "controladorProceso.php?proceso=14&task=3&idTiEv="+idTiEv+"&idSec="+idSec, true);
+    xmlhttp.send();
+}
+
+function configurarSessionTipoEvalSeccionPregunta() 
+{
+    idTiEv=document.getElementById("idTiEv").value;
+    idSec=document.getElementById("idseccion").value;
+    idPregunta=document.getElementById("nombre").value;
+    //alert(idSec);
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            //document.getElementById("idPerfil").value = this.responseText;
+            location.reload();
+        }
+    };
+    xmlhttp.open("GET", "controladorProceso.php?proceso=14&task=3&idTiEv="+idTiEv+"&idSec="+idSec+"&idPregunta="+idPregunta, true);
+    xmlhttp.send();
+}
+
+
 function buscarListaEvaluacion() 
 {
     //alert('inside');
@@ -526,6 +569,27 @@ function validateFormDatos()
         alert("EVALUADOR y EVALUADO NO PUEDEN SER MISMOS");
         return false;
     }*/
+    else
+    {
+        //alert("ALL OK");
+        return true;
+    }
+}
+
+function validateFormDatos2() 
+{
+    //alert("validateFormDatos");
+    
+    if(document.getElementById("idTiEv").value==0)
+    {
+        alert("Existen campos sin seleccion-TIPO EVALUACION");
+        return false;
+    }
+    else if(document.getElementById("idSec").value==0)
+    {
+        alert("Existen campos sin seleccion-SECCION");
+        return false;
+    }
     else
     {
         //alert("ALL OK");

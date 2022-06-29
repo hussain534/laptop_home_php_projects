@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"prin",
+				"print_r()"
+			],
+			[
+				"con",
+				"controladorDB"
+			],
+			[
+				"user",
+				"userPwd"
+			],
+			[
 				"id",
 				"id_paralelo"
 			],
@@ -502,92 +514,33 @@
 			[
 				"get",
 				"getElementById"
-			],
-			[
-				"pei",
-				"peticionDtl"
-			],
-			[
-				"peti",
-				"peticionDtl"
-			],
-			[
-				"tipo_",
-				"tipo_cliente"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "tracker/controladorProceso.php",
+			"file": "tracker/tipoevaluacion.php",
 			"settings":
 			{
-				"buffer_size": 16684,
-				"encoding": "UTF-8",
+				"buffer_size": 10104,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tracker/planevaluacion.php",
-			"settings":
-			{
-				"buffer_size": 9348,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tracker/listaevaluacion.php",
-			"settings":
-			{
-				"buffer_size": 5706,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tracker/datos.php",
-			"settings":
-			{
-				"buffer_size": 18241,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tracker/js/myjs.js",
-			"settings":
-			{
-				"buffer_size": 22910,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tracker/controladorDB.php",
-			"settings":
-			{
-				"buffer_size": 43239,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "tracker/evaluar.php",
-			"settings":
-			{
-				"buffer_size": 6078,
-				"line_ending": "Windows"
-			}
+			},
+			"undo_stack":
+			[
+			]
 		},
 		{
 			"file": "tracker/preguntas.php",
 			"settings":
 			{
-				"buffer_size": 6944,
+				"buffer_size": 6726,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
+			},
+			"undo_stack":
+			[
+			]
 		}
 	],
 	"build_system": "",
@@ -601,6 +554,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"trim",
+				"Trim Trailing White Space"
+			]
 		],
 		"width": 490.0
 	},
@@ -609,6 +566,7 @@
 		"height": 219.0,
 		"history":
 		[
+			"ls",
 			"php app/console doctrine:database:create"
 		]
 	},
@@ -623,16 +581,128 @@
 	},
 	"expanded_folders":
 	[
-		"/G/xampp/htdocs/tracker",
-		"/G/xampp/htdocs/tracker/js"
+		"/G/xampp/htdocs/tracker"
 	],
 	"file_history":
 	[
-		"/G/xampp/htdocs/tracker/preguntas.php",
-		"/G/xampp/htdocs/tracker/paralelo.php",
-		"/G/xampp/htdocs/tracker/crearCuenta.php",
-		"/G/xampp/htdocs/tracker/perfil.php",
 		"/G/xampp/htdocs/tracker/config.php",
+		"/G/xampp/htdocs/tracker/crearCuenta.php",
+		"/G/xampp/htdocs/tracker/controladorProceso.php",
+		"/G/xampp/htdocs/tracker/controladorDB.php",
+		"/G/xampp/htdocs/tracker/seccion.php",
+		"/G/xampp/htdocs/tracker/datos.php",
+		"/G/xampp/htdocs/tracker/js/myjs.js",
+		"/G/xampp/htdocs/tracker/tipoevaluacion.php",
+		"/G/xampp/htdocs/tracker/sessionData.php",
+		"/G/proyectos/bk/Docs/XFIV/spec examples",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/docker-compose.yml",
+		"/G/proyectos/bk/Docs/XFIV/xfiv actividades",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/s3_Upload-service.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/s3-upload-deployment.yaml",
+		"/G/Hussain/git_projects/installacion de ruby3.0.4 en ubuntu20 de aws.txt",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/accessconfig-deployment.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/ssl-generator.sh",
+		"/G/Hussain/git_projects/docker test.txt",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/messenger-deployment.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/queue-deployment.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/xfivconfiguserfb-deployment.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/ultramsgconnector-claim1-persistentvolumeclaim.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/accessconfig-claim0-persistentvolumeclaim.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/dynamodb-deployment.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/dynamodb-claim0-persistentvolumeclaim.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/dynamodb-service.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/360dialogconnector-claim1-persistentvolumeclaim.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/360dialogconnector-claim0-persistentvolumeclaim.yaml",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/pre-deploy.sh",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/gitignore/redis/redis.conf",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/up.sh",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker/dockerfile",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/v1/docker-compose/deploy-config.sh",
+		"/C/Users/EQUIPO 1/Downloads/spec examples",
+		"/G/Hussain/git_projects/xfiv-incoming-messages/.gitignore",
+		"/G/Hussain/git_projects/installacion de ruby3.0.4 en ubuntu20 de aws",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/Dockerfile",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/config/config.go",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/main.go",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/dev-helper/env-local.sh",
+		"/C/Users/EQUIPO 1/Downloads/xfiv actividades",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/dev-helper/run-server.sh",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/README.md",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/handlers/handlers.go",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/docker/build.sh",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/docker/docker-build.sh",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/docker/dockerfile.local",
+		"/G/Hussain/git_projects/xfiv-connector-whatsapp-360dialog/go.mod",
+		"/C/Users/EQUIPO 1/Desktop/chatwoot-base-develop/install.sh",
+		"/C/Users/EQUIPO 1/Desktop/chatwoot-base-develop/deployment/chatwoot-web.1.service",
+		"/C/Users/EQUIPO 1/Desktop/chatwoot-base-develop/config/routes.rb",
+		"/C/Users/EQUIPO 1/Desktop/chatwoot-base-develop/app/controllers/dashboard_controller.rb",
+		"/C/Users/EQUIPO 1/Desktop/chatwoot-base-develop/app/views/installation/onboarding/index.html.erb",
+		"/C/Users/EQUIPO 1/Desktop/chatwoot-base-develop/app/controllers/devise_overrides/token_validations_controller.rb",
+		"/G/Hussain/git_projects/chatwoot/db/migrate/20200510112339_create_installation_config.rb",
+		"/G/Hussain/git_projects/chatwoot/Gemfile.lock",
+		"/G/Hussain/salida kyndryl/guide.txt",
+		"/G/Hussain/git_projects/chatwoot/app/models/installation_config.rb",
+		"/G/Hussain/git_projects/chatwoot/db/schema.rb",
+		"/G/Hussain/git_projects/chatwoot/db/migrate/20200225162150_init_schema.rb",
+		"/G/Hussain/git_projects/chatwoot/db/seeds.rb",
+		"/G/Hussain/git_projects/chatwoot/config/environment.rb",
+		"/G/Hussain/git_projects/chatwoot/config/application.rb",
+		"/G/Hussain/git_projects/chatwoot/config/environments/production.rb",
+		"/C/Users/EQUIPO 1/Desktop/README.md",
+		"/G/Hussain/git_projects/xfiv-omnichannel/Gemfile.lock",
+		"/G/Hussain/git_projects/chatwoot/Gemfile",
+		"/C/Ruby31-x64/lib/ruby/gems/3.1.0/extensions/x64-mingw-ucrt/3.1.0/grpc-1.41.0/gem_make.out",
+		"/C/Ruby31-x64/include/ruby-3.1.0/ruby/internal/xmalloc.h",
+		"/C/Ruby31-x64/include/ruby-3.1.0/ruby/internal/attr/nodiscard.h",
+		"/C/Ruby31-x64/include/ruby-3.1.0/ruby/internal/config.h",
+		"/C/Ruby31-x64/include/ruby-3.1.0/ruby/ruby.h",
+		"/C/Ruby31-x64/include/ruby-3.1.0/ruby/defines.h",
+		"/G/Hussain/git_projects/xfiv-omnichannel/Gemfile",
+		"/G/Hussain/git_projects/xfiv-omnichannel/yarn.lock",
+		"/G/Hussain/git_projects/xfiv-omnichannel/.bundler-audit.yml",
+		"/G/Hussain/git_projects/xfiv-omnichannel/.ruby-version",
+		"/G/xampp/htdocs/tracker/header.php",
+		"/G/xampp/htdocs/tracker/cambiarClave.php",
+		"/G/xampp/htdocs/tracker/logopanel.php",
+		"/G/xampp/htdocs/tracker/preguntas.php",
+		"/G/xampp/htdocs/tracker/editCuenta.php",
+		"/G/xampp/htdocs/tracker/perfil.php",
+		"/G/xampp/htdocs/tracker/.htaccess",
+		"/G/xampp/htdocs/tracker/js/bootstrap.min.js",
+		"/G/xampp/htdocs/tracker/js/jquery-2.1.3.min.js",
+		"/G/xampp/htdocs/tracker/js/jquery.min.js",
+		"/G/xampp/htdocs/tracker/js/matchHeight.js",
+		"/G/xampp/htdocs/tracker/css/animate.css",
+		"/G/xampp/htdocs/tracker/css/bootstrap.min.css",
+		"/G/xampp/htdocs/tracker/css/google-api-jquery-ui.css",
+		"/G/xampp/htdocs/tracker/css/style.css",
+		"/G/xampp/htdocs/tracker/recuperarClave.php",
+		"/G/xampp/htdocs/tracker/respuestaevaluacion.php",
+		"/G/xampp/htdocs/tracker/sidemenu.php",
+		"/G/xampp/htdocs/tracker/util.php",
+		"/G/xampp/htdocs/tracker/~componente.php",
+		"/G/xampp/htdocs/tracker/~tipopar.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion2evaluador.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion3.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion3evaluador.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion4.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion4evaluador.php",
+		"/G/xampp/htdocs/tracker/paralelo.php",
+		"/G/xampp/htdocs/tracker/permisos.php",
+		"/G/xampp/htdocs/tracker/planevaluacion.php",
+		"/G/xampp/htdocs/tracker/listaevaluacion.php",
+		"/G/xampp/htdocs/tracker/logout.php",
+		"/G/xampp/htdocs/tracker/menu.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion1.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion1evaluador.php",
+		"/G/xampp/htdocs/tracker/myChartTipoEvaluacion2.php",
+		"/G/xampp/htdocs/tracker/crearUsuario.php",
+		"/G/xampp/htdocs/tracker/crearUsuarioEtapa.php",
+		"/G/xampp/htdocs/tracker/dashboard.php",
+		"/G/xampp/htdocs/tracker/evaluar.php",
+		"/G/xampp/htdocs/tracker/footer.php",
+		"/G/xampp/htdocs/tracker/index.php",
 		"/G/xampp/htdocs/mpplanner/revision.php",
 		"/C/Users/EQUIPO 1/Downloads/desktop 15jul2019/WhatsApp Video/Private/.nomedia",
 		"/G/xampp/htdocs/mpplanner/menu.php",
@@ -642,130 +712,23 @@
 		"/G/xampp/htdocs/mpplanner/css/style.css",
 		"/G/xampp/htdocs/mpplanner/loginController.php",
 		"/G/xampp/htdocs/mpplanner/securityDBController.php",
-		"/G/xampp/htdocs/mpplanner/profile.php",
-		"/G/xampp/htdocs/mpplanner/js/myjs.js",
-		"/G/xampp/htdocs/mpplanner/config.php",
-		"/G/phonegap/MerakiJqueryApp2/config.xml",
-		"/G/xampp/htdocs/concil/config.php",
-		"/G/xampp/htdocs/mpplanner/client.php",
-		"/G/xampp/htdocs/mpplanner/access.php",
-		"/G/xampp/htdocs/mpplanner/sessionData.php",
-		"/G/xampp/htdocs/mpplanner/header.php",
-		"/G/xampp/htdocs/mpplanner/footer.php",
-		"/G/xampp/htdocs/concil/controladorProceso.php",
-		"/G/xampp/htdocs/mpplanner/index.php",
-		"/G/xampp/htdocs/concil/js/myjs.js",
-		"/G/xampp/htdocs/concil/controladorDB.php",
-		"/G/xampp/htdocs/mpplanner/recoverPassword.php",
-		"/G/xampp/htdocs/mpplanner/logout.php",
-		"/G/xampp/htdocs/mpplanner/controladorDB.php",
-		"/G/xampp/htdocs/mpplanner/controladorProceso.php",
-		"/G/xampp/htdocs/concil/encryptpwd.php",
-		"/G/xampp/htdocs/ayaanfms/css/style.css",
-		"/G/xampp/htdocs/ayaanfms/index.php",
-		"/G/xampp/htdocs/modular/home_header.php",
-		"/G/xampp/htdocs/modular/common/db_config.php",
-		"/G/xampp/htdocs/modular/index.php",
-		"/G/xampp/htdocs/modular/home.php",
-		"/G/xampp/htdocs/merakipm/config.php",
-		"/G/xampp/htdocs/concil/conciliacion.php",
-		"/G/xampp/htdocs/concil/verConciliacionHistory.php",
-		"/G/xampp/htdocs/concil/monitor_notifier.php",
-		"/G/xampp/htdocs/concil/jobs_notifier.php",
-		"/G/xampp/htdocs/concil/admin-usuario.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/encryptpwd.php",
-		"/G/xampp/htdocs/m360hd/config.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/conciliacion.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/js/myjs.js",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/controladorProceso.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/config.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/controladorDB.php",
-		"/G/xampp/htdocs/m360hd/dbcontroller.php",
-		"/C/Users/EQUIPO 1/Desktop/m360hd.sql",
-		"/G/xampp/htdocs/m360hd/js/myjs.js",
-		"/G/xampp/htdocs/m360hd/registrarGestion.php",
-		"/G/xampp/htdocs/m360hd/controller.php",
-		"/G/xampp/htdocs/m360hd/doUpload.php",
-		"/G/xampp/htdocs/m360hd/dashboard.php",
-		"/G/xampp/htdocs/m360hd/sit.sql",
-		"/G/xampp/htdocs/m360hd/asignarTrabajo.php",
-		"/G/xampp/htdocs/m360hd/exportFullTaskReport.php",
-		"/G/xampp/htdocs/m360hd/mostrarTodoTrabajo.php",
-		"/G/xampp/htdocs/m360hd/searchData.php",
-		"/G/xampp/htdocs/m360hd/baseConocimiento.php",
-		"/G/xampp/htdocs/m360hd/userRegister.php",
-		"/G/xampp/htdocs/m360hd/index.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/formatos.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/crearUsuario.php",
-		"/G/xampp/htdocs/m360hd/mostrarTrabajo.php",
-		"/G/xampp/htdocs/m360hd/css/style.css",
-		"/G/xampp/htdocs/m360hd/logopanel.php",
-		"/G/xampp/htdocs/m360hd/report_status_por_notification.php",
-		"/G/xampp/htdocs/m360hd/report_status_por_tiempo.php",
-		"/G/xampp/htdocs/m360hd/sessionData.php",
-		"/G/xampp/htdocs/m360hd/header.php",
-		"/G/proyectos/bk/Docs/HDGS/website/css/style.css",
-		"/G/proyectos/bk/Docs/HDGS/website/nosotros.html",
-		"/G/proyectos/htdocs/SIT-V2/config.php",
-		"/G/xampp/htdocs/conjunto/css/style.css",
-		"/G/proyectos/bk/Docs/HDGS/website/index.html",
-		"/G/proyectos/bk/Docs/HDGS/website/locales.html",
-		"/G/proyectos/bk/Docs/HDGS/website/eventos.html",
-		"/G/proyectos/bk/Docs/HDGS/website/menu.html",
-		"/G/proyectos/bk/Docs/HDGS/website/contact.html",
-		"/G/proyectos/bk/Docs/HDGS/website/js/myjs.js",
-		"/G/proyectos/htdocs/nexosafe/index.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/footer.php",
-		"/G/xampp/htdocs/conjunto/banner.php",
-		"/G/xampp/htdocs/conjunto/inicio.php",
-		"/G/xampp/htdocs/conjunto/index.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/util.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/index.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/crearUsuarioEtapa.php",
-		"/G/proyectos/bk/Docs/paginas WEB HDGS/RESPALDOS/3.jpg",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/ldap_check.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/crearCuenta.php",
-		"/G/xampp/htdocs/nexosafe/terminos.php",
-		"/G/proyectos/htdocs/nexosafe/terminos.php",
-		"/G/proyectos/htdocs/nexosafe/contact.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-dashboard.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/css/style.css",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-usercpu.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-systemcpu.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-memorypaging.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data-memoryfisico.php",
-		"/G/proyectos/htdocs/SIT-V2/js/myjs.js",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-memorypaging.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-memoryfisico.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-usercpu.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-systemcpu.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor-data.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testreport.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testreportdata.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testreportshow.php",
-		"/G/proyectos/htdocs/SIT-V2/dashboard.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/subirArchivoConciliacion.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/testsql.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/monitor_notifier.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/logopanel.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/header.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/autoconcil.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/checkUrl.php",
-		"/C/Users/EQUIPO 1/Desktop/phpservermon-3.2.0/index.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/verConciliacionHistory.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/verConciliacionResumen.php",
-		"/G/proyectos/bk/Docs/Concil_Etapa/migraciones_prod_20mayo2019/concil/~menu.php",
-		"/C/xampp/htdocs/concil/controladorDB.php"
+		"/G/xampp/htdocs/mpplanner/profile.php"
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 28.0
 	},
 	"find_in_files":
 	{
 		"height": 135.0,
 		"where_history":
 		[
+			"G:\\xampp\\htdocs\\olguer,<project filters>",
+			"G:\\xampp\\htdocs\\tracker,<project filters>",
+			"C:\\Users\\EQUIPO 1\\Desktop\\chatwoot-base-develop,<project filters>",
+			"G:\\Hussain\\git_projects\\chatwoot,<project filters>",
+			"G:\\Hussain\\git_projects\\xfiv-omnichannel,<project filters>",
+			"G:\\xampp\\htdocs\\tracker,<project filters>",
 			"G:\\xampp\\htdocs\\mpplanner",
 			"G:\\xampp\\htdocs\\m360hd",
 			"G:\\proyectos\\htdocs\\SIT-V2",
@@ -807,6 +770,66 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"manageSpecialCaracter",
+			"ó",
+			"whats",
+			"360",
+			"depends",
+			"image",
+			"ndynamodb",
+			"image",
+			"\\${XFIV_GITIGNORE}/",
+			"${XFIV_GITIGNORE}/",
+			"${XFIV_GITIGNORE}",
+			"xfiv_incomingMessages_1",
+			"export",
+			"chatwoot",
+			"setup_chatwoot",
+			"configure_db",
+			"install_databases",
+			"setup_chatwoot",
+			"chatwoot",
+			"chatwoot/",
+			"setup_chatwoot",
+			"chatwoot",
+			"setup_chatwoot",
+			"configure_rvm",
+			"setup_chatwoot",
+			"configure_rvm",
+			"configure_systemd_services",
+			"run_db_migrations",
+			"configure_systemd_services",
+			"setup_chatwoot",
+			"configure_db",
+			"configure_rvm",
+			"install_webserver",
+			"install_databases",
+			"install_dependencies",
+			"NoDatabaseError",
+			"raise ActiveRecord::ConnectionNotEstablished",
+			"fe_sendauth",
+			"bootsnap",
+			"locked",
+			"AddDeviseUserLockable",
+			"insta",
+			"create_table",
+			"webhoo",
+			"insta",
+			"chatwoot_dev",
+			"auth",
+			"5432",
+			"pg",
+			"grpc",
+			"ffi",
+			"noko",
+			"nokogiri",
+			"noko",
+			"reset",
+			"ALL OK",
+			"password_verify",
+			"contr",
+			"^[\\s]*?[\\n\\r]+",
+			"\\n",
 			"update",
 			"ID_",
 			"logo",
@@ -874,74 +897,18 @@
 			"contain",
 			"navbar",
 			"container",
-			"hussain1_homeshop",
-			"90%",
-			"status_call",
-			"rn_category",
-			"rn_order_management",
-			"creating session",
-			"http:",
-			"font-si",
-			"glyp",
-			"doUpload",
-			"addNew",
-			"input",
-			"table",
-			"getAllSelfStudyCourses",
-			"teachers",
-			"tr",
-			"thead",
-			"table",
-			"alert",
-			"gly",
-			"menu02",
-			"alert",
-			"form",
-			"info",
-			"input",
-			"imput",
-			"input",
-			"logo",
-			"btn",
-			"message_global.php",
-			"basket",
-			"deshabilitado",
-			"contable",
-			"menu.php",
-			"barChart",
-			"add_row",
-			"view product",
-			"body",
-			".btn.btn-flat",
-			".login-page, .register-page",
-			"fa fa-files-o",
-			".content-wrapper",
-			"tr ",
-			"tr",
-			".content-wrapper",
-			".main-header",
-			".main-header .navbar",
-			".main-sidebar",
-			".main-header .navbar",
-			".main-header .logo",
-			"adminlte.min.css",
-			"index2.html",
-			"img-circle",
-			".img-circle",
-			"htmlfooter",
-			"SYSLANG",
-			"container06",
-			"meraki",
-			"form",
-			"inputData",
-			"taskId"
+			"hussain1_homeshop"
 		],
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": false,
+		"regex": true,
 		"replace_history":
 		[
+			"/",
+			"",
+			"ENV",
+			"",
 			"#073849",
 			"m360hd",
 			"192.168.0.107",
@@ -960,32 +927,33 @@
 			"<br><br>"
 		],
 		"reverse": false,
+		"scrollbar_highlights": true,
 		"show_context": true,
 		"use_buffer2": true,
+		"use_gitignore": true,
 		"whole_word": false,
 		"wrap": true
 	},
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "tracker/controladorProceso.php",
+					"file": "tracker/tipoevaluacion.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16684,
+						"buffer_size": 10104,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13117,
-								13117
+								991,
+								991
 							]
 						],
 						"settings":
@@ -995,27 +963,29 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 13692.0,
+						"translation.y": 459.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
+					"stack_multiselect": false,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "tracker/planevaluacion.php",
+					"file": "tracker/preguntas.php",
+					"selected": true,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9348,
+						"buffer_size": 6726,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2467,
-								2467
+								652,
+								655
 							]
 						],
 						"settings":
@@ -1025,193 +995,11 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5608.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "tracker/listaevaluacion.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5706,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4671,
-								4671
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4049.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "tracker/datos.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18241,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1068,
-								1093
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1388.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "tracker/js/myjs.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 22910,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								16751,
-								16751
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 19151.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "tracker/controladorDB.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 43239,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								42081,
-								42092
-							]
-						],
-						"settings":
-						{
-							"rulers":
-							[
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 46622.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "tracker/evaluar.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6078,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								763,
-								791
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 589.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "tracker/preguntas.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 6944,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5059,
-								5059
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4189.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
+					"stack_multiselect": false,
 					"type": "text"
 				}
 			]
@@ -1298,7 +1086,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 243.0,
+	"side_bar_width": 515.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
