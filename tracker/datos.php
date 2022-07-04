@@ -42,6 +42,7 @@
     }
     else
         $idPlanEvaluacion=0;
+
     if(isset($_SESSION["ID_PREGUNTA"]))
         $idPregunta=$_SESSION["ID_PREGUNTA"];
     else
@@ -58,18 +59,22 @@
         $idTipoEvaluacion=$_SESSION["ID_TIPOEVALUACION"];
     else
         $idTipoEvaluacion=0;
+
     if(isset($_SESSION["ID_SECCION"]))
         $idSeccion=$_SESSION["ID_SECCION"];
     else
         $idSeccion=0;
-    if(isset($_SESSION["ID_EVALUADO"]))
+
+    /*if(isset($_SESSION["ID_EVALUADO"]))
         $idEvaluado=$_SESSION["ID_EVALUADO"];
     else
         $idEvaluado=0;
+
     if(isset($_SESSION["ID_EVALUADOR"]))
         $idEvaluador=$_SESSION["ID_EVALUADOR"];
     else
-        $idEvaluador=0;  
+        $idEvaluador=0; */ 
+
     unset($_SESSION['ID_PREGUNTA']);  
     //unset($_SESSION['ID_COMPONENTE']);
     //unset($_SESSION['ID_TIPOPAR']);
@@ -77,19 +82,24 @@
     unset($_SESSION['ID_SECCION']);
     unset($_SESSION['ID_EVALUADO']);
     unset($_SESSION['ID_EVALUADOR']);
-    $data = $controladorDB->obtenerDataDatos($databasecon,$idPlanEvaluacion,$idPregunta,$idSeccion,$idTipoEvaluacion,$idEvaluado,$idEvaluador,$dbTable,$DEBUG_STATUS);
+    
     //echo 'count::'.count($permisos);
-    $tipoevaluacion = $controladorDB->obtenerDataTipoEvaluacion($databasecon,$idTipoEvaluacion,'tipoevaluacion',$DEBUG_STATUS);
-    if(count($tipoevaluacion)>0)
+    //echo 'idTipoEvaluacion::'.$idTipoEvaluacion.'<br>';
+    $tipoeval = $controladorDB->obtenerDataTipoEvaluacion($databasecon,$idTipoEvaluacion,'tipoevaluacion',$DEBUG_STATUS);
+
+    if(count($tipoeval)>0)
     {
-        $id_perfil_evaluador=$tipoevaluacion[0][3];
-        $id_perfil_evaluado=$tipoevaluacion[0][4];
+        $id_perfil_evaluador=$tipoeval[0][3];
+        $id_perfil_evaluado=$tipoeval[0][4];
     }
     else
     {
         $id_perfil_evaluador=0;
         $id_perfil_evaluado=0;   
     }
+    //echo 'id_perfil_evaluador::'.$id_perfil_evaluador.'<br>';
+    //echo 'id_perfil_evaluado::'.$id_perfil_evaluado.'<br>';
+    $data = $controladorDB->obtenerDataDatos($databasecon,$idPlanEvaluacion,$idPregunta,$idSeccion,$idTipoEvaluacion,$id_perfil_evaluado,$id_perfil_evaluador,$dbTable,$DEBUG_STATUS);
 ?>
 <style type="text/css">
     body
@@ -188,7 +198,7 @@
                                             <input type="hidden" class="form-control navbar-btn" id="idEvalr" name ="idEvalr" value=<?php echo $evaluador[$i][0];?> readonly="true">
                                             <input type="text" class="form-control navbar-btn" value=<?php echo $evaluador[$i][1];?> readonly="true"> 
                                         <?php
-                                    }                                  
+                                    }                              
                                 }
                             ?>
                     </div>
@@ -239,6 +249,22 @@
                     </div>
                     <div class="col-sm-8">
                         <label>PREGUNTA</label>
+                        <?php
+                            $pregunta = $controladorDB->obtenerListaPreguntas($databasecon,$DEBUG_STATUS);
+                            $resPregunta="";
+                            for($i=0;$i<count($pregunta);$i++)
+                            {
+                                if($idPregunta==$pregunta[$i][0])
+                                {
+                                    ?>
+                                        $resPregunta=$pregunta[$i][1];
+                                    <?php
+                                }                                   
+                            }
+
+                        ?>
+                        <input type="text" name="preg" id="preg" class="form-control navbar-btn" value="<?php echo $resPregunta;?>"  placeholder="Ingresa Preguntas" onkeyup="FindByDescPreguntas()" required>
+                        <!-- <label>PREGUNTA</label>
                         <select name="idPreg" class="form-control navbar-btn" id="idPreg" onChange="buscarComboData()" required>
                             <option value=0><?php echo '[0]:ESCOGER PREGUNTA';?></option>
                             <?php
@@ -260,7 +286,7 @@
                                     }                                    
                                 }
                             ?>
-                        </select>
+                        </select> -->
                     </div>
                 </div>
                 <br>
@@ -278,7 +304,7 @@
             $dbTable='datos';
             ?>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr class="table-header">
                             <td>#FILA</td>

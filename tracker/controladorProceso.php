@@ -218,9 +218,10 @@
     else if($_GET["proceso"]==7 && $_GET["task"]==0)
     {   
         $err = $controladorDB->actualizarData($databasecon,$_POST["id"],$_POST["nombre"],$_POST["dbTable"],$DEBUG_STATUS);
+        
         if($err==0)
         {
-            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. INTENTA MAS TARDE</center>";
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA -  (SECCION-DUPLICADO)</center>";
         }
         else if($err==1)
         {
@@ -332,7 +333,8 @@
     {
         /*if(isset($_POST["idPlanEvaluacion"]))
             $idPlanEvaluacion=$_POST["idPlanEvaluacion"];*/
-        $err = $controladorDB->actualizarDataDatos($databasecon,$_POST["idPreg"],$_POST["idSec"],$_POST["idTiEv"],$_POST["idEvalo"],$_POST["idEvalr"],$_POST["idPlanEvaluacion"],$_POST["dbTable"],$DEBUG_STATUS);
+        /*$err = $controladorDB->actualizarDataDatos($databasecon,$_POST["idPreg"],$_POST["idSec"],$_POST["idTiEv"],$_POST["idEvalo"],$_POST["idEvalr"],$_POST["idPlanEvaluacion"],$_POST["dbTable"],$DEBUG_STATUS);*/
+        $err = $controladorDB->actualizarDataDatos($databasecon,$_POST["preg"],$_POST["idSec"],$_POST["idTiEv"],$_POST["idEvalo"],$_POST["idEvalr"],$_POST["idPlanEvaluacion"],$_POST["dbTable"],$DEBUG_STATUS);
         if($err==0)
         {
             $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. INTENTA MAS TARDE</center>";
@@ -341,6 +343,15 @@
         {
             $_SESSION["message"]="<center>DATA ACTUALIZADO</center>";
         }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. EXISTE MISMO PREGUNTA</center>";
+        }        
+        else if($err==3)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. EXISTE MISMO PREGUNTA BAJO MISMO TIPOEVALUACION Y SECCION</center>";
+        }
+
         if(isset($_POST["idPlanEvaluacion"]))
             $url=$_POST["dbTable"].'.php?pid='.$_POST["idPlanEvaluacion"];
         else
@@ -573,6 +584,39 @@
     {   
         $_SESSION["ID_TIPOEVALUACION"]=$_GET["idTiEv"];
         $_SESSION["ID_SECCION"]=$_GET["idSec"];
+    }
+    else if($_GET["proceso"]==15 && $_GET["task"]==0)
+    {   
+        //$err = $controladorDB->actualizarData($databasecon,$_POST["id"],$_POST["nombre"],$_POST["dbTable"],$DEBUG_STATUS);
+        $err = $controladorDB->actualizarDataSeccion($databasecon,$_POST["id"],$_POST["nombre"],$_POST["dbTable"],$DEBUG_STATUS);
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA -  (SECCION-DUPLICADO)</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>DATA ACTUALIZADO</center>";
+        }
+        $url=$_POST["dbTable"].'.php';
+        header("Location:$url");
+    }
+    else if($_GET["proceso"]==15 && $_GET["task"]==1)
+    {   
+        $err = $controladorDB->deshabilitarSeccionData($databasecon,$_GET["id"],$DEBUG_STATUS);
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ELIMINAR SECCION. INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>SECCION DATA ELIMINADO</center>";
+        }
+        else if($err==2)
+        {
+            $_SESSION["message"]="<center>ERROR EN ELIMINAR SECCION. EXISTE MISMO SECCION EN EVALUACION ACTIVO.</center>";
+        }
+        $url='seccion.php';
+        header("Location:$url");
     }
     else
     {

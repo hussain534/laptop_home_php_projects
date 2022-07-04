@@ -5,8 +5,8 @@
             <?php
                 if(isset($_SESSION["user_name"]))    
                 {
-                    //echo '<span style="color:#ae1c1f;font-weight:bold">BIENVENIDO</span><span style="color:#ae1c1f"> :: '.strtoupper($_SESSION["user_name"]).'</span><span style="color:#ae1c1f"> ('.strtoupper($_SESSION["perfil_nombre"]).')</span><br>';
-                    echo '<span style="color:#ae1c1f;font-weight:bold">BIENVENIDO</span><span style="color:#ae1c1f"> :: '.strtoupper($_SESSION["user_name"]).'</span><span style="color:#ae1c1f"> ('.strtoupper($_SESSION["perfil_nombre"]).')</span> <a href="controladorProceso.php?proceso=0&task=999"> <span class="glyphicon glyphicon-trash"></span></a><br>';
+                    echo '<span style="color:#ae1c1f;font-weight:bold">BIENVENIDO</span><span style="color:#ae1c1f"> :: '.strtoupper($_SESSION["user_name"]).'</span><span style="color:#ae1c1f"> ('.strtoupper($_SESSION["perfil_nombre"]).')</span><br>';
+                    //echo '<span style="color:#ae1c1f;font-weight:bold">BIENVENIDO</span><span style="color:#ae1c1f"> :: '.strtoupper($_SESSION["user_name"]).'</span><span style="color:#ae1c1f"> ('.strtoupper($_SESSION["perfil_nombre"]).')</span> <a href="controladorProceso.php?proceso=0&task=999"> <span class="glyphicon glyphicon-trash"></span></a><br>';
                 }
             ?>
     </div>

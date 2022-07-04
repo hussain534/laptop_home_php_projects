@@ -77,7 +77,7 @@
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
                         <label>NOMBRE PARALELO</label>
-                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="NOMBRE" name="nombre" value="<?php echo $nombre_perfil;?>"required>
+                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="NOMBRE" name="nombre" value="<?php echo $nombre_perfil;?>" onkeyup="FindByDescParalelo()" required>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
@@ -108,7 +108,7 @@
         {
             ?>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr class="table-header">
                             <td>#FILA</td>

@@ -197,7 +197,7 @@
                             <td>
                                 <!-- <a href="tipoevaluacion.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a> -->
                                 <a href="controladorProceso.php?proceso=14&task=1&id=<?php echo $data[$x][0];?>&tid=<?php echo $data[$x][1];?>&sid=<?php echo $data[$x][3];?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
-                                <a href="controladorProceso.php?proceso=14&task=2&id=<?php echo $data[$x][0];?>&tid=<?php echo $data[$x][1];?>&sid=<?php echo $data[$x][3];?>"><span class="glyphicon glyphicon-th-list" style="font-size:x-large;color:green;"></span></a>
+                                <!-- <a href="controladorProceso.php?proceso=14&task=2&id=<?php echo $data[$x][0];?>&tid=<?php echo $data[$x][1];?>&sid=<?php echo $data[$x][3];?>"><span class="glyphicon glyphicon-th-list" style="font-size:x-large;color:green;"></span></a> -->
                             </td>
                         </tr>
             <?php

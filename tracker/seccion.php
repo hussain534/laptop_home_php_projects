@@ -69,7 +69,7 @@
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <form method="post" action="controladorProceso.php?proceso=7&task=0">
+            <form method="post" action="controladorProceso.php?proceso=15&task=0">
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="hidden" id="id" name ="id" value=<?php echo $id;?> /> 
@@ -80,7 +80,7 @@
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
                         <label>SECCION</label>
-                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="NOMBRE" name="nombre" value="<?php echo $nombre;?>"required>
+                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="NOMBRE" name="nombre" value="<?php echo $nombre;?>" onkeyup="FindByDescSeccion()" required>
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
@@ -111,7 +111,7 @@
         {
             ?>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr class="table-header">
                             <td>ID</td>
@@ -129,7 +129,7 @@
                             <td><?php echo $data[$x][1];?></td>
                             <td>
                                 <a href="seccion.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a>
-                                <a href="controladorProceso.php?proceso=7&task=1&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
+                                <a href="controladorProceso.php?proceso=15&task=1&id=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
                             </td>
                         </tr>
             <?php

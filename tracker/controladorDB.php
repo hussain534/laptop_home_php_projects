@@ -2,7 +2,6 @@
 	//session_start();
 
 	//preg_replace - replace extra white spaces
-	//utf8_encode - handle special characters
 
 	class controladorDB
 	{
@@ -588,6 +587,22 @@
 			}
 			return $data;
 		}
+		public function obtenerListaPreguntas($dbcon,$DEBUG_STATUS)
+		{
+			$sql="SELECT p.id pid,p.nombre FROM preguntas p where p.habilitado=1 order BY p.nombre";
+			//echo $sql;
+			$data=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$data[$count] = array($row["pid"],$row["nombre"]);
+					$count++;
+				}
+			}
+			return $data;
+		}
 		public function obtenerTipoevaluacionSeccionPreguntas($dbcon,$tipoEva,$idseccion,$pregunta,$DEBUG_STATUS)
 		{
 			$sql="SELECT p.id pid, s.id sid, t.id tid, p.nombre, s.nombre session, t.nombre tipoevaluacion, p.habilitado FROM preguntas p, seccion s, tipoevaluacion t where p.habilitado=1 AND s.habilitado=1 AND t.habilitado=1 AND p.id_seccion=s.id and p.id_tipoevaluacion=t.id";
@@ -605,7 +620,7 @@
             {
 				while($row = mysqli_fetch_assoc($result)) 
 				{
-					$data[$count] = array($row["pid"],$row["sid"],$row["tid"],utf8_encode($row["nombre"]),utf8_encode($row["session"]),utf8_encode($row["tipoevaluacion"]));
+					$data[$count] = array($row["pid"],$row["sid"],$row["tid"],$row["nombre"],$row["session"],$row["tipoevaluacion"]);
 					$count++;
 				}
 			}
@@ -703,13 +718,13 @@
 			}
 			return $txn;
 		}
-		public function actualizarParaleloData($dbcon,$id,$nombre_perfil,$DEBUG_STATUS)
+		public function actualizarParaleloData($dbcon,$id,$nombre_paralelo,$DEBUG_STATUS)
 		{
 			$updStatus = 0;
 			if($id==0)
-				$sql = "insert into c_paralelo(nombre,habilitado) values('".$nombre_perfil."',1)";
+				$sql = "insert into c_paralelo(nombre,habilitado) values('".$nombre_paralelo."',1)";
 			else
-				$sql = "update c_paralelo set nombre='".$nombre_perfil."' where id=$id";
+				$sql = "update c_paralelo set nombre='".$nombre_paralelo."' where id=$id";
 			//echo $sql.'<br>';
 	        if(mysqli_query($dbcon,$sql))
 	        {
@@ -718,7 +733,8 @@
 	        }
 	        else
 	        {
-	        	echo("Error description: " . mysqli_error($dbcon));
+	        	//echo("Error description: " . mysqli_error($dbcon));
+	        	$updStatus=0;
 	        	mysqli_rollback($dbcon);
 	        }	        	
             return $updStatus;			
@@ -818,7 +834,7 @@
             {
 				while($row = mysqli_fetch_assoc($result)) 
 				{
-					$data[$count] = array($row["id"],utf8_encode($row["nombre"]));
+					$data[$count] = array($row["id"],$row["nombre"]);
 					$count++;
 				}
 			}
@@ -859,6 +875,9 @@
 	        }	        	
             return $updStatus;			
 		}
+
+		
+
 		public function deshabilitarDatosDtl($dbcon,$id,$table,$DEBUG_STATUS)
 		{
 			$updStatus = 0;
@@ -884,11 +903,12 @@
 			//echo $sql;
 			$data=array();
 			$count=0;
+			//mysqli_set_charset($dbcon,"utf8");
 			$result = mysqli_query($dbcon,$sql);
             {
 				while($row = mysqli_fetch_assoc($result)) 
 				{
-					$data[$count] = array($row["id"],utf8_encode($row["nombre"]),$row["peso"],$row["id_perfil_evaluador"],$row["id_perfil_evaluado"],$row["perfil_evaluador"],$row["perfil_evaluado"]);
+					$data[$count] = array($row["id"],$row["nombre"],$row["peso"],$row["id_perfil_evaluador"],$row["id_perfil_evaluado"],$row["perfil_evaluador"],$row["perfil_evaluado"]);
 					$count++;
 				}
 			}
@@ -1029,10 +1049,10 @@
 				$sql=$sql." and d.id_tipoevaluacion=".$idTipoEvaluacion."";
 			if($idSeccion!=0)
 				$sql=$sql." and d.id_seccion=".$idSeccion."";
-			if($idEvaluado!=0)
+			/*if($idEvaluado!=0)
 				$sql=$sql." and d.id_evaluado=".$idEvaluado."";
 			if($idEvaluador!=0)
-				$sql=$sql." and d.id_evaluador=".$idEvaluador."";
+				$sql=$sql." and d.id_evaluador=".$idEvaluador."";*/
 			$sql=$sql." order by pregunta,seccion,tipoevaluacion,evaluado,evaluador";
 			//echo $sql;
 			$data=array();
@@ -1041,13 +1061,13 @@
             {
 				while($row = mysqli_fetch_assoc($result)) 
 				{
-					$data[$count] = array($row["id"],$row["id_seccion"],$row["seccion"],$row["id_tipoevaluacion"],utf8_encode($row["tipoevaluacion"]),$row["id_pregunta"],$row["pregunta"],$row["id_evaluado"],$row["evaluado"],$row["id_evaluador"],$row["evaluador"]);
+					$data[$count] = array($row["id"],$row["id_seccion"],$row["seccion"],$row["id_tipoevaluacion"],$row["tipoevaluacion"],$row["id_pregunta"],$row["pregunta"],$row["id_evaluado"],$row["evaluado"],$row["id_evaluador"],$row["evaluador"]);
 					$count++;
 				}
 			}
 			return $data;
 		}
-		public function actualizarDataDatos($dbcon,$idPregunta,$idSeccion,$idTipoEvaluacion,$idEvaluado,$idEvaluador,$idPlanEvaluacion,$table,$DEBUG_STATUS)
+		/*public function actualizarDataDatos($dbcon,$idPregunta,$idSeccion,$idTipoEvaluacion,$idEvaluado,$idEvaluador,$idPlanEvaluacion,$table,$DEBUG_STATUS)
 		{
 			$updStatus = 0;
 			$sql = "insert into ".$table."(id_pregunta,id_seccion,id_tipoevaluacion,id_evaluado,id_evaluador,id_planevaluacion,id_satisfaccion,habilitado) values(".$idPregunta.",".$idSeccion.",".$idTipoEvaluacion.",".$idEvaluado.",".$idEvaluador.",".$idPlanEvaluacion.",5,1)";
@@ -1089,17 +1109,7 @@
 				}
 				if($idTipoEvaluacion==2)
 				{
-					/*$sql = "insert into datos_dtl(id_pregunta,id_seccion,id_tipoevaluacion,id_evaluado,id_evaluador,id_planevaluacion,id_satisfaccion,id_datos,habilitado) values(".$idPregunta.",".$idSeccion.",".$idTipoEvaluacion.",".$_SESSION["user_id"].",".$_SESSION["user_id"].",".$idPlanEvaluacion.",5,".$last_id.",1)";
-			        if(mysqli_query($dbcon,$sql))
-			        {
-			        	//mysqli_commit($dbcon);
-			        	$updStatus = 1;					
-			        }
-			        else
-			        {
-			        	$updStatus = 0;
-			        	//mysqli_rollback($dbcon);
-			        }*/
+					
 			        for($x=0;$x<$countEvaluadores;$x++)
 					{						
 						$sql = "insert into datos_dtl(id_pregunta,id_seccion,id_tipoevaluacion,id_evaluado,id_evaluador,id_planevaluacion,id_satisfaccion,id_datos,id_paralelo,habilitado) values(".$idPregunta.",".$idSeccion.",".$idTipoEvaluacion.",".$evaluadores[$x][0].",".$evaluadores[$x][0].",".$idPlanEvaluacion.",5,".$last_id.",".$evaluadores[$x][1].",1)";
@@ -1167,6 +1177,160 @@
 	        {
 	        	mysqli_rollback($dbcon);
 	        }
+            return $updStatus;
+		}*/
+		public function actualizarDataDatos($dbcon,$pregunta,$idSeccion,$idTipoEvaluacion,$idEvaluado,$idEvaluador,$idPlanEvaluacion,$table,$DEBUG_STATUS)
+		{
+			$updStatus = 0;
+
+			$sql="select id from preguntas p where p.id_seccion=".$idSeccion." and p.id_tipoevaluacion=".$idTipoEvaluacion." and p.nombre='".$pregunta."'";
+
+
+			$result = mysqli_query($dbcon,$sql);
+            
+			if(mysqli_num_rows($result) == 0)
+			{
+				$sql="insert into preguntas(nombre,id_seccion,id_tipoevaluacion,habilitado) values('".$pregunta."',".$idSeccion.",".$idTipoEvaluacion.",1)";
+				//echo $sql.'<br>';
+		        if(mysqli_query($dbcon,$sql))
+		        {
+		        	$idPregunta = mysqli_insert_id($dbcon);
+		        	mysqli_commit($dbcon);
+		        	$updStatus = 1;
+		        }
+		        else
+		        {
+		        	//echo("Error description: " . mysqli_error($dbcon));
+		        	$updStatus=0;
+		        	mysqli_rollback($dbcon);
+		        }	
+			}
+			else if(mysqli_num_rows($result) == 1)  
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$idPregunta = $row["id"];
+					$updStatus = 1;
+				}
+			}
+			else
+			{
+				$updStatus = 2;
+			}
+
+			//echo 'IDPREGUNTA:'.$idPregunta.'<br>';
+
+
+			if($updStatus==1)
+			{
+				$sql = "insert into datos(id_pregunta,id_seccion,id_tipoevaluacion,id_evaluado,id_evaluador,id_planevaluacion,id_satisfaccion,habilitado) values(".$idPregunta.",".$idSeccion.",".$idTipoEvaluacion.",".$idEvaluado.",".$idEvaluador.",".$idPlanEvaluacion.",5,1)";
+		        if(mysqli_query($dbcon,$sql))
+		        {
+		        	//mysqli_commit($dbcon);
+		        	$updStatus = 1;		
+		        	$last_id = mysqli_insert_id($dbcon);			
+		        }
+		        else
+		        {
+		        	$updStatus = 3;
+		        	//mysqli_rollback($dbcon);
+		        }
+		        if($updStatus==1)
+		        {
+		        	$updStatus = 0;
+					$sql="SELECT l.id,l.id_paralelo FROM c_login l, c_perfil p WHERE l.perfil=p.id AND l.habilitado=1 AND p.habilitado=1 AND p.id=".$idEvaluador;
+					$evaluadores=array();
+					$countEvaluadores=0;
+					$result = mysqli_query($dbcon,$sql);
+		            {
+						while($row = mysqli_fetch_assoc($result)) 
+						{
+							$evaluadores[$countEvaluadores] = array($row["id"],$row["id_paralelo"]);
+							$countEvaluadores++;
+						}
+					}
+					$sql="SELECT l.id,l.id_paralelo FROM c_login l, c_perfil p WHERE l.perfil=p.id AND l.habilitado=1 AND p.habilitado=1 AND p.id=".$idEvaluado;
+					$evaluados=array();
+					$countEvaluados=0;
+					$result = mysqli_query($dbcon,$sql);
+		            {
+						while($row = mysqli_fetch_assoc($result)) 
+						{
+							$evaluados[$countEvaluados] = array($row["id"],$row["id_paralelo"]);
+							$countEvaluados++;
+						}
+					}
+					if($idTipoEvaluacion==2)
+					{
+						
+				        for($x=0;$x<$countEvaluadores;$x++)
+						{						
+							$sql = "insert into datos_dtl(id_pregunta,id_seccion,id_tipoevaluacion,id_evaluado,id_evaluador,id_planevaluacion,id_satisfaccion,id_datos,id_paralelo,habilitado) values(".$idPregunta.",".$idSeccion.",".$idTipoEvaluacion.",".$evaluadores[$x][0].",".$evaluadores[$x][0].",".$idPlanEvaluacion.",5,".$last_id.",".$evaluadores[$x][1].",1)";
+					        if(mysqli_query($dbcon,$sql))
+					        {
+					        	//mysqli_commit($dbcon);
+					        	$updStatus = 1;					
+					        }
+					        else
+					        {
+					        	$updStatus = 0;
+					        	//mysqli_rollback($dbcon);
+					        }
+						}
+					}
+					else if($idTipoEvaluacion==3)
+					{
+						for($x=0;$x<$countEvaluadores;$x++)
+						{
+							for($y=0;$y<$countEvaluados;$y++)
+							{
+								if($evaluadores[$x][0]!=$evaluados[$y][0])
+								{
+									$sql = "insert into datos_dtl(id_pregunta,id_seccion,id_tipoevaluacion,id_evaluado,id_evaluador,id_planevaluacion,id_satisfaccion,id_datos,id_paralelo,habilitado) values(".$idPregunta.",".$idSeccion.",".$idTipoEvaluacion.",".$evaluados[$y][0].",".$evaluadores[$x][0].",".$idPlanEvaluacion.",5,".$last_id.",".$evaluadores[$x][1].",1)";
+							        if(mysqli_query($dbcon,$sql))
+							        {
+							        	//mysqli_commit($dbcon);
+							        	$updStatus = 1;					
+							        }
+							        else
+							        {
+							        	$updStatus = 0;
+							        	//mysqli_rollback($dbcon);
+							        }
+								}
+							}
+						}	
+					}
+					else
+					{
+						for($x=0;$x<$countEvaluadores;$x++)
+						{
+							for($y=0;$y<$countEvaluados;$y++)
+							{
+								$sql = "insert into datos_dtl(id_pregunta,id_seccion,id_tipoevaluacion,id_evaluado,id_evaluador,id_planevaluacion,id_satisfaccion,id_datos,id_paralelo,habilitado) values(".$idPregunta.",".$idSeccion.",".$idTipoEvaluacion.",".$evaluados[$y][0].",".$evaluadores[$x][0].",".$idPlanEvaluacion.",5,".$last_id.",".$evaluadores[$x][1].",1)";
+						        if(mysqli_query($dbcon,$sql))
+						        {
+						        	//mysqli_commit($dbcon);
+						        	$updStatus = 1;					
+						        }
+						        else
+						        {
+						        	$updStatus = 0;
+						        	//mysqli_rollback($dbcon);
+						        }
+							}
+						}	
+					}        	
+	            }
+				if($updStatus == 1)
+		        {
+		        	mysqli_commit($dbcon);			
+		        }
+		        else
+		        {
+		        	mysqli_rollback($dbcon);
+		        }
+		    }				
             return $updStatus;
 		}
 		public function obtenerDataResEvaluacion($dbcon,$id,$table,$DEBUG_STATUS)
@@ -1315,7 +1479,7 @@
             {
 				while($row = mysqli_fetch_assoc($result)) 
 				{
-					$data[$count] = array($row["id"],$row["id_tipoEvaluacion"],utf8_encode($row["nombre_tipoEvaluacion"]),$row["id_seccion"],utf8_encode($row["nombre_seccion"]));
+					$data[$count] = array($row["id"],$row["id_tipoEvaluacion"],$row["nombre_tipoEvaluacion"],$row["id_seccion"],$row["nombre_seccion"]);
 					$count++;
 				}
 			}
@@ -1383,6 +1547,54 @@
 				}
 			}
 			return $data;
+		}
+
+		public function actualizarDataSeccion($dbcon,$id,$nombre_seccion,$DEBUG_STATUS)
+		{
+			$updStatus = 0;
+			if($id==0)
+				$sql = "insert into seccion(nombre,habilitado) values('".$nombre_seccion."',1)";
+			else
+				$sql = "update seccion set nombre='".$nombre_seccion."' where id=$id";
+			//echo $sql.'<br>';
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	mysqli_commit($dbcon);
+	        	$updStatus = 1;					
+	        }
+	        else
+	        {
+	        	//echo("Error description: " . mysqli_error($dbcon));
+	        	$updStatus=0;
+	        	mysqli_rollback($dbcon);
+	        }	        	
+            return $updStatus;			
+		}
+
+		public function deshabilitarSeccionData($dbcon,$id,$DEBUG_STATUS)
+		{
+			$updStatus = 0;
+			$sql="select id from datos d where d.id_seccion = ".$id." and habilitado=1";
+			$result = mysqli_query($dbcon,$sql);
+			if(mysqli_num_rows($result) == 0)
+			{
+				$sql = "update seccion set habilitado=habilitado*(-1)+1 where id=$id";
+				//echo $sql.'<br>';
+		        if(mysqli_query($dbcon,$sql))
+		        {
+		        	mysqli_commit($dbcon);
+		        	$updStatus = 1;
+		        }
+		        else
+		        {
+		        	mysqli_rollback($dbcon);
+		        }	
+		    }
+		    else
+		    {
+		    	$updStatus = 2;
+		    }       	
+            return $updStatus;			
 		}
 	}
 ?>

@@ -82,7 +82,7 @@
                     <div class="col-sm-2"></div>
                     <div class="col-sm-4">
                         <label>PROCESO DE EVALUACIÓN</label>
-                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="NOMBRE" name="nombre" value="<?php echo $nombre;?>"required>
+                        <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="NOMBRE" name="nombre" value="<?php echo $nombre;?>" onkeyup="FindByDescEval()" required>
                     </div>
                     <div class="col-sm-4">
                         <label>AÑO</label>
@@ -136,13 +136,13 @@
         {
             ?>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr class="table-header">
                             <td>#FILA</td>
                             <td>PLAN EVALUACION</td>
                             <td>ANO</td>
-                            <td>ACCION</td>
+                            <td colspan="5">ACCION</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -170,6 +170,9 @@
                                 <?php        
                                     }
                                 ?>
+                            </td>
+                            <td>
+
                                 <?php 
                                     if($data[$x][3]<2)
                                     {
@@ -184,21 +187,23 @@
                                 <?php        
                                     }
                                 ?>
+
+                            </td>
                                 <?php 
                                     if($data[$x][3]<2)
                                     {
                                 ?>
-                                    <a href="planevaluacion.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="color:green;"> EDITAR</span></a>
-                                    <a href="datos.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon glyphicon-th-list" style="color:green;"> VER DETALLES</span></a>    
-                                    <a href="controladorProceso.php?proceso=10&task=3&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>"><span class="glyphicon glyphicon-remove" style="color:red;">DESHABILITAR</span></a>
+                                    <td><a href="planevaluacion.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="color:green;"> EDITAR</span></a></td>
+                                    <td><a href="datos.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon glyphicon-th-list" style="color:green;"> VER CUESTIONARIO</span></a></td>
+                                    <td><a href="controladorProceso.php?proceso=10&task=3&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>"><span class="glyphicon glyphicon-remove" style="color:red;">DESHABILITAR</span></a></td>
                                 <?php
                                     }
                                     else
                                     {
                                 ?>
-                                    <span class="glyphicon glyphicon-pencil" style="color:grey;"> EDITAR</span>
-                                    <span class="glyphicon glyphicon glyphicon-th-list" style="color:grey;"> VER DETALLES</span>
-                                    <span class="glyphicon glyphicon-remove" style="color:grey;">DESHABILITAR</span>
+                                    <td><span class="glyphicon glyphicon-pencil" style="color:grey;"> EDITAR</span></td>
+                                    <td><span class="glyphicon glyphicon glyphicon-th-list" style="color:grey;"> VER CUESTIONARIO</span></td>
+                                    <td><span class="glyphicon glyphicon-remove" style="color:grey;">DESHABILITAR</span></td>
                                 <?php        
                                     }
                                 ?>

@@ -1,0 +1,5 @@
+** pending for migration
+-- migrated
+30jun2022--hussain
+-- creado indice SECCION DUPLICADO en tabla seccion
+-- creado indice TIPOEVALUACION-SECCION-PREGUNTA DUPLICADO en tabla datos

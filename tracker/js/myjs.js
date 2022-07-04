@@ -440,7 +440,8 @@ function buscarPermisos()
 }
 function buscarComboData() 
 {
-    idPreg=document.getElementById("idPreg").value;
+    //idPreg=document.getElementById("idPreg").value;
+    idPreg=0;
     //idComp=document.getElementById("idComp").value;
     idComp=0;
     //idTiPa=document.getElementById("idTiPa").value;
@@ -539,7 +540,13 @@ function registrarSatisfaccionNivel(ctr,idPregunta)
 function validateFormDatos() 
 {
     //alert("validateFormDatos");
-    if(document.getElementById("idSec").value==0)
+
+    if(document.getElementById("idTiEv").value==0)
+    {
+        alert("Existen campos sin seleccion-TIPO EVALUACION");
+        return false;
+    }
+    else if(document.getElementById("idSec").value==0)
     {
         alert("Existen campos sin seleccion-SECCION");
         return false;
@@ -547,11 +554,6 @@ function validateFormDatos()
     else if(document.getElementById("idPreg").value==0)
     {
         alert("Existen campos sin seleccion-PREGUNTA");
-        return false;
-    }
-    else if(document.getElementById("idTiEv").value==0)
-    {
-        alert("Existen campos sin seleccion-TIPO EVALUACION");
         return false;
     }
     /*else if(document.getElementById("idEvalr").value==0)
@@ -947,6 +949,86 @@ function FindByEmail() {
   }
 }
 
+
+function FindByDescEval() {
+  var input, filter, table, tr, td, i, txtValue;
+  //document.getElementById("email").value='';
+  input = document.getElementById("nombre");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function FindByDescSeccion() {
+  var input, filter, table, tr, td, i, txtValue;
+  //document.getElementById("email").value='';
+  input = document.getElementById("nombre");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function FindByDescParalelo() {
+  var input, filter, table, tr, td, i, txtValue;
+  //document.getElementById("email").value='';
+  input = document.getElementById("nombre");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function FindByDescPreguntas() {
+  var input, filter, table, tr, td, i, txtValue;
+  //document.getElementById("email").value='';
+  input = document.getElementById("preg");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[3];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
 
 function validateCambiarClave() 
 {
