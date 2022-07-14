@@ -63,12 +63,11 @@
         <div class="col-sm-3"></div>
     </div>
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
             <form method="post" action="controladorProceso.php?proceso=6&task=0">
                 <div class="row">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label>PERFIL</label>
                         <select name="idPerfil" class="form-control" id="idPerfil" onChange="buscarPermisos()" required>
                             <option value=0><?php echo '[0]:TODO';?></option>
@@ -92,7 +91,7 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <label>MENU</label>
                         <select name="idMenu" class="form-control" id="idMenu"  onChange="buscarPermisos()" required>
                             <option value=0><?php echo '[0][0]:TODO';?></option>
@@ -116,7 +115,6 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-sm-2"></div>
                 </div>
                 <br>
                 <div class="row text-center">
@@ -124,9 +122,12 @@
                 </div>
             </form>
         </div>
-        <div class="col-sm-1"></div>
+        <div class="col-sm-2"></div>
     </div>
     <br>
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
     <?php
         if(isset($permisos))
         {
@@ -162,5 +163,8 @@
             <?php
         }
     ?>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
     <br>
 </div>

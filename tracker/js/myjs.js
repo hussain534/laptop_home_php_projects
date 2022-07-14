@@ -19,7 +19,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion1.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -66,7 +66,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion2.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -113,7 +113,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion3.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -160,7 +160,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion4.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -207,7 +207,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion1evaluador.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -254,7 +254,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion2evaluador.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -301,7 +301,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion3evaluador.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -348,7 +348,7 @@ $(document).ready(function()
         url: weburl+"myChartTipoEvaluacion4evaluador.php",
         method: "GET",
         success: function(data) {
-            console.log(data);
+            //console.log(data);
             var TipoTarea = [];
             var score = [];
             for(var i in data) {
@@ -390,7 +390,21 @@ $(document).ready(function()
             console.log(data);
         }
     });
-    document.getElementById("paralelodropdown").style.display="none";
+
+
+
+    if(document.getElementById("paralelodropdown")  != null)
+    {
+       document.getElementById("paralelodropdown").style.display="none";
+    }
+    var table = document.getElementById("myTable");
+    for (var i = 1, row; row = table.rows[i]; i++) 
+    {
+        row.cells[5].childNodes[1].style.display="none";
+    }
+    
+    //document.getElementById("paralelodropdown").style.display="none";
+    //document.getElementById("btnAsignar").style.display="none";
     $("#consultarAlepo").click(function()
     {
         //alert('inside');
@@ -724,6 +738,77 @@ function selectSeccion()
         }
     };
     xmlhttp.open("GET", "controladorProceso.php?proceso=7&task=3&idseccion="+idseccion, true);
+    xmlhttp.send();
+}
+
+function setEvaluador(x) 
+{
+    //alert('x:'+x);
+    var table = document.getElementById("myTable");
+    for (var i = 1, row; row = table.rows[i]; i++) 
+    {
+        if(i!=x)
+        {
+            //alert('i:'+i);
+            row.cells[4].childNodes[1].value=-1; // select option field 
+            row.cells[5].childNodes[1].style.display="none";       
+        }
+        else
+        {
+            row.cells[5].childNodes[1].style.display="block";
+        }
+    }
+}
+
+function asignarEvaluador(idEval,idTipoEval, idSec,idEvalo,x) 
+{
+    /*alert('idEval:'+idEval);
+    alert('idTipoEval:'+idTipoEval);
+    alert('idSec:'+idSec);
+    alert('idEvalo:'+idEvalo);*/
+
+    var table = document.getElementById("myTable");
+    row1 = table.rows[x];
+    //alert('idEvalr:'+row1.cells[4].childNodes[1].value); // select option field
+    var idEvalr = row1.cells[4].childNodes[1].value;
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            //document.getElementById("idPerfil").value = this.responseText;
+            //location.reload();
+            window.location.href="asignarEvaluadoresInDatosDtl.php?pid="+idEval;
+        }
+    };
+    xmlhttp.open("GET", "controladorProceso.php?proceso=9&task=2&idEval="+idEval+"&idTipoEval="+idTipoEval+"&idSec="+idSec+"&idEvalo="+idEvalo+"&idEvalr="+idEvalr, true);
+    xmlhttp.send();
+}
+
+function liberarEvaluador(idEval,idTipoEval, idSec,idEvalo,x) 
+{
+    /*alert('idEval:'+idEval);
+    alert('idTipoEval:'+idTipoEval);
+    alert('idSec:'+idSec);
+    alert('idEvalo:'+idEvalo);
+    alert('idEvalr:'+idEvalr);
+    alert('X:'+x)*/
+    
+    var idEvalr = document.getElementById("myTable2").rows[x].cells[6].innerHTML;
+    //alert('data:'+document.getElementById("myTable2").rows[x].cells[6].innerHTML);
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            //document.getElementById("idPerfil").value = this.responseText;
+            //location.reload();
+            window.location.href="asignarEvaluadoresInDatosDtl.php?pid="+idEval;
+        }
+    };
+    xmlhttp.open("GET", "controladorProceso.php?proceso=9&task=4&idEval="+idEval+"&idTipoEval="+idTipoEval+"&idSec="+idSec+"&idEvalo="+idEvalo+"&idEvalr="+idEvalr, true);
     xmlhttp.send();
 }
 

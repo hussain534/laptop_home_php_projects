@@ -349,7 +349,7 @@
         }        
         else if($err==3)
         {
-            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. EXISTE MISMO PREGUNTA BAJO MISMO TIPOEVALUACION Y SECCION</center>";
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA POR DUPLICACION. PLAN_EVALUACION - PREGUNTA - TIPOEVALUACION - SECCION</center>";
         }
 
         if(isset($_POST["idPlanEvaluacion"]))
@@ -382,7 +382,22 @@
         else
             $url=$_GET["tid"].'.php';
         header("Location:$url");
-    } 
+    }
+    else if($_GET["proceso"]==9 && $_GET["task"]==2)
+    {
+        $err = $controladorDB->asignarEvaluadoresParaEvaluacion($databasecon,$_GET["idEval"],$_GET["idTipoEval"],$_GET["idSec"],$_GET["idEvalo"],$_GET["idEvalr"],$DEBUG_STATUS);
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>DATA ACTUALIZADO</center>";
+        }
+
+        // $url='asignarEvaluadoresInDatosDtl.php?pid='.$_GET["idEval"];
+        // header("Location:$url");
+    }
     else if($_GET["proceso"]==9 && $_GET["task"]==3)
     {   
         $_SESSION["ID_PREGUNTA"]=$_GET["idPreg"];
@@ -392,6 +407,38 @@
         $_SESSION["ID_SECCION"]=$_GET["idSec"];
         $_SESSION["ID_EVALUADO"]=$_GET["idEvalo"];
         $_SESSION["ID_EVALUADOR"]=$_GET["idEvalr"];
+    }
+    else if($_GET["proceso"]==9 && $_GET["task"]==4)
+    {
+        $err = $controladorDB->liberarEvaluadoresParaEvaluacion($databasecon,$_GET["idEval"],$_GET["idTipoEval"],$_GET["idSec"],$_GET["idEvalo"],$_GET["idEvalr"],$DEBUG_STATUS);
+
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN ACTUALIZAR DATA. INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>DATA ACTUALIZADO</center>";
+        }
+
+        // $url='asignarEvaluadoresInDatosDtl.php?pid='.$_GET["idEval"];
+        // header("Location:$url");
+    }
+    else if($_GET["proceso"]==9 && $_GET["task"]==5)
+    {
+        $err = $controladorDB->deshabilitarPreguntasSinEvaluadores($databasecon,$_GET["pid"],$DEBUG_STATUS);
+
+        if($err==0)
+        {
+            $_SESSION["message"]="<center>ERROR EN DESHABILTAR DATA. INTENTA MAS TARDE</center>";
+        }
+        else if($err==1)
+        {
+            $_SESSION["message"]="<center>DATA DESHABILITADO</center>";
+        }
+
+        $url='asignarEvaluadoresInDatosDtl.php?pid='.$_GET["pid"];
+        header("Location:$url");
     }
     else if($_GET["proceso"]==10 && $_GET["task"]==0)
     {   

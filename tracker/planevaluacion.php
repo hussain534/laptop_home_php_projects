@@ -31,8 +31,11 @@
         $nombre='';
         $ano=date("Y");
     }
-    $data = $controladorDB->obtenerDataPlanEvaluacion($databasecon,0,$dbTable,$DEBUG_STATUS);
+    $data = $controladorDB->obtenerDataPlanEvaluacion($databasecon,0,$dbTable,$DEBUG_STATUS);//ID, NOMBRE, ANO, HABILITADO
     //echo 'count::'.count($permisos);
+
+
+
 ?>
 <style type="text/css">
     body
@@ -47,6 +50,11 @@
     <div class="row pageTitle">
         <div class="col-sm-12">
             GESTIÓN DE EVALUACIÓN
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <img src="images/eval-step-01.png" style="width:20%;height: 20%;">
         </div>
     </div>
     <br>
@@ -131,6 +139,9 @@
         <div class="col-sm-1"></div>
     </div>
     <br>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
     <?php
         if(isset($data))
         {
@@ -142,6 +153,8 @@
                             <td>#FILA</td>
                             <td>PLAN EVALUACION</td>
                             <td>ANO</td>
+                            <td>PREGUNTAS EN CUESTIONARIO</td>
+                            <td>PREGUNTAS SIN RESPUSTAS</td>
                             <td colspan="5">ACCION</td>
                         </tr>
                     </thead>
@@ -156,8 +169,63 @@
                             <td><?php echo $data[$x][1];?></td>
                             <td><?php echo $data[$x][2];?></td>
                             <td>
-                                <?php 
-                                    if($data[$x][3]==0)
+                                <?php
+                                    $totalPreguntasHabilitados = $controladorDB->totalPreguntasHabilitados($databasecon,$data[$x][0],$DEBUG_STATUS);
+                                    echo $totalPreguntasHabilitados;
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    $totalPreguntasHabilitadosSinContestacion = $controladorDB->totalPreguntasHabilitadosSinContestacion($databasecon,$data[$x][0],$DEBUG_STATUS);
+                                    if($totalPreguntasHabilitadosSinContestacion>0)
+                                    {
+                                ?>
+                                        <a href="evaluacionSinRespuestas.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-ban-circle" style="color:red;"> <?php echo $totalPreguntasHabilitadosSinContestacion;?></span></a>
+                                <?php        
+                                    }
+                                    else
+                                    {
+                                ?>
+                                        <span class="glyphicon glyphicon-ban-circle" style="color:grey;"> <?php echo $totalPreguntasHabilitadosSinContestacion;?></span>
+                                <?php        
+                                    }
+                                ?>
+                            </td>
+                            <?php 
+                                if($data[$x][3]==1 || $data[$x][3]==-1)
+                                {
+                            ?>
+                                <td><a href="planevaluacion.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="color:green;"> EDITAR</span></a></td>
+                                <td><a href="datos.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon glyphicon-th-list" style="color:green;"> VER / EDITAR CUESTIONARIO</span></a></td>
+                                <td><a href="controladorProceso.php?proceso=10&task=3&id=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-remove" style="color:red;">DESHABILITAR</span></a></td>
+                            <?php
+                                }
+                                else
+                                {
+                            ?>
+                                <td><span class="glyphicon glyphicon-pencil" style="color:grey;"> EDITAR</span></td>
+                                <td><span class="glyphicon glyphicon glyphicon-th-list" style="color:grey;"> VER / EDITAR CUESTIONARIO</span></td>
+                                <td><span class="glyphicon glyphicon-remove" style="color:grey;">DESHABILITAR</span></td>
+                            <?php        
+                                }
+                            ?>
+                            <td>
+                                <?php
+                                    $pendientesAsignacion = $controladorDB->obtenerAsignacionesPendientes($databasecon,$data[$x][0],$DEBUG_STATUS);
+                                    $preguntasList = $controladorDB->obtenerPreguntasList($databasecon,$data[$x][0],$DEBUG_STATUS);
+                                    if($data[$x][3]==-1 && count($preguntasList)==0)
+                                    {
+                                        ?>
+                                            <a href="asignarEvaluadoresInDatosDtl.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-user" style="color:blue;"> ASIGNAR-EVALUADORES</span></a>
+                                        <?php
+                                    }
+                                    else if($data[$x][3]==-1 && count($preguntasList)>0 && count($pendientesAsignacion)>0)
+                                    {
+                                        ?>
+                                            <a href="asignarEvaluadoresInDatosDtl.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-user" style="color:blue;"> ASIGNAR-EVALUADORES</span></a>
+                                        <?php
+                                    }
+                                    else if($data[$x][3]==-1 && count($preguntasList)>0 && count($pendientesAsignacion)==0)
                                     {
                                 ?>
                                     <a href="controladorProceso.php?proceso=10&task=1&id=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-play" style="color:blue;"> INICIAR</span></a>
@@ -174,7 +242,7 @@
                             <td>
 
                                 <?php 
-                                    if($data[$x][3]<2)
+                                    if($data[$x][3]==1 || $data[$x][3]==-1)
                                     {
                                 ?>
                                     <a href="controladorProceso.php?proceso=10&task=2&id=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-stop" style="color:red;"> FINALIZAR</span></a>
@@ -189,25 +257,6 @@
                                 ?>
 
                             </td>
-                                <?php 
-                                    if($data[$x][3]<2)
-                                    {
-                                ?>
-                                    <td><a href="planevaluacion.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="color:green;"> EDITAR</span></a></td>
-                                    <td><a href="datos.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon glyphicon-th-list" style="color:green;"> VER CUESTIONARIO</span></a></td>
-                                    <td><a href="controladorProceso.php?proceso=10&task=3&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>"><span class="glyphicon glyphicon-remove" style="color:red;">DESHABILITAR</span></a></td>
-                                <?php
-                                    }
-                                    else
-                                    {
-                                ?>
-                                    <td><span class="glyphicon glyphicon-pencil" style="color:grey;"> EDITAR</span></td>
-                                    <td><span class="glyphicon glyphicon glyphicon-th-list" style="color:grey;"> VER CUESTIONARIO</span></td>
-                                    <td><span class="glyphicon glyphicon-remove" style="color:grey;">DESHABILITAR</span></td>
-                                <?php        
-                                    }
-                                ?>
-                            </td>
                         </tr>
             <?php
                 }
@@ -218,5 +267,8 @@
             <?php
         }
     ?>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
     <br>
 </div>

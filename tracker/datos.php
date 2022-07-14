@@ -37,8 +37,18 @@
     {
         $idPlanEvaluacion=$_GET["pid"];
         $data = $controladorDB->obtenerDataPlanEvaluacion($databasecon,$_GET["pid"],'planevaluacion',$DEBUG_STATUS);
-        $nombre=$data[0][1];
-        $ano=$data[0][2];
+        if(count($data)>0)
+        {
+            $nombre=$data[0][1];
+            $ano=$data[0][2];
+            $status=$data[0][3];    
+        }
+        else
+        {
+            $nombre="";
+            $ano="";
+            $status="";
+        }
     }
     else
         $idPlanEvaluacion=0;
@@ -116,6 +126,19 @@
             CUESTIONARIOS
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <img src="images/eval-step-02.png" style="width:20%;height: 20%;">
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-12 text-right">            
+            <a href="asignarEvaluadoresInDatosDtl.php?pid=<?php echo $idPlanEvaluacion;?>"><button type="button" class="btn btn-info" title="Click to enter our portal">ASIGNAR EVALUADORES<span class="glyphicon glyphicon-circle-arrow-left"></span></button></a>
+            <a href="planevaluacion.php"><button type="button" class="btn btn-info" title="Click to enter our portal">REGRESAR<span class="glyphicon glyphicon-circle-arrow-left"></span></button></a>
+        </div>
+    </div>
     <br>
     <br>
     <div class="row">
@@ -152,7 +175,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <label>AÑO</label>
-                        <input type="text" class="form-control navbar-btn" id="ano" name ="ano" value=<?php echo $ano;?> / readonly="true"> 
+                        <input type="text" class="form-control navbar-btn" id="ano" name ="ano" value="<?php echo $ano;?>" readonly="true"> 
                     </div>
                     <div class="col-sm-8">
                         <label>PROCESO DE EVALUACIÓN</label>
@@ -263,7 +286,7 @@
                             }
 
                         ?>
-                        <input type="text" name="preg" id="preg" class="form-control navbar-btn" value="<?php echo $resPregunta;?>"  placeholder="Ingresa Preguntas" onkeyup="FindByDescPreguntas()" required>
+                        <input type="text" name="preg" id="preg" class="form-control navbar-btn" value="<?php echo $resPregunta;?>"  placeholder="Ingresa Pregunta" onkeyup="FindByDescPreguntas()" required>
                         <!-- <label>PREGUNTA</label>
                         <select name="idPreg" class="form-control navbar-btn" id="idPreg" onChange="buscarComboData()" required>
                             <option value=0><?php echo '[0]:ESCOGER PREGUNTA';?></option>
@@ -291,7 +314,14 @@
                 </div>
                 <br>
                 <div class="row text-center">
-                    <button type="submit" class="btn btn-info" title="Click to enter our portal">AGREGAR<span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <?php
+                        if($status==-1)
+                        {
+                    ?>
+                            <button type="submit" class="btn btn-info" title="Click to enter our portal">AGREGAR<span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <?php        
+                        }
+                    ?>
                 </div>
             </form>
         </div>
@@ -331,7 +361,14 @@
                             <td><?php echo $data[$x][10];?></td>
                             <td>
                                 <!-- <a href="tipoevaluacion.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a> -->
-                                <a href="controladorProceso.php?proceso=9&task=1&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>&pid=<?php echo $idPlanEvaluacion;?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
+                                <?php
+                                    if($status==-1)
+                                    {
+                                ?>
+                                        <a href="controladorProceso.php?proceso=9&task=1&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>&pid=<?php echo $idPlanEvaluacion;?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
+                                    <?php        
+                                    }
+                                ?>
                             </td>
                         </tr>
             <?php

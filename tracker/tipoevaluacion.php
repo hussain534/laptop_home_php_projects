@@ -84,7 +84,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-1"></div>
                     <div class="col-sm-4">
                         <label>TIPO EVALUACION</label>
                         <input type="nombre" class="form-control navbar-btn" id="nombre" placeholder="NOMBRE" name="nombre" value="<?php echo $nombre;?>"required>
@@ -116,7 +115,7 @@
                             ?>                        
                         </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <label>EVALUADOR</label>
                         <select name="idEvalr" class="form-control navbar-btn" id="idEvalr" onChange="buscarComboData()" required readonly="true">
                             <option value=-1><?php echo '[-1]:TODO';?></option>
@@ -142,7 +141,7 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                         <label>EVALUADO</label>
                         <select name="idEvalo" class="form-control navbar-btn" id="idEvalo" onChange="buscarComboData()" required>
                             <option value=-1><?php echo '[-1]:TODO';?></option>
@@ -168,7 +167,6 @@
                             ?>
                         </select>
                     </div>
-                    <div class="col-sm-1"></div>
                 </div>
                 <div class="row text-center">
                     <button type="submit" class="btn btn-info" title="Click to enter our portal">ACTUALIZAR<span class="glyphicon glyphicon-chevron-right"></span></button>
@@ -180,6 +178,9 @@
         <div class="col-sm-1"></div>
     </div>
     <br>
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
     <?php
         if(isset($data))
         {
@@ -210,7 +211,7 @@
                             <td><?php echo $data[$x][6];?></td>
                             <td>
                                 <a href="tipoevaluacion.php?pid=<?php echo $data[$x][0];?>&peso=<?php echo $data[$x][2];?>"><span class="glyphicon glyphicon-pencil" style="font-size:x-large;color:grey;"></span></a>
-                                <a href="controladorProceso.php?proceso=7&task=1&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a>
+                                <!-- <a href="controladorProceso.php?proceso=7&task=1&id=<?php echo $data[$x][0];?>&tid=<?php echo $dbTable;?>"><span class="glyphicon glyphicon-remove" style="font-size:x-large;color:red;"></span></a> -->
                             </td>
                         </tr>
             <?php
@@ -222,5 +223,8 @@
             <?php
         }
     ?>
+        </div>
+        <div class="col-sm-1"></div>
+    </div>
     <br>
 </div>

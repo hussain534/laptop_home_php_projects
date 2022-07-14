@@ -1,5 +1,26 @@
-** pending for migration
--- migrated
+~~ pendiente para desarrollo
+** pendiente para migracion a prod
+-- migrado a prod
+
 30jun2022--hussain
 -- creado indice SECCION DUPLICADO en tabla seccion
 -- creado indice TIPOEVALUACION-SECCION-PREGUNTA DUPLICADO en tabla datos
+
+12jul2022--hussain
+** agregado coments '0 y 2: DESHABILITADO, 1:HABILITADO' para columna 'habilitado' en table 'datos_dtl'
+** creado foreign key 'FK_c_login_c_perfil' para columna 'perfil' en tabla 'c_login'
+** eliminado indices 'TIPOEVALUACION-SECCION-PREGUNTA DUPLICADO' en table 'datos'
+** creado funccionalidad para asignar evaluadores para id_tipoevaluacion in (1,3,4)
+~~ Aplicar la referencias correctas de habilitado en todo aplicacion
+    ACTUAL          0     :por iniciar
+                    1     :activo, 
+                    2     :finalizado, 
+                    99    :deshabilitado
+    MODIFICAR A     0     :deshabilitado, 
+                    -1    :por_iniciar/por_asignar, 
+                    1     :activo/asignado, 
+                    2     :finalizado,
+~~ aplicar correcto 'id_habilitado' en tabla 'datos_dtl' y 'datos' segun la tabla 'status'
+~~ crear columnas 'modified_by', 'modified_on' en todos los tablas y aplicar la cambio para update desde aplicacion
+~~ control para que las paginas solo puede usar por el usuario/perfil permitido en tabla permisos
+~~ cambiar 'controladorProcesso.php' como un class similar a 'controladorDB.php' y habilitar los if, if_else como public methods y luego las llamdas desde otros phps
