@@ -8,6 +8,11 @@
     }
     include_once('util.php');
     include_once('header.php');
+    
+    /*$data = $controladorDB->validaMenuAccessPorPerfil($databasecon,'menu.php',$DEBUG_STATUS);
+    if(!isset($data) || count($data)==0)
+        die("ACCESO DENEGADO");*/
+
     if(isset($_SESSION["message"]))
     {
         $msg=$_SESSION["message"];

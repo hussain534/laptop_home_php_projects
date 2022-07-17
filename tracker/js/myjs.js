@@ -405,7 +405,7 @@ $(document).ready(function()
     
     //document.getElementById("paralelodropdown").style.display="none";
     //document.getElementById("btnAsignar").style.display="none";
-    $("#consultarAlepo").click(function()
+    /*$("#consultarAlepo").click(function()
     {
         //alert('inside');
         consulta_integrador=document.getElementById("consulta_integrador").value;
@@ -431,7 +431,7 @@ $(document).ready(function()
             xmlhttp.open("GET", "controladorProceso.php?proceso=3&task=4&consulta_integrador="+consulta_integrador+"&consulta_fecha_conciliacion="+consulta_fecha_conciliacion, true);
             xmlhttp.send();
         }
-    }); 
+    }); */
 });
 function buscarPermisos() 
 {

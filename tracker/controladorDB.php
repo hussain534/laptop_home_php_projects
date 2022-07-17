@@ -1844,5 +1844,22 @@
 		    }       	
             return $updStatus;			
 		}
+
+		/*public function validaMenuAccessPorPerfil($dbcon,$menuUrl,$DEBUG_STATUS)
+		{
+			$sql="SELECT cm.id_menu FROM c_menu cm,c_perfil cp, c_permisos pm where cm.habilitado='1' and cp.habilitado=1 and pm.habilitado=1 and cm.url='".$menuUrl."' and cm.id=pm.id_menu and cp.id=pm.id_perfil and cp.id=".$_SESSION["user_perfil"]." order by cm.id_menu";
+			
+			$data=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$data[$count] = array($row["id_menu"]);
+					$count++;
+				}
+			}
+			return $data;
+		}*/
 	}
 ?>
