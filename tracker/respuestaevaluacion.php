@@ -122,7 +122,7 @@
                         <tr class="table-header">
                             <td>ID</td>
                             <td>TIPO EVALUACION</td>
-                            <td>PESO</td>
+                            <td>PUNTAJE</td>
                             <td>ACCION</td>
                         </tr>
                     </thead>

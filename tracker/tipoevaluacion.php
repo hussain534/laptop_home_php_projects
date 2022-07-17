@@ -17,6 +17,7 @@
     $DEBUG_STATUS = $PRINT_LOG;
     require 'controladorDB.php';
     $controladorDB = new controladorDB();*/
+
     $dbTable='tipoevaluacion';
     if(isset($_GET["pid"]))
     {
@@ -36,6 +37,7 @@
         $id_perfil_evaluador=-1;
         $id_perfil_evaluado=-1;
     }
+    $sumaPesoTipoEvaluacion = $controladorDB->sumaPesoTipoEvaluacion($databasecon,$DEBUG_STATUS);
     //$data = $controladorDB->obtenerDataTipoEvaluacion($databasecon,0,$dbTable,$DEBUG_STATUS);
     //echo 'count::'.count($permisos);
 ?>
@@ -73,10 +75,11 @@
         </div>
         <div class="col-sm-3"></div>
     </div>
+    <input type="hidden" id="sumaTotal" name ="sumaTotal" value=<?php echo$sumaPesoTipoEvaluacion;?> /> 
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <form method="post" action="controladorProceso.php?proceso=8&task=0">
+            <form method="post" action="controladorProceso.php?proceso=8&task=0" onsubmit="return validateFormDatos3();">
                 <div class="row">
                     <div class="col-sm-12">
                         <input type="hidden" id="id" name ="id" value=<?php echo $id;?> /> 
@@ -97,7 +100,7 @@
                         <select name="peso" class="form-control navbar-btn" id="peso" onChange="buscarComboData()" required>
                             <option value=0><?php echo '[0]:ESCOGER PESO';?></option>
                             <?php
-                            for($i=10;$i<=100;$i=$i+10)
+                            for($i=5;$i<=100;$i=$i+5)
                             {
                                 if($i==$peso)
                                 {
@@ -117,7 +120,7 @@
                     </div>
                     <div class="col-sm-3">
                         <label>EVALUADOR</label>
-                        <select name="idEvalr" class="form-control navbar-btn" id="idEvalr" onChange="buscarComboData()" required readonly="true">
+                        <select name="idEvalr" class="form-control navbar-btn" id="idEvalr" onChange="buscarComboData()" required>
                             <option value=-1><?php echo '[-1]:TODO';?></option>
                             <!-- <option value=0><?php echo '[0]:MISMO';?></option> -->
                             <?php
@@ -169,7 +172,14 @@
                     </div>
                 </div>
                 <div class="row text-center">
+                    <?php 
+                        if($id!=0)
+                        {
+                    ?>
                     <button type="submit" class="btn btn-info" title="Click to enter our portal">ACTUALIZAR<span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <?php 
+                        }
+                        ?>
                     <a href="tipoevaluacion.php"><button type="button" class="btn btn-info" >RESET<span class="glyphicon glyphicon-chevron-right"></span></button></a>
                     </button>
                 </div>
@@ -184,9 +194,10 @@
     <?php
         if(isset($data))
         {
+            $sumaTotal=0;
             ?>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr class="table-header">
                             <td>ID</td>
@@ -217,6 +228,7 @@
             <?php
                 }
             ?>
+                    
                     </tbody>
                 </table>
             </div>

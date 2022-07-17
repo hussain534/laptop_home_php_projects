@@ -93,7 +93,7 @@
                             <tr class="table-header">
                                 <td>#FILA</td>
                                 <td>TIPO EVALUACION</td>
-                                <td>SECCION</td>
+                                <!-- <td>SECCION</td> -->
                                 <td>EVALUADO</td>
                                 <td>EVALUADOR</td>
                                 <td>ACCION</td>
@@ -107,13 +107,14 @@
                     <tr class="table-body">
                         <td><?php echo $x+1;?></td>
                         <td><?php echo $pendientesAsignacion[$x][1];?></td> 
+                        <!-- <td><?php echo $pendientesAsignacion[$x][3];?></td> -->
                         <td><?php echo $pendientesAsignacion[$x][3];?></td>
-                        <td><?php echo $pendientesAsignacion[$x][5];?></td>
                         <td>
                             <select name="idEvalr" id="idEvalr" onchange="setEvaluador(<?php echo $x+1;?>)">
                             <option value=-1><?php echo 'ESCOGER EVALUADOR';?></option>
                             <?php
-                                $perfilevaluador = $controladorDB->obtenerPerfilEvaluadorPendientes($databasecon,$pendientesAsignacion[$x][0],$pendientesAsignacion[$x][2],$idPlanEvaluacion,$DEBUG_STATUS);
+                                /*$perfilevaluador = $controladorDB->obtenerPerfilEvaluadorPendientes($databasecon,$pendientesAsignacion[$x][0],$pendientesAsignacion[$x][2],$idPlanEvaluacion,$DEBUG_STATUS);*/
+                                $perfilevaluador = $controladorDB->obtenerPerfilEvaluadorPendientes($databasecon,$pendientesAsignacion[$x][0],$idPlanEvaluacion,$DEBUG_STATUS);
                                 for($j=0;$j<count($perfilevaluador);$j++)
                                 {
                                     if($pendientesAsignacion[$x][0]>1)
@@ -121,20 +122,8 @@
                                         $evaluador = $controladorDB->getUsersByPerfil($databasecon,$perfilevaluador[$j][0],$DEBUG_STATUS);
                                         for($i=0;$i<count($evaluador);$i++)
                                         {
-                                            if($pendientesAsignacion[$x][4]!=$evaluador[$i][0])
+                                            if($pendientesAsignacion[$x][2]!=$evaluador[$i][0])
                                             {
-                                                /*if($evaluador[$i][2]>1)
-                                                {
-                                                    ?>
-                                                    <option value=<?php echo $evaluador[$i][0].'|'.$evaluador[$i][2];?>><?php echo '[PARALELO-'.$evaluador[$i][2].']:'.$evaluador[$i][1];?></option>
-                                                    <?php
-                                                }
-                                                else
-                                                {
-                                                    ?>
-                                                    <option value=<?php echo $evaluador[$i][0];?>><?php echo $evaluador[$i][1];?></option>
-                                                    <?php
-                                                }*/
                                                 ?>
                                                 <option value=<?php echo $evaluador[$i][0];?>><?php echo $evaluador[$i][1];?></option>
                                                 <?php
@@ -143,21 +132,10 @@
                                     }
                                     else
                                     {
-                                        $evaluador = $controladorDB->getParalelosByPerfil($databasecon,$perfilevaluador[$j][0],$pendientesAsignacion[$x][4],$DEBUG_STATUS);
+                                        //$evaluador = $controladorDB->getParalelosByPerfil($databasecon,$perfilevaluador[$j][0],$pendientesAsignacion[$x][4],$DEBUG_STATUS);
+                                        $evaluador = $controladorDB->getParalelosByPerfil($databasecon,$perfilevaluador[$j][0],$pendientesAsignacion[$x][2],$DEBUG_STATUS);
                                         for($i=0;$i<count($evaluador);$i++)
                                         {
-                                            /*if($evaluador[$i][2]>1)
-                                            {
-                                                ?>
-                                                <option value=<?php echo $evaluador[$i][0].'|'.$evaluador[$i][2];?>><?php echo '[PARALELO-'.$evaluador[$i][2].']:'.$evaluador[$i][1];?></option>
-                                                <?php
-                                            }
-                                            else
-                                            {
-                                                ?>
-                                                <option value=<?php echo $evaluador[$i][0];?>><?php echo $evaluador[$i][1];?></option>
-                                                <?php
-                                            }*/ 
                                             ?>
                                                 <option value=<?php echo $evaluador[$i][0].'|'.$evaluador[$i][0];?>><?php echo $evaluador[$i][1];?></option>
                                             <?php                               
@@ -166,10 +144,11 @@
                                     
                                 }
                             ?>
-                        </select>
+                            </select>
                         </td>                       
                         <td>
-                            <button type="button" id="btnAsignar" onClick="asignarEvaluador(<?php echo $idPlanEvaluacion;?>,<?php echo $pendientesAsignacion[$x][0];?>,<?php echo $pendientesAsignacion[$x][2];?>,<?php echo $pendientesAsignacion[$x][4];?>,<?php echo $x+1;?>)">ASIGNAR<span class="glyphicon glyphicon-chevron-right"></span></button>
+                           
+                            <button type="button" id="btnAsignar" onClick="asignarEvaluador(<?php echo $idPlanEvaluacion;?>,<?php echo $pendientesAsignacion[$x][0];?>,<?php echo $pendientesAsignacion[$x][2];?>,<?php echo $x+1;?>)">ASIGNAR<span class="glyphicon glyphicon-chevron-right"></span></button>
                         </td>
                     </tr>
             <?php
@@ -206,7 +185,7 @@
                             <tr class="table-header" style="background:green">
                                 <td>#FILA</td>
                                 <td>TIPO EVALUACION</td>
-                                <td>SECCION</td>
+                                <!-- <td>SECCION</td> -->
                                 <td>EVALUADO</td>
                                 <td>EVALUADOR</td>
                                 <td>PARALELO</td>
@@ -222,17 +201,17 @@
                     <tr class="table-body">
                         <td><?php echo $x+1;?></td>
                         <td><?php echo $realizadasAsignacion[$x][1];?></td> 
+                        <!-- <td><?php echo $realizadasAsignacion[$x][3];?></td> -->
                         <td><?php echo $realizadasAsignacion[$x][3];?></td>
                         <td><?php echo $realizadasAsignacion[$x][5];?></td>
-                        <td><?php echo $realizadasAsignacion[$x][7];?></td>
-                        <td><?php if($realizadasAsignacion[$x][8]>1) echo $realizadasAsignacion[$x][9];?></td>
-                        <td style="display: none;"><?php echo $realizadasAsignacion[$x][6].'|'.$realizadasAsignacion[$x][8];?></td>
+                        <td><?php if($realizadasAsignacion[$x][6]>1) echo $realizadasAsignacion[$x][7];?></td>
+                        <td style="display: none;"><?php echo $realizadasAsignacion[$x][4].'|'.$realizadasAsignacion[$x][6];?></td>
                         <td>
                             <?php
                                     if($status==-1)
                                     {
                                 ?>
-                                        <button type="button" id="btnAsignar" onClick="liberarEvaluador(<?php echo $idPlanEvaluacion;?>,<?php echo $realizadasAsignacion[$x][0];?>,<?php echo $realizadasAsignacion[$x][2];?>,<?php echo $realizadasAsignacion[$x][4];?>,<?php echo $x+1;?>)"><span class="glyphicon glyphicon-remove"></span></button>
+                                        <button type="button" id="btnAsignar" onClick="liberarEvaluador(<?php echo $idPlanEvaluacion;?>,<?php echo $realizadasAsignacion[$x][0];?>,<?php echo $realizadasAsignacion[$x][2];?>,<?php echo $x+1;?>)"><span class="glyphicon glyphicon-remove"></span></button>
                                 <?php        
                                     }
                             ?>

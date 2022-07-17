@@ -154,7 +154,7 @@
                             <td>PLAN EVALUACION</td>
                             <td>ANO</td>
                             <td>PREGUNTAS EN CUESTIONARIO</td>
-                            <td>PREGUNTAS SIN RESPUSTAS</td>
+                            <td>SIN RESPUSTAS</td>
                             <td colspan="5">ACCION</td>
                         </tr>
                     </thead>
@@ -177,10 +177,12 @@
                             <td>
                                 <?php
                                     $totalPreguntasHabilitadosSinContestacion = $controladorDB->totalPreguntasHabilitadosSinContestacion($databasecon,$data[$x][0],$DEBUG_STATUS);
+                                    //echo $totalPreguntasHabilitadosSinContestacion;
                                     if($totalPreguntasHabilitadosSinContestacion>0)
                                     {
                                 ?>
-                                        <a href="evaluacionSinRespuestas.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-ban-circle" style="color:red;"> <?php echo $totalPreguntasHabilitadosSinContestacion;?></span></a>
+                                        <!-- <a href="evaluacionSinRespuestas.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-ban-circle" style="color:red;"><?php echo $totalPreguntasHabilitadosSinContestacion;?></span></a> -->
+                                        <a href="evaluacionSinRespuestas.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-ban-circle" style="color:red;"><?php echo $totalPreguntasHabilitadosSinContestacion;?></span></a>
                                 <?php        
                                     }
                                     else
@@ -213,7 +215,14 @@
                                 <?php
                                     $pendientesAsignacion = $controladorDB->obtenerAsignacionesPendientes($databasecon,$data[$x][0],$DEBUG_STATUS);
                                     $preguntasList = $controladorDB->obtenerPreguntasList($databasecon,$data[$x][0],$DEBUG_STATUS);
-                                    if($data[$x][3]==-1 && count($preguntasList)==0)
+                                    $sumaPesoTipoEvaluacion = $controladorDB->sumaPesoTipoEvaluacion($databasecon,$DEBUG_STATUS);
+                                    if($sumaPesoTipoEvaluacion!=100)
+                                    {
+                                        ?>
+                                            <a href="tipoevaluacion.php?"><span class="glyphicon glyphicon-user" style="color:blue;"> REVISAR SUMATORIA DE PESOS</span></a>
+                                        <?php
+                                    }
+                                    else if($data[$x][3]==-1 && count($preguntasList)==0)
                                     {
                                         ?>
                                             <a href="asignarEvaluadoresInDatosDtl.php?pid=<?php echo $data[$x][0];?>"><span class="glyphicon glyphicon-user" style="color:blue;"> ASIGNAR-EVALUADORES</span></a>

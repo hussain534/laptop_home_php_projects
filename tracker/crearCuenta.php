@@ -32,6 +32,13 @@
     require 'controladorDB.php';
     $controladorDB = new controladorDB();*/
     $data = $controladorDB->listaUsers($databasecon,0,$DEBUG_STATUS);
+    $data1 = $controladorDB->obtenerDataPlanEvaluacion($databasecon,0,'planevaluacion',$DEBUG_STATUS);
+    $status=0;
+    for($x=0;$x<count($data1);$x++)
+    {
+        if($data1[$x][3]==-1 || $data1[$x][3]==1)
+            $status=1;
+    }
 ?>
 <style type="text/css">
     body
@@ -144,8 +151,15 @@
                 </div>
                 <br>                        
                 <!-- <center> -->
+                    <?php
+                        if($status==0)
+                        {
+                    ?>
                     <button type="submit" class="btn btn-info btn_center" title="Click to enter our portal">CREAR CUENTA<span class="glyphicon glyphicon-chevron-right"></span></button>
                     <a href="crearCuenta.php"><button type="button" class="btn btn-info" >RESET<span class="glyphicon glyphicon-chevron-right"></span></button></a>
+                    <?php        
+                        }
+                    ?>
                 <!-- </center> -->
             </form>
         </div>

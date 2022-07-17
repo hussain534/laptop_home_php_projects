@@ -948,6 +948,23 @@
 			}
 			return $data;
 		}
+
+		public function sumaPesoTipoEvaluacion($dbcon,$DEBUG_STATUS)
+		{
+			$sql="SELECT sum(peso) peso FROM tipoevaluacion sm where habilitado=1";
+			//echo $sql;
+			$data=array();
+			$suma=0;
+			//mysqli_set_charset($dbcon,"utf8");
+			$result = mysqli_query($dbcon,$sql);
+            {
+				$row = mysqli_fetch_assoc($result);
+				{
+					$suma=$row["peso"];
+				}
+			}
+			return $suma;
+		}
 		public function actualizarDataTipoEvaluacion($dbcon,$id,$nombre,$peso,$idEvalr,$idEvalo,$table,$DEBUG_STATUS)
 		{
 			$updStatus = 0;
@@ -1021,7 +1038,7 @@
 
 		public function totalPreguntasHabilitados($dbcon,$id,$DEBUG_STATUS)
 		{
-			$sql="select count(*) cnt from datos_dtl where habilitado=1 and id_planevaluacion=".$id;
+			$sql="select count(*) cnt from datos_dtl where habilitado in (-1,1) and id_planevaluacion=".$id;
 			//echo $sql;
 			$count=0;
 			$result = mysqli_query($dbcon,$sql);
@@ -1172,9 +1189,26 @@
 
 		
 
-		public function obtenerPerfilEvaluadorPendientes($dbcon,$id_tipoEval,$id_session,$idPlanEvaluacion,$DEBUG_STATUS)
+		/*public function obtenerPerfilEvaluadorPendientes($dbcon,$id_tipoEval,$id_session,$idPlanEvaluacion,$DEBUG_STATUS)
 		{
 			$sql="select distinct d.id_tipoevaluacion,d.id_seccion,d.id_evaluado,d.id_evaluador from datos d where d.id_tipoevaluacion =".$id_tipoEval." and d.id_seccion=".$id_session." and d.id_planevaluacion =".$idPlanEvaluacion;
+			//echo $sql;
+			$data=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$data[$count] = array($row["id_evaluador"]);
+					$count++;
+				}
+			}
+			return $data;
+		}*/
+
+		public function obtenerPerfilEvaluadorPendientes($dbcon,$id_tipoEval,$idPlanEvaluacion,$DEBUG_STATUS)
+		{
+			$sql="select distinct d.id_tipoevaluacion,d.id_evaluado,d.id_evaluador from datos d where d.id_tipoevaluacion =".$id_tipoEval." and d.id_planevaluacion =".$idPlanEvaluacion;
 			//echo $sql;
 			$data=array();
 			$count=0;
@@ -1259,7 +1293,7 @@
 		public function obtenerAsignacionesPendientes($dbcon,$idPlanEvaluacion,$DEBUG_STATUS)
 		{
 			//$sql="select distinct d.id_tipoevaluacion,(SELECT x.nombre FROM tipoevaluacion x WHERE d.id_tipoevaluacion=x.id) tipoevaluacion,d.id_seccion,(SELECT x.nombre FROM seccion x WHERE d.id_seccion=x.id) seccion,d.id_evaluado,(select nombre from c_login l where l.id=d.id_evaluado) nombre_evaluado from datos_dtl d where d.id_evaluador=1 and d.id_tipoevaluacion in (1,3,4)";
-			$sql="select distinct d.id_tipoevaluacion,(SELECT x.nombre FROM tipoevaluacion x WHERE d.id_tipoevaluacion=x.id) tipoevaluacion,d.id_seccion,(SELECT x.nombre FROM seccion x WHERE d.id_seccion=x.id) seccion,d.id_evaluado,(select nombre from c_login l where l.id=d.id_evaluado) nombre_evaluado from datos_dtl d where d.habilitado=-1 and d.id_tipoevaluacion in (1,3,4)";
+			/*$sql="select distinct d.id_tipoevaluacion,(SELECT x.nombre FROM tipoevaluacion x WHERE d.id_tipoevaluacion=x.id) tipoevaluacion,d.id_seccion,(SELECT x.nombre FROM seccion x WHERE d.id_seccion=x.id) seccion,d.id_evaluado,(select nombre from c_login l where l.id=d.id_evaluado) nombre_evaluado from datos_dtl d where d.habilitado=-1 and d.id_tipoevaluacion in (1,3,4)";
 			if($idPlanEvaluacion!=0)
 				$sql=$sql." and d.id_planevaluacion =".$idPlanEvaluacion;
 			//echo $sql;
@@ -1272,13 +1306,27 @@
 					$data[$count] = array($row["id_tipoevaluacion"],$row["tipoevaluacion"],$row["id_seccion"],$row["seccion"],$row["id_evaluado"],$row["nombre_evaluado"]);
 					$count++;
 				}
+			}*/
+			$sql="select distinct d.id_tipoevaluacion,(SELECT x.nombre FROM tipoevaluacion x WHERE d.id_tipoevaluacion=x.id) tipoevaluacion,d.id_evaluado,(select nombre from c_login l where l.id=d.id_evaluado) nombre_evaluado from datos_dtl d where d.habilitado=-1 and d.id_tipoevaluacion in (1,3,4)";
+			if($idPlanEvaluacion!=0)
+				$sql=$sql." and d.id_planevaluacion =".$idPlanEvaluacion;
+			//echo $sql;
+			$data=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$data[$count] = array($row["id_tipoevaluacion"],$row["tipoevaluacion"],$row["id_evaluado"],$row["nombre_evaluado"]);
+					$count++;
+				}
 			}
 			return $data;
 		}
 
 		public function obtenerAsignacionesRealizados($dbcon,$idPlanEvaluacion,$DEBUG_STATUS)
 		{
-			$sql="select d.id_tipoevaluacion,(SELECT x.nombre FROM tipoevaluacion x WHERE d.id_tipoevaluacion=x.id) tipoevaluacion,d.id_seccion,(SELECT x.nombre FROM seccion x WHERE d.id_seccion=x.id) seccion,d.id_evaluado,(select nombre from c_login l where l.id=d.id_evaluado) nombre_evaluado,d.id_evaluador,(select nombre from c_login l where l.id=d.id_evaluador) nombre_evaluador,d.id_paralelo,(select p.nombre from c_paralelo p where p.id=d.id_paralelo) nombre_paralelo from datos_dtl d where d.habilitado=1 and d.id_tipoevaluacion in (1,3,4)";
+			/*$sql="select d.id_tipoevaluacion,(SELECT x.nombre FROM tipoevaluacion x WHERE d.id_tipoevaluacion=x.id) tipoevaluacion,d.id_seccion,(SELECT x.nombre FROM seccion x WHERE d.id_seccion=x.id) seccion,d.id_evaluado,(select nombre from c_login l where l.id=d.id_evaluado) nombre_evaluado,d.id_evaluador,(select nombre from c_login l where l.id=d.id_evaluador) nombre_evaluador,d.id_paralelo,(select p.nombre from c_paralelo p where p.id=d.id_paralelo) nombre_paralelo from datos_dtl d where d.habilitado=1 and d.id_tipoevaluacion in (1,3,4)";
 			if($idPlanEvaluacion!=0)
 				$sql=$sql." and d.id_planevaluacion =".$idPlanEvaluacion;
 			$sql=$sql." order by tipoevaluacion,seccion,nombre_evaluado,nombre_evaluador";
@@ -1290,6 +1338,21 @@
 				while($row = mysqli_fetch_assoc($result)) 
 				{
 					$data[$count] = array($row["id_tipoevaluacion"],$row["tipoevaluacion"],$row["id_seccion"],$row["seccion"],$row["id_evaluado"],$row["nombre_evaluado"],$row["id_evaluador"],$row["nombre_evaluador"],$row["id_paralelo"],$row["nombre_paralelo"]);
+					$count++;
+				}
+			}*/
+			$sql="select distinct d.id_tipoevaluacion,(SELECT x.nombre FROM tipoevaluacion x WHERE d.id_tipoevaluacion=x.id) tipoevaluacion,d.id_evaluado,(select nombre from c_login l where l.id=d.id_evaluado) nombre_evaluado,d.id_evaluador,(select nombre from c_login l where l.id=d.id_evaluador) nombre_evaluador,d.id_paralelo,(select p.nombre from c_paralelo p where p.id=d.id_paralelo) nombre_paralelo from datos_dtl d where d.habilitado=1 and d.id_tipoevaluacion in (1,3,4)";
+			if($idPlanEvaluacion!=0)
+				$sql=$sql." and d.id_planevaluacion =".$idPlanEvaluacion;
+			$sql=$sql." order by tipoevaluacion,nombre_evaluado,nombre_evaluador";
+			//echo $sql;
+			$data=array();
+			$count=0;
+			$result = mysqli_query($dbcon,$sql);
+            {
+				while($row = mysqli_fetch_assoc($result)) 
+				{
+					$data[$count] = array($row["id_tipoevaluacion"],$row["tipoevaluacion"],$row["id_evaluado"],$row["nombre_evaluado"],$row["id_evaluador"],$row["nombre_evaluador"],$row["id_paralelo"],$row["nombre_paralelo"]);
 					$count++;
 				}
 			}
@@ -1465,14 +1528,14 @@
             return $updStatus;
 		}
 
-		public function asignarEvaluadoresParaEvaluacion($dbcon,$idEval,$idTipoEval,$idSec,$idEvalo,$idEvalr,$DEBUG_STATUS)
+		public function asignarEvaluadoresParaEvaluacion($dbcon,$idEval,$idTipoEval,$idEvalo,$idEvalr,$DEBUG_STATUS)
 		{
 			$updStatus = 0;
 			$arrIdEvalr=explode('|', $idEvalr);
 			if(count($arrIdEvalr)>1)
-				$sql = "update datos_dtl set habilitado=1 where habilitado=-1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_seccion=".$idSec." and id_evaluado=".$idEvalo." and id_paralelo=".$arrIdEvalr[0];
+				$sql = "update datos_dtl set habilitado=1 where habilitado=-1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_evaluado=".$idEvalo." and id_paralelo=".$arrIdEvalr[0];
 			else
-				$sql = "update datos_dtl set id_evaluador=".$arrIdEvalr[0].",habilitado=1 where habilitado=-1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_seccion=".$idSec." and id_evaluado=".$idEvalo;
+				$sql = "update datos_dtl set id_evaluador=".$arrIdEvalr[0].",habilitado=1 where habilitado=-1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_evaluado=".$idEvalo;
 			//echo $sql.'<br>';
 	        if(mysqli_query($dbcon,$sql))
 	        {
@@ -1486,7 +1549,7 @@
             return $updStatus;			
 		}
 		//CORRIGIR_HABILITADO
-		public function liberarEvaluadoresParaEvaluacion($dbcon,$idEval,$idTipoEval,$idSec,$idEvalo,$idEvalr,$DEBUG_STATUS)
+		/*public function liberarEvaluadoresParaEvaluacion($dbcon,$idEval,$idTipoEval,$idSec,$idEvalo,$idEvalr,$DEBUG_STATUS)
 		{
 			$updStatus = 0;
 			$arrIdEvalr=explode('|', $idEvalr);
@@ -1494,6 +1557,26 @@
 				$sql = "update datos_dtl set habilitado=-1 where habilitado=1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_seccion=".$idSec." and id_evaluado=".$idEvalo." and id_paralelo=".$arrIdEvalr[1];
 			else
 				$sql = "update datos_dtl set habilitado=-1, id_evaluador=1 where habilitado=1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_seccion=".$idSec." and id_evaluado=".$idEvalo;
+			//echo $sql.'<br>';
+	        if(mysqli_query($dbcon,$sql))
+	        {
+	        	mysqli_commit($dbcon);
+	        	$updStatus = 1;					
+	        }
+	        else
+	        {
+	        	mysqli_rollback($dbcon);
+	        }
+            return $updStatus;
+		}*/
+		public function liberarEvaluadoresParaEvaluacion($dbcon,$idEval,$idTipoEval,$idEvalo,$idEvalr,$DEBUG_STATUS)
+		{
+			$updStatus = 0;
+			$arrIdEvalr=explode('|', $idEvalr);
+			if($arrIdEvalr[1]>1)
+				$sql = "update datos_dtl set habilitado=-1 where habilitado=1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_evaluado=".$idEvalo." and id_paralelo=".$arrIdEvalr[1];
+			else
+				$sql = "update datos_dtl set habilitado=-1, id_evaluador=1 where habilitado=1 and id_planevaluacion=".$idEval." and id_tipoevaluacion=".$idTipoEval." and id_evaluado=".$idEvalo;
 			//echo $sql.'<br>';
 	        if(mysqli_query($dbcon,$sql))
 	        {

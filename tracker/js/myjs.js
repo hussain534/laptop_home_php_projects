@@ -5,10 +5,17 @@ window.setTimeout(function()
     });
 }, 6000);
 
+
 var weburl="http://localhost/tracker/";
 //var weburl="https://tracker.ayaanfms.com/";
 $(document).ready(function()
 {
+    //alert('HOLA');
+    if(parseInt(document.getElementById("sumaTotal").value)!=100)
+    {
+        alert("La suma de pesos no es 100%");
+    }
+
     $('img').each(function() 
     {
         $(this).attr('height','600px');
@@ -400,8 +407,11 @@ $(document).ready(function()
     var table = document.getElementById("myTable");
     for (var i = 1, row; row = table.rows[i]; i++) 
     {
-        row.cells[5].childNodes[1].style.display="none";
+        //alert(row.cells[4].childNodes[1]);
+        row.cells[4].childNodes[1].style.display="none";
     }
+
+
     
     //document.getElementById("paralelodropdown").style.display="none";
     //document.getElementById("btnAsignar").style.display="none";
@@ -565,30 +575,17 @@ function validateFormDatos()
         alert("Existen campos sin seleccion-SECCION");
         return false;
     }
-    else if(document.getElementById("idPreg").value==0)
-    {
-        alert("Existen campos sin seleccion-PREGUNTA");
-        return false;
-    }
-    /*else if(document.getElementById("idEvalr").value==0)
-    {
-        alert("Existen campos sin seleccion-EVALUADOR");
-        return false;
-    }
-    else if(document.getElementById("idEvalo").value==0)
-    {
-        alert("Existen campos sin seleccion-EVALUADO");
-        return false;
-    }
-    else if(document.getElementById("idEvalo").value==document.getElementById("idEvalr").value)
-    {
-        alert("EVALUADOR y EVALUADO NO PUEDEN SER MISMOS");
-        return false;
-    }*/
     else
     {
-        //alert("ALL OK");
         return true;
+        //alert("ALL OK");
+        /*if(confirm("Asegurese que el catalogo de usuarios esta completo"))
+        {
+         return true;
+        }
+        else
+            return false;*/
+        
     }
 }
 
@@ -612,6 +609,66 @@ function validateFormDatos2()
         return true;
     }
 }
+
+function validateFormDatos3() 
+{
+    //alert("validateFormDatos3");
+    /*var suma=0;
+    var res=false;
+    var peso = document.getElementById("peso").value;
+    alert("PESO:"+peso);
+    var total = document.getElementById("sumaTotal").value;
+    alert("TOTAL:"+total);
+    var id = document.getElementById("id").value;
+    if(parseInt(id)==0)
+        suma=parseInt(peso)+parseInt(total);
+    else
+    {
+        total=parseInt(total)-parseInt(peso);
+        suma=parseInt(peso)+parseInt(total);
+    }
+
+    alert("sumaTotal:"+suma);*/
+    
+    if(document.getElementById("peso").value==0)
+    {
+        alert("Existen campos sin seleccion-PESO");
+        res=false;
+    }
+    else if(document.getElementById("idEvalr").value==-1)
+    {
+        alert("Existen campos sin seleccion-EVALUADOR");
+        res=false;
+    }    
+    else if(document.getElementById("idEvalo").value==-1)
+    {
+        alert("Existen campos sin seleccion-EVALUADO");
+        res=false;
+    }
+    else
+        res=true;
+
+    /*if(res && suma!=100)
+    {
+        if(confirm("La suma de pesos no es 100%"))
+        {
+            //alert('SI');
+            res=true;
+        }
+        else
+        {
+            //alert('NO');
+            res=false;
+        }
+    }*/
+    
+    if(res)
+        return true;
+    else
+        return false;
+}
+
+
 function validateSatisfaccionNivel(countPreguntas) 
 {
     var res="";
@@ -741,7 +798,7 @@ function selectSeccion()
     xmlhttp.send();
 }
 
-function setEvaluador(x) 
+/*function setEvaluador(x) 
 {
     //alert('x:'+x);
     var table = document.getElementById("myTable");
@@ -758,14 +815,32 @@ function setEvaluador(x)
             row.cells[5].childNodes[1].style.display="block";
         }
     }
+}*/
+function setEvaluador(x) 
+{
+    //alert('x:'+x);
+    var table = document.getElementById("myTable");
+    for (var i = 1, row; row = table.rows[i]; i++) 
+    {
+        if(i!=x)
+        {
+            //alert('i:'+i);
+            row.cells[3].childNodes[1].value=-1; // select option field 
+            row.cells[4].childNodes[1].style.display="none";       
+        }
+        else
+        {
+            row.cells[4].childNodes[1].style.display="block";
+        }
+    }
 }
 
-function asignarEvaluador(idEval,idTipoEval, idSec,idEvalo,x) 
+/*function asignarEvaluador(idEval,idTipoEval, idSec,idEvalo,x) 
 {
-    /*alert('idEval:'+idEval);
-    alert('idTipoEval:'+idTipoEval);
-    alert('idSec:'+idSec);
-    alert('idEvalo:'+idEvalo);*/
+    //alert('idEval:'+idEval);
+    //alert('idTipoEval:'+idTipoEval);
+    //alert('idSec:'+idSec);
+    //alert('idEvalo:'+idEvalo);
 
     var table = document.getElementById("myTable");
     row1 = table.rows[x];
@@ -784,16 +859,41 @@ function asignarEvaluador(idEval,idTipoEval, idSec,idEvalo,x)
     };
     xmlhttp.open("GET", "controladorProceso.php?proceso=9&task=2&idEval="+idEval+"&idTipoEval="+idTipoEval+"&idSec="+idSec+"&idEvalo="+idEvalo+"&idEvalr="+idEvalr, true);
     xmlhttp.send();
+}*/
+
+function asignarEvaluador(idEval,idTipoEval, idEvalo,x) 
+{
+    //alert('idEval:'+idEval);
+    //alert('idTipoEval:'+idTipoEval);
+    //alert('idEvalo:'+idEvalo);
+
+    var table = document.getElementById("myTable");
+    row1 = table.rows[x];
+    //alert('idEvalr:'+row1.cells[4].childNodes[1].value); // select option field
+    var idEvalr = row1.cells[3].childNodes[1].value;
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            //document.getElementById("idPerfil").value = this.responseText;
+            //location.reload();
+            window.location.href="asignarEvaluadoresInDatosDtl.php?pid="+idEval;
+        }
+    };
+    xmlhttp.open("GET", "controladorProceso.php?proceso=9&task=2&idEval="+idEval+"&idTipoEval="+idTipoEval+"&idEvalo="+idEvalo+"&idEvalr="+idEvalr, true);
+    xmlhttp.send();
 }
 
-function liberarEvaluador(idEval,idTipoEval, idSec,idEvalo,x) 
+/*function liberarEvaluador(idEval,idTipoEval, idSec,idEvalo,x) 
 {
-    /*alert('idEval:'+idEval);
-    alert('idTipoEval:'+idTipoEval);
-    alert('idSec:'+idSec);
-    alert('idEvalo:'+idEvalo);
-    alert('idEvalr:'+idEvalr);
-    alert('X:'+x)*/
+    //alert('idEval:'+idEval);
+    //alert('idTipoEval:'+idTipoEval);
+    //alert('idSec:'+idSec);
+    //alert('idEvalo:'+idEvalo);
+    //alert('idEvalr:'+idEvalr);
+    //alert('X:'+x)
     
     var idEvalr = document.getElementById("myTable2").rows[x].cells[6].innerHTML;
     //alert('data:'+document.getElementById("myTable2").rows[x].cells[6].innerHTML);
@@ -809,6 +909,32 @@ function liberarEvaluador(idEval,idTipoEval, idSec,idEvalo,x)
         }
     };
     xmlhttp.open("GET", "controladorProceso.php?proceso=9&task=4&idEval="+idEval+"&idTipoEval="+idTipoEval+"&idSec="+idSec+"&idEvalo="+idEvalo+"&idEvalr="+idEvalr, true);
+    xmlhttp.send();
+}*/
+
+function liberarEvaluador(idEval,idTipoEval, idEvalo,x) 
+{
+    /*alert('idEval:'+idEval);
+    alert('idTipoEval:'+idTipoEval);
+    //alert('idSec:'+idSec);
+    alert('idEvalo:'+idEvalo);
+    //alert('idEvalr:'+idEvalr);
+    alert('X:'+x)*/
+    
+    var idEvalr = document.getElementById("myTable2").rows[x].cells[5].innerHTML;
+    //alert('data:'+document.getElementById("myTable2").rows[x].cells[5].innerHTML);
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (this.readyState == 4 && this.status == 200) 
+        {
+            //document.getElementById("idPerfil").value = this.responseText;
+            //location.reload();
+            window.location.href="asignarEvaluadoresInDatosDtl.php?pid="+idEval;
+        }
+    };
+    xmlhttp.open("GET", "controladorProceso.php?proceso=9&task=4&idEval="+idEval+"&idTipoEval="+idTipoEval+"&idEvalo="+idEvalo+"&idEvalr="+idEvalr, true);
     xmlhttp.send();
 }
 

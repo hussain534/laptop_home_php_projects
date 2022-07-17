@@ -135,7 +135,7 @@
     <br>
     <div class="row">
         <div class="col-sm-12 text-right">            
-            <a href="asignarEvaluadoresInDatosDtl.php?pid=<?php echo $idPlanEvaluacion;?>"><button type="button" class="btn btn-info" title="Click to enter our portal">ASIGNAR EVALUADORES<span class="glyphicon glyphicon-circle-arrow-left"></span></button></a>
+            <!-- <a href="asignarEvaluadoresInDatosDtl.php?pid=<?php echo $idPlanEvaluacion;?>"><button type="button" class="btn btn-info" title="Click to enter our portal">ASIGNAR EVALUADORES<span class="glyphicon glyphicon-circle-arrow-left"></span></button></a> -->
             <a href="planevaluacion.php"><button type="button" class="btn btn-info" title="Click to enter our portal">REGRESAR<span class="glyphicon glyphicon-circle-arrow-left"></span></button></a>
         </div>
     </div>
